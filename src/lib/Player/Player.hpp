@@ -2,6 +2,8 @@
 #define _PLAYER_HPP_
 
 #include <bits/stdc++.h>
+#include "../Ability/Ability.hpp"
+#include "../InventoryHolder/PlayerDeck/PlayerDeck.hpp"
 
 using namespace std;
 
@@ -12,8 +14,8 @@ private:
     int id_;
     string nickname_;
     int point_;
-    // Player Cards buffer
-    // Ability buffer
+    PlayerDeck deck_;
+    Ability ability_;
 public:
 
     /**
@@ -74,7 +76,7 @@ public:
      *
      * @return int
      */
-    static int getPlayerCount() const;
+    static int getPlayerCount();
 };
 
 #endif

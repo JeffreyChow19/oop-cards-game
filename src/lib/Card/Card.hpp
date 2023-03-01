@@ -3,8 +3,9 @@
 
 class Card
 {
-private:
-public:
+    protected:
+    public:
+        virtual double getValue();
 };
 
 #endif
