@@ -6,5 +6,5 @@ class SetProcess : public Set{
         void advanceRound();
         void askCommand(vector<string> allowedCommands);
         string inputCommand(vector<string> allowedCommands);
-        void setPoint(float multiplier);
+        // void (float multiplier);
 };

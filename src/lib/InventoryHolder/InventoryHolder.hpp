@@ -31,7 +31,7 @@ public:
      * @brief Destroy the Inventory Holder object
      *
      */
-    ~InventoryHolder();
+    virtual ~InventoryHolder();
 
     /**
      * @brief Add card to InventoryHolder

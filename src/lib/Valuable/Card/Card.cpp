@@ -9,3 +9,7 @@ Card::Card(int value)
 {
     value_ = value;
 }
+
+Card::~Card(){
+    
+}

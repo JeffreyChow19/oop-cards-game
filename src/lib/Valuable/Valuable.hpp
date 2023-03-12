@@ -5,6 +5,7 @@
 
 class Valuable {
     public:
+        virtual ~Valuable();
         virtual float getValue() = 0;
 };
 

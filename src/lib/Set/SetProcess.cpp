@@ -59,7 +59,7 @@ string SetProcess::inputCommand(vector<string> allowedCommands)
     return command;
 }
 
-void SetProcess::setPoint(float multiplier)
-{
-    this->points_ *= multiplier;
-}
+// void SetProcess::(float multiplier)
+// {
+//     this->points_ *= multiplier;
+// }

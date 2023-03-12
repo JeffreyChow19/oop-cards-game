@@ -2,7 +2,7 @@
 
 void Half::activate(Set &set)
 {
-    // set.setPoint(0.5);
+    // set.(0.5);
 }
 
 string Half::getCommandName()

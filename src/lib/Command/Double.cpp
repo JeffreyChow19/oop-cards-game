@@ -2,7 +2,7 @@
 
 void Double::activate(Set &set)
 {
-    set.setPoint(2);
+    // set.(2);
 }
 
 string Double::getCommandName()

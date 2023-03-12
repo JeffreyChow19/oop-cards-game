@@ -76,3 +76,7 @@ void Player::addPlayerCard(MainDeck& mainDeck_) {
     ColorCard toAdd = mainDeck_.getFromMainDeck();
     // (*this) + toAdd;
 }
+
+float Player::getValue(){
+    return 0.0;
+}

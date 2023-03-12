@@ -10,6 +10,7 @@ public:
     Card();
     Card(int value);
     virtual double getValue() const = 0;
+    ~Card();
 };
 
 #endif

@@ -37,4 +37,5 @@ InventoryHolder<T> &InventoryHolder<T>::operator-(const T &toRemove)
     return *this;
 }
 
+
 template class InventoryHolder<ColorCard>;
