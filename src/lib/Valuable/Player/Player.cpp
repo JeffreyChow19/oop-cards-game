@@ -46,3 +46,9 @@ int Player::getPoint() const{
 int Player::getPlayerCount(){
     return playerCount_;
 }
+
+ColorCard Player::getFromPlayer() {
+    ColorCard toRemove = this->deck.back();
+    (*this) - toRemove;
+    return toRemove;
+}

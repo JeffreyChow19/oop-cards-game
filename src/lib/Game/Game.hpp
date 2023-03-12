@@ -6,15 +6,15 @@
 
 using namespace std;
 
-class Game {
-    private:
-        vector<Player> listOfPlayer_;
-        bool endGame;
-    public:
+class Game
+{
+private:
+        vector<Player> listOfPlayer;
+
+public:
         Game();
+        ~Game();
         bool checkEndGame();
-
 };
-
 
 #endif
