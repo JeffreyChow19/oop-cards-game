@@ -1,6 +1,6 @@
 #include "ReRoll.hpp"
 
-void ReRoll::activate(Set set)
+void ReRoll::activate(Set &set)
 {
 }
 

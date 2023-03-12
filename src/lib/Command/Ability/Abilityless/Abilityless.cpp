@@ -1,6 +1,6 @@
 #include "Abilityless.hpp"
 
-void Abilityless::activate(Set set)
+void Abilityless::activate(Set &set)
 {
 }
 

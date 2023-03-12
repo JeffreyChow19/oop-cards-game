@@ -1,6 +1,6 @@
 #include "Swap.hpp"
 
-void Swap::activate(Set)
+void Swap::activate(Set &)
 {
 }
 

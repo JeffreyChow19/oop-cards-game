@@ -1,6 +1,6 @@
 #include "Quarter.hpp"
 
-void Quarter::activate(Set set)
+void Quarter::activate(Set &set)
 {
 }
 

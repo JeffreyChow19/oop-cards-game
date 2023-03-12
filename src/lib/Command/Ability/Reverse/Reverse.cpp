@@ -1,6 +1,6 @@
 #include "Reverse.hpp"
 
-void Reverse::activate(Set)
+void Reverse::activate(Set &)
 {
 }
 

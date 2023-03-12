@@ -1,6 +1,6 @@
 #include "Quadruple.hpp"
 
-void Quadruple::activate(Set set)
+void Quadruple::activate(Set &set)
 {
 }
 

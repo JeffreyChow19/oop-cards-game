@@ -67,3 +67,12 @@ Ability *Player::getAbility()
 {
     return ability_;
 }
+
+void Player::addPlayerCard(ColorCard toAdd) {
+    (*this) + toAdd;
+}
+
+void Player::addPlayerCard(MainDeck& mainDeck_) {
+    ColorCard toAdd = mainDeck_.getFromMainDeck();
+    (*this) + toAdd;
+}

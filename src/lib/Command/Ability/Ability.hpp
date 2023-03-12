@@ -19,7 +19,7 @@ public:
      * @brief Activate Ability
      *
      */
-    virtual void activate(Set) = 0;
+    virtual void activate(Set &) = 0;
 
     virtual string getCommandName() = 0;
 };

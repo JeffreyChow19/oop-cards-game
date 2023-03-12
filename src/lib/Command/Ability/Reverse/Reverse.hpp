@@ -4,6 +4,6 @@
 class Reverse : public Ability
 {
 public:
-    void activate(Set);
+    void activate(Set &);
     string getCommandName();
 };
