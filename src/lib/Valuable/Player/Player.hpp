@@ -5,10 +5,11 @@
 #include "../../Ability/Ability.hpp"
 #include "../../InventoryHolder/InventoryHolder.hpp"
 #include "../Card/ColorCard/ColorCard.hpp"
+#include "../Valuable.hpp"
 
 using namespace std;
 
-class Player : public InventoryHolder<ColorCard>
+class Player : public Valuable, public InventoryHolder<ColorCard>
 {
 private:
     static int playerCount_;
