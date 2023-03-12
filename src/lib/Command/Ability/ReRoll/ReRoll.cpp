@@ -2,6 +2,7 @@
 
 void ReRoll::activate(Set &set)
 {
+    
 }
 
 string ReRoll::getCommandName()

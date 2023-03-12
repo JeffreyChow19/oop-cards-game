@@ -7,7 +7,7 @@
 class Ability : public Command
 {
 protected:
-    bool status;
+    // bool status;
 
 public:
     /**

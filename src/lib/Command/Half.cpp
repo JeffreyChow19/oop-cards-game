@@ -2,7 +2,15 @@
 
 void Half::activate(Set &set)
 {
-    // set.(0.5);
+    try
+    {
+        set.setPoints(0.5);
+        cout << "The point for this set is halfed!" << endl;
+    }
+    catch (PointException &e)
+    {
+        cout << e.what();
+    }
 }
 
 string Half::getCommandName()

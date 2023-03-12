@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Command : public Set
+class Command
 {
 public:
     Command();

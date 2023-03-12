@@ -2,7 +2,15 @@
 
 void Double::activate(Set &set)
 {
-    // set.(2);
+    try
+    {
+        set.setPoints(2);
+        cout << "The point for this set is doubled!" << endl;
+    }
+    catch (PointException &e)
+    {
+        cout << e.what();
+    }
 }
 
 string Double::getCommandName()
