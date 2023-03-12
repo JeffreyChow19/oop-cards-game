@@ -3,7 +3,6 @@
 
 #include <bits/stdc++.h>
 #include "../InventoryHolder.hpp"
-#include "../../Valuable/Card/ColorCard/ColorCard.hpp"
 
 using namespace std;
 

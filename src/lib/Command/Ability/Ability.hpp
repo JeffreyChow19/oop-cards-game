@@ -2,6 +2,7 @@
 #define _ABILITY_HPP_
 
 #include "../Command.hpp"
+#include "../../Set/Set.hpp"
 
 class Ability : public Command
 {

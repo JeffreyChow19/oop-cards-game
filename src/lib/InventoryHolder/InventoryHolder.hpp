@@ -3,10 +3,11 @@
 
 #include <bits/stdc++.h>
 #include "../Valuable/Card/Card.hpp"
+#include "../Valuable/Card/ColorCard/ColorCard.hpp"
 
 using namespace std;
 
-template <typename T>
+template <class T>
 class InventoryHolder
 { // ini tuh dibuatnya kekmana?
 protected:

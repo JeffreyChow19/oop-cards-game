@@ -6,9 +6,10 @@
 
 using namespace std;
 
-class Command
+class Command : public Set
 {
 public:
+    Command();
     virtual void activate(Set&) = 0;
 
     virtual string getCommandName() = 0;

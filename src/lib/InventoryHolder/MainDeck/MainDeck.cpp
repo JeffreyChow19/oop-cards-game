@@ -16,10 +16,10 @@ MainDeck::MainDeck()
 
 void MainDeck::randomizeCard()
 {
-    random_device randDevice;
-    mt19937 numGen(randDevice());
+    // random_device randDevice;
+    // mt19937 numGen(randDevice());
 
-    random_shuffle(this->deck.begin(), this->deck.end(), numGen);
+    // random_shuffle(this->deck.begin(), this->deck.end(), numGen);
 }
 
 ColorCard MainDeck::getFromMainDeck()

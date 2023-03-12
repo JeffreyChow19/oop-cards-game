@@ -2,8 +2,8 @@
 #define _PLAYER_HPP_
 
 #include <bits/stdc++.h>
-#include "../../Command/Ability/Ability.hpp"
 #include "../../InventoryHolder/InventoryHolder.hpp"
+#include "../../InventoryHolder/MainDeck/MainDeck.hpp"
 #include "../Card/ColorCard/ColorCard.hpp"
 #include "../Valuable.hpp"
 
@@ -16,7 +16,7 @@ private:
     int id_;
     string nickname_;
     int point_;
-    Ability *ability_;
+    string ability_;
 
 public:
     Player();
@@ -89,7 +89,7 @@ public:
 
     void addPlayerCard(MainDeck&);
 
-    Ability *getAbility();
+    string getAbility();
 };
 
 #endif

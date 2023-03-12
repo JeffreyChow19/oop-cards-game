@@ -6,10 +6,11 @@
 #include "../InventoryHolder/MainDeck/MainDeck.hpp"
 #include "../InventoryHolder/TableDeck/TableDeck.hpp"
 #include "../Valuable/Player/Player.hpp"
+#include "../Exception/Exception.hpp"
 
 class Set
 {
-private:
+protected:
     int points_;
     int round_;
     int currPlayerIdx_;
@@ -18,12 +19,8 @@ private:
     TableDeck tableDeck_;
 
 public:
+    Set();
     Set(vector<Player> &listOfPlayer, int currPlayerIdx);
-    void startRound();
-    void advanceRound();
-    void askCommand(vector<string> allowedCommands);
-    string inputCommand(vector<string> allowedCommands);
-    void setPoint(float multiplier);
 };
 
 #endif

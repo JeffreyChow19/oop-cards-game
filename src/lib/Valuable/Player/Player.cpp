@@ -59,20 +59,20 @@ int Player::getPlayerCount()
 ColorCard Player::getFromPlayer()
 {
     ColorCard toRemove = this->deck.back();
-    (*this) - toRemove;
+    // (*this) - toRemove;
     return toRemove;
 }
 
-Ability *Player::getAbility()
+string Player::getAbility()
 {
     return ability_;
 }
 
 void Player::addPlayerCard(ColorCard toAdd) {
-    (*this) + toAdd;
+    // (*this) + toAdd;
 }
 
 void Player::addPlayerCard(MainDeck& mainDeck_) {
     ColorCard toAdd = mainDeck_.getFromMainDeck();
-    (*this) + toAdd;
+    // (*this) + toAdd;
 }

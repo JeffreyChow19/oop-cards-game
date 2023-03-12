@@ -16,7 +16,7 @@ Game::Game() {
         } 
     }
 
-    while (!checkEndGame) {
+    while (!checkEndGame()) {
         
     }
 }
