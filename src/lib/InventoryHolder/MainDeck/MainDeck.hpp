@@ -9,15 +9,16 @@ using namespace std;
 
 class MainDeck : public InventoryHolder<ColorCard>
 {
-private:
-public:
-    /**
-     * @brief Construct a new Main Deck object
-     *
-     */
-    MainDeck();
-    void randomizeCard();
-    ColorCard getFromMainDeck();
+    private:
+    public:
+        /**
+         * @brief Construct a new Main Deck object
+         *
+         */
+        MainDeck();
+        void randomizeCard();
+        ColorCard getFromMainDeck();
+        MainDeck& operator=(const MainDeck& other);
 };
 
 #endif
