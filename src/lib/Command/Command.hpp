@@ -9,7 +9,7 @@ using namespace std;
 class Command
 {
 public:
-    virtual void activate(Set) = 0;
+    virtual void activate(Set&) = 0;
 
     virtual string getCommandName() = 0;
 };

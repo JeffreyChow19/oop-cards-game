@@ -86,6 +86,8 @@ public:
     ColorCard getFromPlayer();
 
     void addPlayerCard(ColorCard toAdd);
+
+    Ability *getAbility();
 };
 
 #endif
