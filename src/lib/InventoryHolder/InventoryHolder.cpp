@@ -6,7 +6,9 @@ InventoryHolder<T>::InventoryHolder() {}
 template <typename T>
 InventoryHolder<T>::InventoryHolder(const InventoryHolder &other)
 {
-    this->deck = other.deck;
+    for (auto elmt : other.deck) {
+        this->deck.push_back(elmt);
+    }
 }
 
 template <typename T>

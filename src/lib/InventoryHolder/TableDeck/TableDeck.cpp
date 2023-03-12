@@ -2,9 +2,10 @@
 
 TableDeck::TableDeck() {}
 
-void TableDeck::addCard()
+void TableDeck::addCard(MainDeck& _mainDeck)
 {
-    // ColorCard toAdd = get
+    ColorCard toAdd = _mainDeck.getFromMainDeck();
+    (*this) + toAdd;
 }
 
 TableDeck &TableDeck::operator=(const TableDeck &other)

@@ -12,7 +12,9 @@ class Game {
         bool endGame;
     public:
         Game();
+        ~Game();
         bool checkEndGame();
+        
 
 };
 

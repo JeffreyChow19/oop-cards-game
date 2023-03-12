@@ -80,6 +80,8 @@ public:
      * @return int
      */
     static int getPlayerCount();
+
+    float getValue();
 };
 
 #endif

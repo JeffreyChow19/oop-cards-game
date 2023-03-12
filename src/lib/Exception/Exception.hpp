@@ -22,5 +22,11 @@ struct CommandException : public exception {
     }
 };
 
+struct InputException : public exception {
+    const char* what() const throw() {
+        return "Input is invalid.\n Try input";
+    }
+};
+
 
 #endif
