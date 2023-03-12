@@ -1,64 +1,115 @@
 #include "SetProcess.hpp"
 #include "../Exception/Exception.hpp"
-#include "../Command/Command.hpp"
-#include "../Command/Next.hpp"
-#include "../Command/Double.hpp"
-#include "../Command/Half.hpp"
-#include "../Command/Ability/Abilityless/Abilityless.hpp"
-#include "../Command/Ability/Quadruple/Quadruple.hpp"
-#include "../Command/Ability/Quarter/Quarter.hpp"
-#include "../Command/Ability/ReRoll/ReRoll.hpp"
-#include "../Command/Ability/Reverse/Reverse.hpp"
-#include "../Command/Ability/Swap/Swap.hpp"
-#include "../Command/Ability/Switch/Switch.hpp"
 
-void SetProcess::startRound()
+SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(listOfPlayer, firstPlayerIdx)
 {
-    cout << "Welcome to round_ " << this->round_ << endl;
-    cout << "In this round_, " << endl;
-    vector<Command *> allowedCommands = {new Next(), new Double(), new Half()};
-    vector<Ability *> abilities = {new Abilityless()};
+    srand(unsigned(time(0)));
+    vector<string> allowedCommands = {"NEXT", "HALF", "DOUBLE"};
+    vector<string> abilities = {"RE-ROLL", "REVERSE", "SWITCH", "SWAP", "QUARTER", "QUADRUPLE", "ABILITYLESS"};
     while (this->round_ != 6)
     {
+        cout << "Welcome to round " << this->round_ << endl
+             << endl;
+        int playerMoved = 0;
+        for (auto &p : listOfPlayer_)
+        {
+            p.setHasPlayed(false);
+        }
+        int currPlayerIdx = firstPlayerIdx_;
+        while (playerMoved < listOfPlayer_.size())
+        {
+            Player &currPlayer = listOfPlayer_[currPlayerIdx];
+            if (!currPlayer.getHasPlayed())
+            {
+                cout << "It's " << currPlayer.getNickname() << "'s turn" << endl
+                     << endl;
+                if (this->round_ != 1)
+                {
+                    allowedCommands.push_back(currPlayer.getAbility());
+                }
+                askCommand(allowedCommands);
+                printSetInfo();
+                if (this->round_ != 1)
+                {
+                    allowedCommands.pop_back();
+                }
+                currPlayer.setHasPlayed(true);
+            }
+            currPlayerIdx = (currPlayerIdx + 1) % listOfPlayer_.size();
+            playerMoved++;
+        }
+        if (this->round_ == 1)
+        {
+            cout << "Shuffling abilities... " << endl;
+            random_shuffle(abilities.begin(), abilities.end());
+            for (int i = 0; i < this->listOfPlayer_.size(); i++)
+            {
+                cout << listOfPlayer_[i].getNickname() << " got " << abilities[i] << " ability" << endl;
+                this->listOfPlayer_[i].setAbility(abilities[i]);
+            }
+        }
+        firstPlayerIdx_ = (firstPlayerIdx_ + 1) % this->listOfPlayer_.size();
+        round_++;
     }
 }
 
-void SetProcess::advanceRound()
+void SetProcess::askCommand(vector<string> &allowedCommands)
 {
-    if (this->round_ < 6)
-    {
-        this->round_++;
-        // ubah urutan player
-    }
-}
-
-void SetProcess::askCommand(vector<string> allowedCommands)
-{
-    string command = "none";
-    while (command == "none")
+    vector<Command *> commands = {new Next(), new Double(), new Half(), new Abilityless(), new Quadruple(), new Quarter(), new ReRoll(), new Reverse(), new Swap(), new Switch()};
+    bool commandSet = false;
+    while (!commandSet)
     {
         try
         {
+            cout << "The allowed commands are : " << endl;
+            for (int i = 0; i < allowedCommands.size(); i++)
+            {
+                cout << "[" << i + 1 << "] " << allowedCommands[i] << endl;
+            }
             cout << "Input command : ";
-            cin >> command;
+            string command = inputCommand(allowedCommands);
+            for (auto &c : commands)
+            {
+                if (c->getCommandName() == command)
+                {
+                    c->activate(*this);
+                    break;
+                }
+            }
+            commandSet = true;
         }
         catch (CommandException &err)
         {
+            cout << err.what();
+        }
+        catch (StringException &err)
+        {
+            cout << err.what();
         }
     }
 }
 
-string SetProcess::inputCommand(vector<string> allowedCommands)
+string SetProcess::inputCommand(vector<string> &allowedCommands)
 {
     string command;
     cin >> command;
-    if (cin.fail() || find(allowedCommands.begin(), allowedCommands.end(), command) == allowedCommands.end())
+    if (cin.fail())
     {
-        throw CommandException();
+        throw StringException();
     }
-    return command;
+    for (auto &c : allowedCommands)
+    {
+        if (c == command)
+        {
+            return c;
+        }
+    }
+    throw CommandException();
 }
 
+SetProcess::~SetProcess()
+{
+}
 // void SetProcess::(float multiplier)
 // {
 //     this->points_ *= multiplier;
