@@ -2,21 +2,23 @@
 #define _PLAYER_HPP_
 
 #include <bits/stdc++.h>
-#include "../Ability/Ability.hpp"
-#include "../InventoryHolder/PlayerDeck/PlayerDeck.hpp"
+#include "../../Ability/Ability.hpp"
+#include "../../InventoryHolder/InventoryHolder.hpp"
+#include "../Card/ColorCard/ColorCard.hpp"
 
 using namespace std;
 
-class Player
+class Player : public InventoryHolder<ColorCard>
 {
 private:
     static int playerCount_;
     int id_;
     string nickname_;
     int point_;
-    PlayerDeck deck_;
     Ability ability_;
+
 public:
+    Player();
 
     /**
      * @brief Construct a new Player object
@@ -42,13 +44,13 @@ public:
      * @brief Set the Nickname object
      *
      */
-    void setNickname();
+    void setNickname(string nickname);
 
     /**
      * @brief Set the Point object
      *
      */
-    void setPoint();
+    void setPoint(int point);
 
     /**
      * @brief add Player points

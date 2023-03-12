@@ -6,12 +6,14 @@
 
 using namespace std;
 
+
 enum class Color
 {
-    Red,
-    Yellow,
-    Green,
-    Blue
+    Green = 0,
+    Blue = 1,
+    Yellow = 2,
+    Red = 3,
+    Last
 }; // tanya boleh pake enum ga
 
 class ColorCard : public Card
@@ -46,14 +48,6 @@ public:
      * @return double
      */
     virtual double getValue() const;
-    // {
-    //     static std::map<CardColor, double> base_values = {
-    //         {CardColor::Red, 0.1},
-    //         {CardColor::Yellow, 0.12},
-    //         {CardColor::Green, 0.15},
-    //         {CardColor::Blue, 0.18}};
-    //     return base_values[color_];
-    // }
 
     /**
      * @brief compares this with other ColorCard
@@ -70,14 +64,6 @@ public:
      * @return false
      */
     bool operator>(const ColorCard &) const;
-
-    /**
-     * @brief compares if equal
-     *
-     * @return true if equal
-     * @return false
-     */
-    bool operator==(const ColorCard &) const;
 
     /**
      * @brief print card info

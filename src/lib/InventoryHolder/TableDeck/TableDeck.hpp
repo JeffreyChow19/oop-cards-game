@@ -3,17 +3,20 @@
 
 #include <bits/stdc++.h>
 #include "../InventoryHolder.hpp"
+#include "../../Valuable/Card/ColorCard/ColorCard.hpp"
 using namespace std;
 
-class TableDeck : public InventoryHolder {
-    private:
-
-    public:
-        /**
-         * @brief Construct a new Table Deck object
-         * 
-         */
-        TableDeck();
+class TableDeck : public InventoryHolder<ColorCard>
+{
+private:
+public:
+    /**
+     * @brief Construct a new Table Deck object
+     *
+     */
+    TableDeck();
+    void addCard();
+    virtual TableDeck &operator=(const InventoryHolder &other);
 };
 
 #endif
