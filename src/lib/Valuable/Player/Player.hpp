@@ -16,7 +16,7 @@ private:
     int id_;
     string nickname_;
     int point_;
-    Ability ability_;
+    Ability *ability_;
 
 public:
     Player();

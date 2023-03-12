@@ -6,7 +6,7 @@ using namespace std;
 
 class Ability {
     protected:
-        bool status;
+        bool status; 
 
     public:
         /**
@@ -16,23 +16,14 @@ class Ability {
         Ability();
 
         /**
-         * @brief Copy Construct a new Ability object
-         * 
-         * @param other 
-         */
-        Ability(const Ability& other);
-
-        /**
-         * @brief Destroy the Ability object
-         * 
-         */
-        ~Ability();
-
-        /**
          * @brief Activate Ability
          * 
          */
-        virtual void activate();
+        virtual void activate() = 0;
+
+        virtual string getAbilityName() = 0;
+
+
 };
 
 #endif
