@@ -4,7 +4,7 @@
 using namespace std;
 
 int Player::playerCount_ = 0;
-Player::Player(string nickname) : nickname_(nickname)
+Player::Player(string nickname) : nickname_(nickname), hasPlayed_(false), abilityStatus_(false)
 {
     this->point_ = 0;
     playerCount_++;
@@ -16,6 +16,8 @@ Player::Player(const Player &other)
 {
     this->nickname_ = other.nickname_;
     this->point_ = other.point_;
+    this->hasPlayed_ = other.hasPlayed_;
+    this->abilityStatus_ = other.abilityStatus_;
     playerCount_++;
     this->id_ = playerCount_;
     // To do: adding deck & ability
@@ -68,15 +70,38 @@ string Player::getAbility()
     return ability_;
 }
 
-void Player::addPlayerCard(ColorCard toAdd) {
+void Player::addPlayerCard(ColorCard toAdd)
+{
     // (*this) + toAdd;
 }
 
-void Player::addPlayerCard(MainDeck& mainDeck_) {
+void Player::addPlayerCard(MainDeck &mainDeck_)
+{
     ColorCard toAdd = mainDeck_.getFromMainDeck();
     // (*this) + toAdd;
 }
 
-float Player::getValue(){
+float Player::getValue()
+{
     return 0.0;
+}
+
+void Player::setAbility(string ability)
+{
+    this->ability_ = ability;
+}
+
+void Player::setAbilityStatus(bool status)
+{
+    this->abilityStatus_ = status;
+}
+
+void Player::setHasPlayed(bool hasPlayed)
+{
+    this->hasPlayed_ = hasPlayed;
+}
+
+bool Player::getHasPlayed()
+{
+    return this->hasPlayed_;
 }

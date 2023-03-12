@@ -17,6 +17,8 @@ private:
     string nickname_;
     int point_;
     string ability_;
+    bool hasPlayed_;
+    bool abilityStatus_;
 
 public:
     Player();
@@ -87,9 +89,17 @@ public:
 
     void addPlayerCard(ColorCard);
 
-    void addPlayerCard(MainDeck&);
+    void addPlayerCard(MainDeck &);
+
+    void setAbility(string);
 
     string getAbility();
+
+    void setAbilityStatus(bool);
+
+    void setHasPlayed(bool);
+
+    bool getHasPlayed();
 };
 
 #endif

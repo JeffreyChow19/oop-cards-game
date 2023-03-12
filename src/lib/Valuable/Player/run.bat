@@ -1,0 +1,1 @@
+g++ ../Valuable.cpp ../Card/Card.cpp ../Card/ColorCard/ColorCard.cpp ../../InventoryHolder/InventoryHolder.cpp ../../InventoryHolder/MainDeck/MainDeck.cpp Player.cpp test.cpp -o test.exe
