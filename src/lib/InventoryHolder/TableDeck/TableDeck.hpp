@@ -16,7 +16,7 @@ public:
      */
     TableDeck();
     void addCard();
-    virtual TableDeck &operator=(const InventoryHolder &other);
+    TableDeck& operator=(const TableDeck&other);
 };
 
 #endif

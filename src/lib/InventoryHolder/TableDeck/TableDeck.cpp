@@ -16,3 +16,11 @@ TableDeck &TableDeck::operator=(const TableDeck &other)
     }
     return *this;
 };
+
+TableDeck& TableDeck::operator=(const TableDeck& other){
+    this->deck.clear();
+    for (auto c : other.deck){
+        this->deck.push_back(c);
+    }
+    return *this;
+}

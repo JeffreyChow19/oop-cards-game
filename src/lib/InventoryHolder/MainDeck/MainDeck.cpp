@@ -28,3 +28,12 @@ ColorCard MainDeck::getFromMainDeck()
     (*this) - toRemove;
     return toRemove;
 }
+
+
+MainDeck& MainDeck::operator=(const MainDeck& other){
+    this->deck.clear();
+    for (auto c : other.deck){
+        this->deck.push_back(c);
+    }
+    return *this;
+}

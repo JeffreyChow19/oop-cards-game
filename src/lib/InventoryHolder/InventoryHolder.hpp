@@ -47,14 +47,6 @@ public:
      * @return InventoryHolder&
      */
     InventoryHolder &operator-(const T &toRemove);
-
-    /**
-     * @brief Assign InventoryHolder
-     *
-     * @param other
-     * @return InventoryHolder&
-     */
-    virtual InventoryHolder &operator=(const InventoryHolder &other) = 0;
 };
 
 #endif

@@ -35,13 +35,3 @@ InventoryHolder<T> &InventoryHolder<T>::operator-(const T &toRemove)
     return *this;
 }
 
-template <typename T>
-InventoryHolder<T> &InventoryHolder<T>::operator=(const InventoryHolder &other)
-{
-    if (this != &other)
-    {
-        this->deck.clear();
-        this->deck = other.deck;
-    }
-    return *this;
-}
