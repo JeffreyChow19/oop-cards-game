@@ -42,13 +42,13 @@ public:
      * @brief Set the Nickname object
      *
      */
-    void setNickname();
+    void setNickname(string nickname);
 
     /**
      * @brief Set the Point object
      *
      */
-    void setPoint();
+    void setPoint(int point);
 
     /**
      * @brief add Player points
