@@ -3,9 +3,13 @@
 
 class Card
 {
-    protected:
-    public:
-        virtual double getValue();
+protected:
+    int value_;
+
+public:
+    Card();
+    Card(int value);
+    virtual double getValue() const = 0;
 };
 
 #endif
