@@ -9,17 +9,18 @@
 
 class Set {
     private:
-        int points;
-        int round;
-        vector <Player> listOfPlayer;
-        MainDeck mainDeck;
-        TableDeck tableDeck;
+        int points_;
+        int round_;
+        vector <Player> listOfPlayer_;
+        MainDeck mainDeck_;
+        TableDeck tableDeck_;
 
     public:
         Set(vector <Player> listOfPlayer);
         void startRound();
         void advanceRound();
-        void askCommand();
+        void askCommand(vector <string> allowedCommands);
+        string inputCommand(vector <string> allowedCommands);
 
 };
 

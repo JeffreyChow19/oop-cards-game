@@ -8,7 +8,7 @@ using namespace std;
 
 class Game {
     private:
-        vector<Player> listOfPlayer;
+        vector<Player> listOfPlayer_;
         bool endGame;
     public:
         Game();

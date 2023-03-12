@@ -54,7 +54,7 @@ public:
     void setPoint(int point);
 
     /**
-     * @brief add Player points
+     * @brief add Player points_
      *
      * @param point
      */
