@@ -2,9 +2,8 @@
 #define _PLAYER_HPP_
 
 #include <bits/stdc++.h>
-#include "../Ability/Ability.hpp"
-#include "../InventoryHolder/PlayerDeck/PlayerDeck.hpp"
-
+#include "../../Ability/Ability.hpp"
+#include "../../InventoryHolder/PlayerDeck/PlayerDeck.hpp"
 using namespace std;
 
 class Player

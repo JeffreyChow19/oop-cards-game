@@ -72,14 +72,6 @@ public:
     bool operator>(const ColorCard &) const;
 
     /**
-     * @brief compares if equal
-     *
-     * @return true if equal
-     * @return false
-     */
-    bool operator==(const ColorCard &) const;
-
-    /**
      * @brief print card info
      *
      */

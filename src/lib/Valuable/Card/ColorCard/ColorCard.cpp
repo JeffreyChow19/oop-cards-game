@@ -22,16 +22,16 @@ string ColorCard::getColor() const
 double ColorCard::getBaseValue() const
 {
     map<Color, double> baseValues = {
-        {Color::Red, 0.1},
-        {Color::Yellow, 0.12},
-        {Color::Green, 0.15},
-        {Color::Blue, 0.18}};
+        {Color::Green, 0},
+        {Color::Blue, 1},
+        {Color::Yellow, 2},
+        {Color::Red, 3}};
     return baseValues[color_];
 }
 
 double ColorCard::getValue() const
 {
-    return getBaseValue() + 0.1 * value_;
+    return 0.3 * getBaseValue() + 0.1 * value_;
 }
 
 bool ColorCard::operator<(const ColorCard &other) const
@@ -42,11 +42,6 @@ bool ColorCard::operator<(const ColorCard &other) const
 bool ColorCard::operator>(const ColorCard &other) const
 {
     return this->getValue() > other.getValue();
-}
-
-bool ColorCard::operator==(const ColorCard &other) const
-{
-    return this->getValue() == other.getValue();
 }
 
 void ColorCard::printInfo()

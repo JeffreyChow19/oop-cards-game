@@ -2,7 +2,7 @@
 #define _INVENTORY_HOLDER_HPP_
 
 #include <bits/stdc++.h>
-#include "../Card/Card.hpp"
+#include "../Valuable/Card/Card.hpp"
 
 using namespace std;
 
