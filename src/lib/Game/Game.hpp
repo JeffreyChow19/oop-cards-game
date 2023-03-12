@@ -9,7 +9,7 @@ using namespace std;
 class Game {
     private:
         vector<Player> listOfPlayer;
-        bool endGame;
+        
     public:
         Game();
         ~Game();
