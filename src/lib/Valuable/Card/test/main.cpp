@@ -36,4 +36,17 @@ int main()
     {
         cout << "Red 1 >= Yellow 4" << endl;
     }
+
+
+    /* comparator vector test */
+    vector<ColorCard> cards;
+    cards.push_back(red1);
+    cards.push_back(blue2);
+    cards.push_back(yellow4);
+    cards.push_back(green3);
+
+    auto maxVal = max_element(cards.begin(), cards.end(), Card::compareByValue);
+    auto maxColor = max_element(cards.begin(), cards.end(), ColorCard::compareByColor);
+    cout << "Value=" << maxVal->getValue() << " Color=" << maxVal->getBaseValue() << endl;
+    cout << "Value=" << maxColor->getValue() << " Color=" << maxColor->getBaseValue() << endl;
 }
