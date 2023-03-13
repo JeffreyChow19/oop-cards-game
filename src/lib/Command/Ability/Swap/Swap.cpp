@@ -2,7 +2,7 @@
 
 void Swap::activate(Set &set)
 {
-    vector<Player> listOfPlayer = set.getListOfPlayers();
+    vector<Player>& listOfPlayer = set.getListOfPlayers();
     cout << listOfPlayer[set.getCurrPlayerIdx()].getNickname() << " melakukan SWAPCARD\n";
     cout << "Silahkan pilih pemain yang kartunya ingin Anda tukar: ";
     int no = 1;
@@ -14,7 +14,8 @@ void Swap::activate(Set &set)
         }
         else
         {
-            cout << no << ".  " << listOfPlayer[i].getNickname() << endl;
+            cout << "[" << no << "]  ";
+            listOfPlayer[i].print();
             no++;
         }
     }
@@ -42,7 +43,8 @@ void Swap::activate(Set &set)
             }
             else
             {
-                cout << no << ".  " << listOfPlayer[i].getNickname() << endl;
+                cout << "[" << no << "]  ";
+                listOfPlayer[i].print();
                 no++;
             }
         }

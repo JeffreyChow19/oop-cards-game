@@ -18,11 +18,13 @@ void Switch::activate(Set &set)
         }
         else
         {
-            cout << no << ".  " << listOfPlayer[i].getNickname() << endl;
+            cout << "[" << no << "]  ";
+            listOfPlayer[i].print();
             no++;
         }
     }
-    try {
+    try
+    {
         cout << "> ";
         int opt;
         cin >> opt;
@@ -37,8 +39,8 @@ void Switch::activate(Set &set)
         int idxPlayerSwap = opt <= set.getCurrPlayerIdx() ? opt - 1 : opt;
         vector<ColorCard> tempDeck = listOfPlayer[idxPlayerSwap].getPlayerDeck();
         set.getListOfPlayers()[idxPlayerSwap].setPlayerDeck(listOfPlayer[set.getCurrPlayerIdx()].getPlayerDeck());
-        set.getListOfPlayers()[set.getCurrPlayerIdx()].setPlayerDeck(tempDeck);    
-        cout << "Kedua kartu "<<listOfPlayer[set.getCurrPlayerIdx()].getNickname() << " telah ditukar dengan " << listOfPlayer[idxPlayerSwap].getNickname() <<"!\n";
+        set.getListOfPlayers()[set.getCurrPlayerIdx()].setPlayerDeck(tempDeck);
+        cout << "Kedua kartu " << listOfPlayer[set.getCurrPlayerIdx()].getNickname() << " telah ditukar dengan " << listOfPlayer[idxPlayerSwap].getNickname() << "!\n";
         cout << "Kartumu sekarang adalah: \n";
         listOfPlayer[set.getCurrPlayerIdx()].getPlayerDeck()[0].printInfo();
         cout << " && ";
@@ -53,7 +55,6 @@ void Switch::activate(Set &set)
     {
         e.what();
     }
-    
 }
 
 string Switch::getCommandName()
