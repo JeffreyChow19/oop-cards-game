@@ -11,7 +11,7 @@ class TwoPair:public Combo {
         Pair firstPair_;
         Pair secondPair_;
     public:
-        TwoPair(Pair firstPair_, Pair secondPair_);
+        TwoPair(Pair firstPair, Pair secondPair);
         ~TwoPair();
         float getValue();
 };
