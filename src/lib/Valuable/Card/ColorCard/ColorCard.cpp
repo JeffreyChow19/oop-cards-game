@@ -26,7 +26,7 @@ double ColorCard::getBaseValue() const
 
 double ColorCard::getValue() const
 {
-    return 0.3 * getBaseValue() + 0.1 * value_;
+    return value_;
 }
 
 bool ColorCard::operator<(const ColorCard &other) const
@@ -44,8 +44,10 @@ void ColorCard::printInfo()
     cout << getColor() << " " << value_;
 }
 
-bool ColorCard::operator==(const ColorCard& other) const{
-    if (this->getColor()== other.getColor() && this->getValue() == other.getValue()) {
+bool ColorCard::operator==(const ColorCard &other) const
+{
+    if (this->getColor() == other.getColor() && this->getValue() == other.getValue())
+    {
         return true;
     }
     return false;
