@@ -33,6 +33,9 @@ Game::Game()
         }
     }
 
+}
+
+void Game::startGame(){
     while (!checkEndGame())
     {
         SetProcess gameSet(listOfPlayer, 0);

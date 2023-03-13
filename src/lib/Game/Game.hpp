@@ -14,6 +14,7 @@ private:
 public:
         Game();
         ~Game();
+        void startGame();
         bool checkEndGame();
 };
 
