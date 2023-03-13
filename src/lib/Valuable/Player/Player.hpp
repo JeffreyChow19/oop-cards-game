@@ -104,6 +104,8 @@ public:
     void setHasPlayed(bool);
 
     bool getHasPlayed();
+
+    void print();
 };
 
 #endif
