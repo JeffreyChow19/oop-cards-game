@@ -2,20 +2,14 @@
 
 int main(){
     // HEADER
+    cout << "\n=========================================\n";
     cout << "WELCOME TO CANDY KINGDOM CARD COMPETITION\n";
-    cout << "===========================================================\n\n";
+    cout << "=========================================\n\n";
 
     // INITIALIZE RANDOM MAINDECK
-    MainDeck random_;
-    cout << "Random deck constructmaied:\n";
-    random_.randomizeCard();
-    random_.printDeck();
+    MainDeck firstDeck;
+    firstDeck.printDeck();
 
-    cout << endl << endl;
-
-    // INITIALIZE CONFIG MAINDECK
-    MainDeck config_;
-    cout << "Config deck constructed:\n";
-    config_.readCard();
-    config_.printDeck();
+    MainDeck secondDeck;
+    secondDeck.printDeck();
 }

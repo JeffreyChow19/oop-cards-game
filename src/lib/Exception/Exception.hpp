@@ -58,4 +58,10 @@ struct FilenameException : public exception{
     }
 };
 
+struct OptionException : public exception{
+    const char *what() const throw(){
+        return "Option not valid. Please input valid option.\n";
+    }
+};
+
 #endif
