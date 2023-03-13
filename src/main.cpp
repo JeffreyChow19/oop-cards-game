@@ -7,7 +7,7 @@ int main(){
 
     // INITIALIZE RANDOM MAINDECK
     MainDeck random_;
-    cout << "Random deck constructed:\n";
+    cout << "Random deck constructmaied:\n";
     random_.randomizeCard();
     random_.printDeck();
 
