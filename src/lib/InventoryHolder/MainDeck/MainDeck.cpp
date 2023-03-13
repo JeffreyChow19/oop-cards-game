@@ -46,7 +46,7 @@ MainDeck& MainDeck::operator=(const MainDeck& other){
     return *this;
 }
 
-void MainDeck::printDeck() {
+void MainDeck::print() {
     for (int i = 0; i < this->deck.size(); i++) {
         this->deck[i].printInfo();
         cout << endl;

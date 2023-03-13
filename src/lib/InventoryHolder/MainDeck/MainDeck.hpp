@@ -8,17 +8,17 @@ using namespace std;
 
 class MainDeck : public InventoryHolder<ColorCard>
 {
-    private:
-    public:
-        /**
-         * @brief Construct a new Main Deck object
-         *
-         */
-        MainDeck();
-        void randomizeCard();
-        ColorCard getFromMainDeck();
-        MainDeck& operator=(const MainDeck& other);
-        void printDeck();
+private:
+public:
+    /**
+     * @brief Construct a new Main Deck object
+     *
+     */
+    MainDeck();
+    void randomizeCard();
+    ColorCard getFromMainDeck();
+    MainDeck &operator=(const MainDeck &other);
+    void print();
 };
 
 #endif

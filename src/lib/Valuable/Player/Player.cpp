@@ -73,12 +73,14 @@ void Player::addPlayerCard(ColorCard toAdd)
     (*this) + toAdd;
 }
 
-vector<ColorCard> Player::getPlayerDeck() const {
+vector<ColorCard> Player::getPlayerDeck() const
+{
     return this->deck;
 }
 
-void Player::setPlayerDeck(vector<ColorCard> playerDeck) {
-    this->deck=playerDeck;
+void Player::setPlayerDeck(vector<ColorCard> playerDeck)
+{
+    this->deck = playerDeck;
 }
 
 float Player::getValue()
@@ -91,7 +93,8 @@ void Player::setAbility(string ability)
     this->ability_ = ability;
 }
 
-bool Player::getAbilityStatus() {
+bool Player::getAbilityStatus()
+{
     return this->abilityStatus_;
 }
 
@@ -108,4 +111,10 @@ void Player::setHasPlayed(bool hasPlayed)
 bool Player::getHasPlayed()
 {
     return this->hasPlayed_;
+}
+
+void Player::print()
+{
+    cout << nickname_ << endl;
+    cout << "  Points: " << point_ << endl;
 }
