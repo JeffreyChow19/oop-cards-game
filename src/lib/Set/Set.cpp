@@ -53,3 +53,15 @@ int Set::getFirstPlayerIdx()
 {
     return this->firstPlayerIdx_;
 }
+
+int Set::getCurrPlayerIdx() const {
+    return this->currPlayerIdx;
+}
+
+MainDeck& Set::getMainDeck() {
+    return this->mainDeck_;
+}
+
+void Set::setMainDeck(MainDeck mainDeck) {
+    this->mainDeck_=mainDeck;
+}

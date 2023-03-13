@@ -85,11 +85,13 @@ public:
 
     float getValue();
 
-    ColorCard getFromPlayer();
+    void removePlayerCard(ColorCard);
 
     void addPlayerCard(ColorCard);
+    
+    vector<ColorCard> getPlayerDeck() const;
 
-    void addPlayerCard(MainDeck &);
+    void setPlayerDeck(vector<ColorCard>);
 
     void setAbility(string);
 

@@ -58,27 +58,27 @@ int Player::getPlayerCount()
     return playerCount_;
 }
 
-ColorCard Player::getFromPlayer()
-{
-    ColorCard toRemove = this->deck.back();
-    // (*this) - toRemove;
-    return toRemove;
-}
-
 string Player::getAbility()
 {
     return ability_;
 }
 
-void Player::addPlayerCard(ColorCard toAdd)
+void Player::removePlayerCard(ColorCard toRemove)
 {
-    // (*this) + toAdd;
+    (*this) - toRemove;
 }
 
-void Player::addPlayerCard(MainDeck &mainDeck_)
+void Player::addPlayerCard(ColorCard toAdd)
 {
-    ColorCard toAdd = mainDeck_.getFromMainDeck();
-    // (*this) + toAdd;
+    (*this) + toAdd;
+}
+
+vector<ColorCard> Player::getPlayerDeck() const {
+    return this->deck;
+}
+
+void Player::setPlayerDeck(vector<ColorCard> playerDeck) {
+    this->deck=playerDeck;
 }
 
 float Player::getValue()

@@ -32,7 +32,23 @@ struct StringException : public exception
 {
     const char *what() const throw()
     {
-        return "Input is invalid.\n Try input a valid string";
+        return "Input is invalid. Try input a valid string\n";
+    }
+};
+
+struct IntegerException : public exception
+{
+    const char *what() const throw()
+    {
+        return "Input is invalid. Try input a valid integer\n";
+    }
+};
+
+struct OptionException : public exception
+{
+    const char *what() const throw()
+    {
+        return "Option is not found. Try input an available option \n";
     }
 };
 

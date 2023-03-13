@@ -46,6 +46,7 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
             {
                 cout << listOfPlayer_[i].getNickname() << " got " << abilities[i] << " ability" << endl;
                 this->listOfPlayer_[i].setAbility(abilities[i]);
+                this->listOfPlayer_[i].setAbilityStatus(true);
             }
         }
         firstPlayerIdx_ = (firstPlayerIdx_ + 1) % this->listOfPlayer_.size();
