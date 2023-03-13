@@ -1,16 +1,19 @@
-#ifndef _COMBO_HPP_
-#define _COMBO_HPP_
+#ifndef _TWO_PAIR_HPP_
+#define _TWO_PAIR_HPP_
 
+#include "../Combo.hpp"
+#include "../Pair/Pair.hpp"
 #include <bits/stdc++.h>
 using namespace std;
 
-class Combo {
+class TwoPair:public Combo {
     private:
-        
+        Pair firstPair_;
+        Pair secondPair_;
     public:
-        Combo();
-        virtual ~Combo();
-        virtual float getValue()=0;
+        TwoPair(Pair firstPair_, Pair secondPair_);
+        ~TwoPair();
+        float getValue();
 };
 
 #endif

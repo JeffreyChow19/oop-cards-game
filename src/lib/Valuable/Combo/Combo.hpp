@@ -2,6 +2,7 @@
 #define _COMBO_HPP_
 
 #include "../Valuable.hpp"
+#include "../Card/ColorCard/ColorCard.hpp"
 #include <bits/stdc++.h>
 using namespace std;
 
