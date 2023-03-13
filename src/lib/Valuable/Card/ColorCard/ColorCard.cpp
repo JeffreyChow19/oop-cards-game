@@ -52,3 +52,7 @@ bool ColorCard::operator==(const ColorCard& other) const{
     }
     return false;
 }
+
+bool compareByColor(const ColorCard & first, const ColorCard & second) {
+    return first.getBaseValue() <= second.getBaseValue();
+}

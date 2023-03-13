@@ -13,3 +13,7 @@ Card::Card(int value)
 Card::~Card(){
     
 }
+
+bool compareByValue(const Card & first, const Card & second) {
+    return first.getValue() <= second.getValue();
+}
