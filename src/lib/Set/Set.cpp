@@ -39,7 +39,8 @@ void Set::printSetInfo()
     cout << "Current turn: " << endl;
     while (ctr < listOfPlayer_.size())
     {
-        cout << "[" << ctr + 1 << "] " << listOfPlayer_[((ctr + getFirstPlayerIdx()) % listOfPlayer_.size())].getNickname() << endl;
+        cout << "[" << ctr + 1 << "] ";
+        listOfPlayer_[((ctr + getCurrPlayerIdx()) % listOfPlayer_.size())].print();
         ctr++;
     }
 }
@@ -54,14 +55,17 @@ int Set::getFirstPlayerIdx()
     return this->firstPlayerIdx_;
 }
 
-int Set::getCurrPlayerIdx() const {
+int Set::getCurrPlayerIdx() const
+{
     return this->currPlayerIdx;
 }
 
-MainDeck& Set::getMainDeck() {
+MainDeck &Set::getMainDeck()
+{
     return this->mainDeck_;
 }
 
-void Set::setMainDeck(MainDeck mainDeck) {
-    this->mainDeck_=mainDeck;
+void Set::setMainDeck(MainDeck mainDeck)
+{
+    this->mainDeck_ = mainDeck;
 }

@@ -3,79 +3,96 @@
 
 SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(listOfPlayer, firstPlayerIdx)
 {
-    srand(unsigned(time(0)));
     vector<string> allowedCommands = {"NEXT", "HALF", "DOUBLE"};
     vector<string> abilities = {"RE-ROLL", "REVERSE", "SWITCH", "SWAP", "QUARTER", "QUADRUPLE", "ABILITYLESS"};
-    while (this->round_ != 6)
+    commands_ = {new Next(),
+                 new Double(),
+                 new Half(),
+                 new Abilityless(),
+                 new Quadruple(),
+                 new Quarter(),
+                 new ReRoll(),
+                 new Reverse(),
+                 new Swap(),
+                 new Switch()};
+    // ROUND 1 - 5 take commands
+    while (this->round_ <= 6)
     {
-        cout << "Welcome to round " << this->round_ << endl
+        cout << "**************************************" << endl;
+        cout << "          Welcome to round " << this->round_ << endl;
+        cout << "**************************************" << endl
              << endl;
-        int playerMoved = 0;
-        for (auto &p : listOfPlayer_)
+
+        printSetInfo();
+        cout << endl;
+
+        if (this->round_ != 6)
         {
-            p.setHasPlayed(false);
-        }
-        // int currPlayerIdx = firstPlayerIdx_;
-        while (playerMoved < listOfPlayer_.size())
-        {
-            Player &currPlayer = listOfPlayer_[currPlayerIdx];
-            if (!currPlayer.getHasPlayed())
+            // keep tracker of player
+            for (auto &p : listOfPlayer_)
             {
-                cout << "It's " << currPlayer.getNickname() << "'s turn" << endl
-                     << endl;
-                if (this->round_ != 1)
-                {
-                    allowedCommands.push_back(currPlayer.getAbility());
-                }
-                askCommand(allowedCommands);
-                printSetInfo();
-                if (this->round_ != 1)
-                {
-                    allowedCommands.pop_back();
-                }
-                currPlayer.setHasPlayed(true);
+                p.setHasPlayed(false);
             }
-            currPlayerIdx = (currPlayerIdx + 1) % listOfPlayer_.size();
-            playerMoved++;
-        }
-        if (this->round_ == 1)
-        {
-            cout << "Shuffling abilities... " << endl;
-            random_shuffle(abilities.begin(), abilities.end());
-            for (int i = 0; i < this->listOfPlayer_.size(); i++)
+            int playerMoved = 0;
+
+            while (playerMoved < listOfPlayer_.size())
             {
-                cout << listOfPlayer_[i].getNickname() << " got " << abilities[i] << " ability" << endl;
-                this->listOfPlayer_[i].setAbility(abilities[i]);
-                this->listOfPlayer_[i].setAbilityStatus(true);
+                Player &currPlayer = listOfPlayer_[currPlayerIdx];
+                if (!currPlayer.getHasPlayed())
+                {
+                    cout << "It's " << currPlayer.getNickname() << "'s turn" << endl
+                         << endl;
+                    if (this->round_ != 1)
+                    {
+                        allowedCommands.push_back(currPlayer.getAbility());
+                    }
+                    askCommand(allowedCommands, currPlayer);
+                    printSetInfo();
+                    if (this->round_ != 1)
+                    {
+                        allowedCommands.pop_back();
+                    }
+                    currPlayer.setHasPlayed(true);
+                }
+                currPlayerIdx = (currPlayerIdx + 1) % listOfPlayer_.size();
+                playerMoved++;
             }
+
+            if (this->round_ == 1)
+            {
+                cout << "Shuffling abilities... " << endl;
+                random_shuffle(abilities.begin(), abilities.end());
+                for (int i = 0; i < this->listOfPlayer_.size(); i++)
+                {
+                    cout << listOfPlayer_[i].getNickname() << " got " << abilities[i] << " ability" << endl;
+                    this->listOfPlayer_[i].setAbility(abilities[i]);
+                    this->listOfPlayer_[i].setAbilityStatus(true);
+                }
+            }
+
+            firstPlayerIdx_ = (firstPlayerIdx_ + 1) % this->listOfPlayer_.size();
         }
-        firstPlayerIdx_ = (firstPlayerIdx_ + 1) % this->listOfPlayer_.size();
         round_++;
     }
 }
 
-void SetProcess::askCommand(vector<string> &allowedCommands)
+void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
 {
-    vector<Command *> commands = {new Next(), new Double(), new Half(), new Abilityless(), new Quadruple(), new Quarter(), new ReRoll(), new Reverse(), new Swap(), new Switch()};
     bool commandSet = false;
     while (!commandSet)
     {
         try
         {
-            cout << "The allowed commands are : " << endl;
+            cout << endl
+                 << "The allowed commands are : " << endl;
             for (int i = 0; i < allowedCommands.size(); i++)
             {
-                cout << "[" << i + 1 << "] " << allowedCommands[i] << endl;
+                cout << "[-] " << allowedCommands[i] << endl;
             }
-            //TODO: cek bagian ini 
+
             cout << "Input command : ";
-            string command = inputCommand(allowedCommands);
-            while (command == this->listOfPlayer_[currPlayerIdx].getAbility() && !listOfPlayer_[currPlayerIdx].getAbilityStatus()){
-                    cout << "Oops your card have been inactivated :(.\n Please input another command\n";
-                    cout << "Input command : ";
-                    string command = inputCommand(allowedCommands);
-            }
-            for (auto &c : commands)
+            string command = inputCommand(allowedCommands, currPlayer);
+            for (auto &c : commands_)
             {
                 if (c->getCommandName() == command)
                 {
@@ -89,6 +106,10 @@ void SetProcess::askCommand(vector<string> &allowedCommands)
         {
             cout << err.what();
         }
+        catch (CommandInactiveException &err)
+        {
+            cout << err.what();
+        }
         catch (StringException &err)
         {
             cout << err.what();
@@ -96,7 +117,7 @@ void SetProcess::askCommand(vector<string> &allowedCommands)
     }
 }
 
-string SetProcess::inputCommand(vector<string> &allowedCommands)
+string SetProcess::inputCommand(vector<string> &allowedCommands, Player &currPlayer)
 {
     string command;
     cin >> command;
@@ -108,7 +129,11 @@ string SetProcess::inputCommand(vector<string> &allowedCommands)
     {
         if (c == command)
         {
-            return c;
+            if (currPlayer.getAbilityStatus())
+            {
+                return c;
+            }
+            throw CommandInactiveException();
         }
     }
     throw CommandException();
@@ -116,8 +141,9 @@ string SetProcess::inputCommand(vector<string> &allowedCommands)
 
 SetProcess::~SetProcess()
 {
+    for (auto &c : commands_)
+    {
+        delete c;
+    }
+    commands_.clear();
 }
-// void SetProcess::(float multiplier)
-// {
-//     this->points_ *= multiplier;
-// }
