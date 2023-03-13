@@ -2,17 +2,18 @@
 
 void Switch::activate(Set &set)
 {
-    vector<Player> listOfPlayer = set.getListOfPlayers();
-    cout << listOfPlayer[set.getCurrPlayerIdx()].getNickname() << " melakukan switch!\n";
-    cout << "Kartumu sekarang adalah: \n";
-    listOfPlayer[set.getCurrPlayerIdx()].getPlayerDeck()[0].printInfo();
+    vector<Player> &listOfPlayer = set.getListOfPlayers();
+    cout << listOfPlayer[set.getCurrPlayerIdx()].getNickname() << " is using SWITCH!\n";
+    cout << "Here is your cards: \n";
+    int currPlayerIdx = set.getCurrPlayerIdx();
+    listOfPlayer[currPlayerIdx].getPlayerDeck()[0].printInfo();
     cout << " && ";
-    listOfPlayer[set.getCurrPlayerIdx()].getPlayerDeck()[1].printInfo();
-    cout << "\nSilahkan pilih pemain yang kartunya ingin Anda tukar: \n";
+    listOfPlayer[currPlayerIdx].getPlayerDeck()[1].printInfo();
+    cout << "\nPlease choose a player to switch your card: \n";
     int no = 1;
     for (int i = 0; i < listOfPlayer.size(); i++)
     {
-        if (i == set.getCurrPlayerIdx())
+        if (i == currPlayerIdx)
         {
             continue;
         }
@@ -23,38 +24,50 @@ void Switch::activate(Set &set)
             no++;
         }
     }
-    try
-    {
-        cout << "> ";
-        int opt;
-        cin >> opt;
-        if (cin.fail())
+    bool success = false;
+    while (!success) {
+        try
         {
-            throw IntegerException();
+            int opt = inputOption(6);
+            int idxPlayerSwap = opt <= currPlayerIdx ? opt - 1 : opt;
+            vector<ColorCard> tempDeck = listOfPlayer[idxPlayerSwap].getPlayerDeck();
+            set.getListOfPlayers()[idxPlayerSwap].setPlayerDeck(listOfPlayer[currPlayerIdx].getPlayerDeck());
+            set.getListOfPlayers()[currPlayerIdx].setPlayerDeck(tempDeck);
+            cout << "Both of " << listOfPlayer[currPlayerIdx].getNickname() << "\'s cards are switched with " << listOfPlayer[idxPlayerSwap].getNickname() << "\'s cards!\n";
+            cout << "Here is your cards: \n";
+            listOfPlayer[currPlayerIdx].getPlayerDeck()[0].printInfo();
+            cout << " && ";
+            listOfPlayer[currPlayerIdx].getPlayerDeck()[1].printInfo();
+            cout << endl;
+            success = true;
         }
-        else if (opt < 1 || opt > 6)
+        catch (IntegerException &e)
         {
-            throw OptionException();
+            cout << e.what();
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
         }
-        int idxPlayerSwap = opt <= set.getCurrPlayerIdx() ? opt - 1 : opt;
-        vector<ColorCard> tempDeck = listOfPlayer[idxPlayerSwap].getPlayerDeck();
-        set.getListOfPlayers()[idxPlayerSwap].setPlayerDeck(listOfPlayer[set.getCurrPlayerIdx()].getPlayerDeck());
-        set.getListOfPlayers()[set.getCurrPlayerIdx()].setPlayerDeck(tempDeck);
-        cout << "Kedua kartu " << listOfPlayer[set.getCurrPlayerIdx()].getNickname() << " telah ditukar dengan " << listOfPlayer[idxPlayerSwap].getNickname() << "!\n";
-        cout << "Kartumu sekarang adalah: \n";
-        listOfPlayer[set.getCurrPlayerIdx()].getPlayerDeck()[0].printInfo();
-        cout << " && ";
-        listOfPlayer[set.getCurrPlayerIdx()].getPlayerDeck()[1].printInfo();
-        cout << "\nSilahkan pilih pemain yang kartunya ingin Anda tukar: \n";
+        catch (OptionException &e)
+        {
+            cout << e.what();
+        }
     }
-    catch (IntegerException &e)
+}
+
+int Switch::inputOption(int sumOpt)
+{
+    int opt;
+    cout << "> ";
+    cin >> opt;
+    if (cin.fail())
     {
-        e.what();
+        throw IntegerException();
     }
-    catch (OptionException &e)
+    else if (opt < 1 || opt > sumOpt)
     {
-        e.what();
+        throw OptionException();
     }
+    return opt;
 }
 
 string Switch::getCommandName()
