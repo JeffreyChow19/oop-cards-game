@@ -1,10 +1,11 @@
 #ifndef _COMBO_HPP_
 #define _COMBO_HPP_
 
+#include "../Valuable.hpp"
 #include <bits/stdc++.h>
 using namespace std;
 
-class Combo {
+class Combo:public Valuable {
     private:
         
     public:
