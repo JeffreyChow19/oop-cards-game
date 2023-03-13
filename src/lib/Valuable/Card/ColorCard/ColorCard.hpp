@@ -70,6 +70,8 @@ public:
      *
      */
     void printInfo();
+
+    bool operator==(const ColorCard &) const;
 };
 
 #endif

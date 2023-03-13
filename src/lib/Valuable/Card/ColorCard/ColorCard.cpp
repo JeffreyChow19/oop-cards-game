@@ -43,3 +43,10 @@ void ColorCard::printInfo()
 {
     cout << getColor() << " " << value_;
 }
+
+bool ColorCard::operator==(const ColorCard& other) const{
+    if (this->getColor()== other.getColor() && this->getValue() == other.getValue()) {
+        return true;
+    }
+    return false;
+}
