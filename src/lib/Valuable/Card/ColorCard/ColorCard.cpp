@@ -3,6 +3,8 @@
 
 using namespace std;
 
+ColorCard::ColorCard() : color_(Color::Green), Card(1) {}
+
 ColorCard::ColorCard(Color color, int value) : color_(color), Card(value) {}
 
 ColorCard::ColorCard(const ColorCard &other) : color_(other.color_), Card(other.value_)
@@ -26,7 +28,7 @@ double ColorCard::getBaseValue() const
 
 double ColorCard::getValue() const
 {
-    return 0.3 * getBaseValue() + 0.1 * value_;
+    return static_cast<double>(this->value_);
 }
 
 bool ColorCard::operator<(const ColorCard &other) const

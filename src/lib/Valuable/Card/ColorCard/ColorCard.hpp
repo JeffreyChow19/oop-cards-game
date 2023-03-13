@@ -23,6 +23,12 @@ private:
 
 public:
     /**
+     * @brief Construct a new Color Card object, default color=Green, value=1
+     * 
+     */
+    ColorCard();
+
+    /**
      * @brief Construct a new Color Card object
      *
      * @param color
