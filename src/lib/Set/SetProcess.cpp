@@ -15,7 +15,7 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
         {
             p.setHasPlayed(false);
         }
-        int currPlayerIdx = firstPlayerIdx_;
+        // int currPlayerIdx = firstPlayerIdx_;
         while (playerMoved < listOfPlayer_.size())
         {
             Player &currPlayer = listOfPlayer_[currPlayerIdx];
