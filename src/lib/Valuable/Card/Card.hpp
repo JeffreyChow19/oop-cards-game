@@ -11,7 +11,7 @@ public:
     Card(int value);
     virtual double getValue() const = 0;
     ~Card();
-    friend bool compareByValue(const Card &, const Card &);
+    static bool compareByValue(const Card &, const Card &);
 };
 
 #endif

@@ -79,7 +79,7 @@ public:
 
     bool operator==(const ColorCard &) const;
 
-    friend bool compareByColor(const ColorCard &, const ColorCard &);
+    static bool compareByColor(const ColorCard &, const ColorCard &);
 };
 
 #endif

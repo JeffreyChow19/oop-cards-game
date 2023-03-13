@@ -14,6 +14,6 @@ Card::~Card(){
     
 }
 
-bool compareByValue(const Card & first, const Card & second) {
+bool Card::compareByValue(const Card & first, const Card & second) {
     return first.getValue() <= second.getValue();
 }
