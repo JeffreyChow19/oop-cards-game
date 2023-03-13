@@ -49,4 +49,10 @@ int main()
     auto maxColor = max_element(cards.begin(), cards.end(), ColorCard::compareByColor);
     cout << "Value=" << maxVal->getValue() << " Color=" << maxVal->getBaseValue() << endl;
     cout << "Value=" << maxColor->getValue() << " Color=" << maxColor->getBaseValue() << endl;
+
+    sort(cards.begin(), cards.end(), ColorCard::compareByValue);
+    for (int i = 0; i < cards.size(); i++) {
+        cards[i].printInfo();
+        cout << endl;
+    }
 }
