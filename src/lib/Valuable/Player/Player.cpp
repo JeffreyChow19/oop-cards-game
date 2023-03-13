@@ -73,7 +73,7 @@ void Player::addPlayerCard(ColorCard toAdd)
     (*this) + toAdd;
 }
 
-vector<ColorCard> Player::getPlayerDeck() const
+vector<ColorCard> Player::getPlayerDeck()
 {
     return this->deck;
 }
