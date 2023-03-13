@@ -15,6 +15,7 @@ Set::Set(vector<Player> &listOfPlayer, int firstPlayerIdx)
     this->mainDeck_ = MainDeck();
     this->tableDeck_ = TableDeck();
     this->firstPlayerIdx_ = firstPlayerIdx;
+    this->currPlayerIdx = firstPlayerIdx;
 }
 
 Set::~Set()

@@ -14,6 +14,7 @@ protected:
     int points_;
     int round_;
     int firstPlayerIdx_;
+    int currPlayerIdx;
     vector<Player> listOfPlayer_;
     MainDeck mainDeck_;
     TableDeck tableDeck_;
