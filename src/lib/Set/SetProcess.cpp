@@ -67,8 +67,14 @@ void SetProcess::askCommand(vector<string> &allowedCommands)
             {
                 cout << "[" << i + 1 << "] " << allowedCommands[i] << endl;
             }
+            //TODO: cek bagian ini 
             cout << "Input command : ";
             string command = inputCommand(allowedCommands);
+            while (command == this->listOfPlayer_[currPlayerIdx].getAbility() && !listOfPlayer_[currPlayerIdx].getAbilityStatus()){
+                    cout << "Oops your card have been inactivated :(.\n Please input another command\n";
+                    cout << "Input command : ";
+                    string command = inputCommand(allowedCommands);
+            }
             for (auto &c : commands)
             {
                 if (c->getCommandName() == command)

@@ -91,6 +91,10 @@ void Player::setAbility(string ability)
     this->ability_ = ability;
 }
 
+bool Player::getAbilityStatus() {
+    return this->abilityStatus_;
+}
+
 void Player::setAbilityStatus(bool status)
 {
     this->abilityStatus_ = status;

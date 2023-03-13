@@ -97,6 +97,8 @@ public:
 
     string getAbility();
 
+    bool getAbilityStatus();
+
     void setAbilityStatus(bool);
 
     void setHasPlayed(bool);
