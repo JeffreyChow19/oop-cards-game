@@ -44,13 +44,14 @@ void Game::startGame(){
 
 bool Game::checkEndGame()
 {
-    auto player_itr = this->listOfPlayer.begin();
-    while (player_itr != this->listOfPlayer.end())
-    {
-        if (player_itr->getPoint() == pow(2, 32))
-        {
+    for (auto &p: listOfPlayer){
+        if (p.getPoint() == pow(2, 32)){
             return true;
         }
     }
     return false;
+}
+
+Game::~Game(){
+    this->listOfPlayer.clear();
 }

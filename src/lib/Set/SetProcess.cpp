@@ -23,7 +23,6 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
         cout << "**************************************" << endl
              << endl;
 
-        printSetInfo();
         cout << endl;
 
         if (this->round_ != 6)
@@ -33,8 +32,9 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
             {
                 p.setHasPlayed(false);
             }
+            currPlayerIdx = firstPlayerIdx_;
+            printSetInfo();
             int playerMoved = 0;
-
             while (playerMoved < listOfPlayer_.size())
             {
                 Player &currPlayer = listOfPlayer_[currPlayerIdx];
@@ -47,7 +47,7 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
                         allowedCommands.push_back(currPlayer.getAbility());
                     }
                     askCommand(allowedCommands, currPlayer);
-                    printSetInfo();
+                    // printSetInfo();
                     if (this->round_ != 1)
                     {
                         allowedCommands.pop_back();
@@ -129,7 +129,7 @@ string SetProcess::inputCommand(vector<string> &allowedCommands, Player &currPla
     {
         if (c == command)
         {
-            if (currPlayer.getAbilityStatus())
+            if (currPlayer.getAbilityStatus() || command == "NEXT" || command == "HALF" || command == "DOUBLE")
             {
                 return c;
             }

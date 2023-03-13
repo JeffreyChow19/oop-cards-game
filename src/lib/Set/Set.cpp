@@ -12,10 +12,15 @@ Set::Set(vector<Player> &listOfPlayer, int firstPlayerIdx)
     this->listOfPlayer_ = listOfPlayer;
     this->points_ = 64;
     this->round_ = 1;
-    this->mainDeck_ = MainDeck();
-    this->tableDeck_ = TableDeck();
     this->firstPlayerIdx_ = firstPlayerIdx;
     this->currPlayerIdx = firstPlayerIdx;
+
+    MainDeck mainDeck;
+    mainDeck.fillDeck();
+    this->mainDeck_ = mainDeck;
+    
+    TableDeck tableDeck;
+    this->tableDeck_ = tableDeck;
 }
 
 Set::~Set()
@@ -69,3 +74,11 @@ void Set::setMainDeck(MainDeck mainDeck)
 {
     this->mainDeck_ = mainDeck;
 }
+
+void Set::setFirstPlayerIdx(int idx){
+    this->firstPlayerIdx_ = idx;
+};
+
+void Set::setCurrPlayerIdx(int idx){
+    this->currPlayerIdx = idx;
+};

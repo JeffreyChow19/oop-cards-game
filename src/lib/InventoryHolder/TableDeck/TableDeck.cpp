@@ -1,6 +1,7 @@
 #include "TableDeck.hpp"
 
-TableDeck::TableDeck() {}
+TableDeck::TableDeck() {
+}
 
 void TableDeck::addCard(MainDeck &_mainDeck)
 {

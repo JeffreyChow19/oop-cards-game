@@ -92,11 +92,11 @@ void Swap::activate(Set &set)
     }
     catch (IntegerException &e)
     {
-        e.what();
+        cout << e.what();
     }
     catch (OptionException &e)
     {
-        e.what();
+        cout << e.what();
     }
 }
 

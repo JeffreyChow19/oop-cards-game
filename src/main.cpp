@@ -4,7 +4,7 @@
 
 int main()
 {
-    string opt = "N";
+    string opt = "Y";
     while (opt != "N" && opt != "n")
     {
         try

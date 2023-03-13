@@ -67,6 +67,9 @@ public:
     MainDeck &getMainDeck();
 
     void setMainDeck(MainDeck);
+
+    void setFirstPlayerIdx(int);
+    void setCurrPlayerIdx(int);
 };
 
 #endif
