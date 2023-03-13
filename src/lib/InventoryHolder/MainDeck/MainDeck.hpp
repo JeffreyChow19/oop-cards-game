@@ -18,6 +18,7 @@ class MainDeck : public InventoryHolder<ColorCard>
         void randomizeCard();
         ColorCard getFromMainDeck();
         MainDeck& operator=(const MainDeck& other);
+        void printDeck();
 };
 
 #endif
