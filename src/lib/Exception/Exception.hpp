@@ -28,6 +28,14 @@ struct CommandException : public exception
     }
 };
 
+struct CommandInactiveException : public exception
+{
+    const char *what() const throw()
+    {
+        return "Ability was deactivated by another player.\n";
+    }
+};
+
 struct StringException : public exception
 {
     const char *what() const throw()
