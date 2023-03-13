@@ -16,7 +16,7 @@ struct TextFileException : public exception
 {
     const char *what() const throw()
     {
-        return "TextFile input not valid.\nPlease input correct txt file.";
+        return "File configuration is invalid. Make sure the configuration format is [Color] [Number] and use the valid Color or Number\n";
     }
 };
 
@@ -49,6 +49,12 @@ struct PointException : public exception
     const char *what() const throw()
     {
         return "The set point is already 1 so it cant be changed.\n";
+    }
+};
+
+struct FilenameException : public exception{
+    const char *what() const throw(){
+        return "File not found. Please input the correct file and follow this format [filename].txt\n";
     }
 };
 

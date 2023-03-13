@@ -1,4 +1,6 @@
 #include "MainDeck.hpp"
+#include <fstream>
+using namespace std;
 
 MainDeck::MainDeck()
 {
@@ -16,10 +18,6 @@ MainDeck::MainDeck()
 
 void MainDeck::randomizeCard()
 {
-    // random_device randDevice;
-    // mt19937 numGen(randDevice());
-
-    // random_shuffle(this->deck.begin(), this->deck.end(), numGen);
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> dis(0, deck.size() - 1);
@@ -28,6 +26,70 @@ void MainDeck::randomizeCard()
     for (int i = 0; i < deck.size(); ++i) {
         swap(deck[i], deck[dis(gen)]);
     }
+}
+
+void MainDeck::readCard(){
+    this->deck.clear();
+
+    // Relative path disini harus disesuaikan dari executable file, bukan dari MainDeck.cpp
+    string relativePath = "test/";
+
+    string fileName;
+    bool ready = false;
+    
+    do{
+        try {
+            // input file name
+            cout << "Input file name [filename].txt : ";
+            cin >> fileName;
+
+            // concat relative path and filename
+            string relativeFileName = relativePath + fileName;
+
+            // try to read file
+            ifstream file(relativeFileName);
+
+            // check if file is opened
+            if (file.is_open()){
+                string line;
+                while (getline(file, line)) {
+                    // split each line into color and number
+                    string color, number;
+                    stringstream ss(line);
+                    getline(ss, color, ' ');
+                    getline(ss, number, ' ');
+    
+                    // convert enum to string
+                    Color colorToInsert = stringToColor(color);
+
+                    // convert number to integer and check
+                    int numberToInsert = stoi(number);
+                    if (numberToInsert < 1 || numberToInsert > 13){
+                        throw TextFileException();
+                    }
+
+                    // create object and push to deck
+                    ColorCard cardObj(colorToInsert, numberToInsert);
+                    this->deck.push_back(cardObj);
+                }
+                ready = true;
+            } else { // file fail to opened
+                throw FilenameException();
+            }
+        } catch(FilenameException& err){
+            cout << err.what();
+        } catch(TextFileException& err){
+            cout << err.what();
+        }
+    } while (!ready);
+}
+
+Color MainDeck::stringToColor(const string& color) {
+  if (color == "Green") return Color::Green;
+  if (color == "Blue") return Color::Blue;
+  if (color == "Yellow") return Color::Yellow;
+  if (color == "Red") return Color::Red;
+  throw TextFileException();
 }
 
 ColorCard MainDeck::getFromMainDeck()

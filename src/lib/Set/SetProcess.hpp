@@ -36,6 +36,9 @@ public:
      * @return string
      */
     string inputCommand(vector<string> &allowedCommands);
+
+    
+
     ~SetProcess();
     // void (float multiplier);
 };
