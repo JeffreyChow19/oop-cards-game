@@ -3,16 +3,22 @@
 
 ThreeOfAKind::ThreeOfAKind(ColorCard firstCard, ColorCard secondCard, ColorCard thirdCard) 
 {
-    triple_ = make_tuple(firstCard, secondCard, thirdCard);
+    this->triple_.push_back(firstCard);
+    this->triple_.push_back(secondCard);
+    this->triple_.push_back(thirdCard);
 }
 
-ThreeOfAKind::~ThreeOfAKind() {}
+ThreeOfAKind::~ThreeOfAKind() 
+{
+    this->triple_.clear();
+}
 
 float ThreeOfAKind::getValue() 
 {
+    /* Rumus : 0.2 * angka + 0.05 * color + 8.28 (tertinggi dari two pair) */
     return (
-        0.2 * get<0>(triple_).getValue()
-        + 0.05 * max(get<0>(triple_).getBaseValue(), max(get<1>(triple_).getBaseValue(), get<2>(triple_).getBaseValue()))
+        0.2 * triple_[0].getValue()
+        + 0.05 * max_element(triple_.begin(), triple_.end(), ColorCard::compareByColor)->getBaseValue()
         + 8.28 
     );       
 }

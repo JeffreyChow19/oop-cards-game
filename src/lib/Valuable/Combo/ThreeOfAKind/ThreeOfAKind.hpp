@@ -5,7 +5,7 @@
 
 class ThreeOfAKind : public Combo {
     private:
-        tuple<ColorCard, ColorCard, ColorCard> triple_;
+        vector<ColorCard> triple_;
     public:
         /**
          * @brief Construct a new Three Of A Kind object
