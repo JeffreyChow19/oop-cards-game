@@ -45,15 +45,15 @@ public:
 
     string getColor() const;
 
-    double getBaseValue() const;
+    float getBaseValue() const;
 
     /**
      * @brief Get the value of the card (adds base value with this->value)
      * formula refer to pg 10
      *
-     * @return double
+     * @return float
      */
-    virtual double getValue() const;
+    virtual float getValue() const;
 
     /**
      * @brief compares this with other ColorCard

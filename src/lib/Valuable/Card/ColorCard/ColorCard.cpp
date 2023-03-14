@@ -21,14 +21,14 @@ string ColorCard::getColor() const
     return colorMap[color_];
 }
 
-double ColorCard::getBaseValue() const
+float ColorCard::getBaseValue() const
 {
-    return static_cast<double>(this->color_);
+    return static_cast<float>(this->color_);
 }
 
-double ColorCard::getValue() const
+float ColorCard::getValue() const
 {
-    return static_cast<double>(this->value_);
+    return static_cast<float>(this->value_);
 }
 
 bool ColorCard::operator<(const ColorCard &other) const
