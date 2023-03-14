@@ -12,8 +12,20 @@ int main()
     ColorCard red3(Color::Red, 3);
     ColorCard red4(Color::Red, 4);
     ColorCard red5(Color::Red, 5);
+    ColorCard red6(Color::Red, 6);
+    ColorCard red7(Color::Red, 7);
     ColorCard green1(Color::Green, 1);
     ColorCard green2(Color::Green, 2);
-    vector<ColorCard> temp = {red1, red2, red3, red4, red5, green1, green2};
-    Flush *cmb = p1.checkPlayerFlush(temp);
+    TableDeck tableDeck;
+    p1.addPlayerCard(red6);
+    p1.addPlayerCard(red7);
+    tableDeck + red3;
+    tableDeck + red4;
+    tableDeck + red5;
+    tableDeck + red6;
+    tableDeck + red1;
+    if (p1.checkPlayerFlush(tableDeck) != nullptr)
+    {
+        p1.checkPlayerFlush(tableDeck)->print();
+    }
 }

@@ -119,21 +119,21 @@ public:
 
     Combo *checkPlayerCombo(TableDeck tableDeck);
 
-    Flush *checkPlayerFlush(vector<ColorCard> cards);
+    Flush *checkPlayerFlush(TableDeck tableDeck);
 
-    FourOfAKind *checkPlayerFourOfAKind(vector<ColorCard> cards);
+    FourOfAKind *checkPlayerFourOfAKind(TableDeck tableDeck);
 
-    HighCard *checkPlayerHighCard(vector<ColorCard> cards);
+    HighCard *checkPlayerHighCard();
 
-    Pair *checkPlayerPair(vector<ColorCard> cards);
+    Pair *checkPlayerPair(TableDeck tableDeck);
 
-    Straight *checkPlayerStraight(vector<ColorCard> cards);
+    Straight *checkPlayerStraight(TableDeck tableDeck);
 
     // StraightFlush* checkPlayerStraightFlush();
 
-    ThreeOfAKind *checkPlayerThreeOfAKind(vector<ColorCard> cards);
+    ThreeOfAKind *checkPlayerThreeOfAKind(TableDeck tableDeck);
 
-    TwoPair *checkPlayerTwoPair(vector<ColorCard> cards);
+    TwoPair *checkPlayerTwoPair(TableDeck tableDeck);
     void printCards();
 };
 
