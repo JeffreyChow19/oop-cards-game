@@ -15,7 +15,7 @@ private:
 public:
     TwoPair(Pair firstPair, Pair secondPair);
     ~TwoPair();
-    float getValue();
+    float getValue() const;
     void print();
 };
 

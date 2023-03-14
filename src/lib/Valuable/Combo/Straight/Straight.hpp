@@ -3,35 +3,32 @@
 
 #include "../Combo.hpp"
 
+class Straight : public Combo
+{
+private:
+    vector<ColorCard> deck_;
 
-class Straight:public Combo {
-    private:
-        vector<ColorCard> deck_; 
-    public:
-        /**
-         * @brief Construct a new straight object
-         * 
-         * @param firstCard 
-         * @param secondCard 
-         * @param thirdCard 
-         * @param fourthCard 
-         * @param fifthCard 
-         */
-        Straight(ColorCard firstCard, ColorCard secondCard, ColorCard thirdCard, ColorCard fourthCard, ColorCard fifthCard);
+public:
+    /**
+     * @brief Construct a new straight object
+     *
+     * @param firstCard
+     * @param secondCard
+     * @param thirdCard
+     * @param fourthCard
+     * @param fifthCard
+     */
+    Straight(vector<ColorCard> deck);
 
-        /**
-         * @brief Destroy Straight object
-         * 
-         */
-        virtual ~Straight();
+    /**
+     * @brief Destroy Straight object
+     *
+     */
+    virtual ~Straight();
 
-        /**
-         * @brief Get the Value object
-         * 
-         * @return float 
-         */
-        float getValue();
-        void print();
+    float getValue() const;
+
+    void print();
 };
 
 #endif

@@ -2,14 +2,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-Straight::Straight(ColorCard firstCard, ColorCard secondCard, ColorCard thirdCard, ColorCard fourthCard, ColorCard fifthCard) 
-{
-    this->deck_.push_back(firstCard);
-    this->deck_.push_back(secondCard);
-    this->deck_.push_back(thirdCard);
-    this->deck_.push_back(fourthCard);
-    this->deck_.push_back(fifthCard);
-
+Straight::Straight(vector<ColorCard> deck) {
+    this->deck_ = deck;
     /* sort ascending by card value */
     sort(this->deck_.begin(), this->deck_.end(), ColorCard::compareByValue);
 }
@@ -19,17 +13,22 @@ Straight::~Straight()
     this->deck_.clear();
 }
 
-float Straight::getValue() 
+float Straight::getValue() const
 {
-    float res = 11.03;   /* maximum three of a kind value */
+    /* result = encoding + max three of a kind*/
+    float result = THREE_KIND_MAX;   /* maximum three of a kind value */
 
-    res += 0.05 * this->deck_[4].getBaseValue() + 0.2 *this->deck_[4].getValue();       /* highest card in the combination */
-    
-    return res;
-}
-
-void Straight::print(){
-    for (auto &c : this->deck_){
-        c.printInfo();
+    /* encode maxValue and color sequence (descending) */
+    /* V,VCCCCC*/
+    float encoding = 0.1 * this->deck_[4].getValue();
+    float multiplier = 0.000001;
+    for (int i = 0; i < this->deck_.size(); i++)
+    {
+        encoding += multiplier * this->deck_[i].getBaseValue();
+        multiplier *= 10;
     }
+    
+    result += encoding;
+    
+    return result;
 }

@@ -50,7 +50,7 @@ public:
      * @brief Get the value of the card (adds base value with this->value)
      * formula refer to pg 10
      *
-     * @return double
+     * @return float
      */
     virtual float getValue() const;
 

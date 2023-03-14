@@ -6,7 +6,7 @@
 class Valuable {
     public:
         virtual ~Valuable();
-        virtual float getValue() = 0;
+        virtual float getValue() const = 0;
 };
 
 #endif

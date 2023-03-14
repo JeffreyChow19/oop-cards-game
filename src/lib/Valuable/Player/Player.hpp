@@ -10,7 +10,7 @@
 #include "../Combo/Flush/Flush.hpp"
 #include "../Combo/FourOfAKind/FourOfAKind.hpp"
 #include "../Combo/Straight/Straight.hpp"
-// #include "../Combo/FullHouse/FullHouse.hpp"
+#include "../Combo/FullHouse/FullHouse.hpp"
 #include "../Combo/HighCard/HighCard.hpp"
 #include "../Combo/Pair/Pair.hpp"
 // #include "../Combo/StraightFlush/StraightFlush.hpp"
@@ -93,7 +93,7 @@ public:
      */
     static int getPlayerCount();
 
-    float getValue();
+    float getValue() const;
 
     void removePlayerCard(ColorCard);
 
@@ -134,6 +134,9 @@ public:
     ThreeOfAKind *checkPlayerThreeOfAKind(TableDeck tableDeck);
 
     TwoPair *checkPlayerTwoPair(TableDeck tableDeck);
+
+    FullHouse *checkPlayerFullHouse(TableDeck tableDeck);
+
     void printCards();
 
     void deleteMinValueFromCombo(vector<ColorCard> &combo, int limit);

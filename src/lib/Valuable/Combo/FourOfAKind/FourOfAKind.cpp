@@ -1,25 +1,20 @@
 #include "FourOfAKind.hpp"
 
-FourOfAKind::FourOfAKind(vector<ColorCard> cards)
+FourOfAKind::FourOfAKind(vector<ColorCard> cards) 
 {
     this->quad_ = cards;
 
-    /* sort ascending by card value */
+    /* sort ascending by card color */
     sort(this->quad_.begin(), this->quad_.end(), ColorCard::compareByColor);
 }
-FourOfAKind::~FourOfAKind()
+
+FourOfAKind::~FourOfAKind() 
 {
     this->quad_.clear();
 }
-float FourOfAKind::getValue()
-{
-    return 21.27 + 0.2 * this->quad_[0].getValue();
-}
 
-void FourOfAKind::print()
-{
-    for (auto &c : this->quad_)
-    {
-        c.printInfo();
-    }
+float FourOfAKind::getValue() const {
+    /* (maximum of fullHouse) + quad combination value */
+    float result = FULL_HOUSE_MAX + 0.2*this->quad_[0].getValue();
+    return result;
 }

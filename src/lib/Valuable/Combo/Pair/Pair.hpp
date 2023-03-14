@@ -5,13 +5,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Pair:public Combo {
-    private:
+class Pair : public Combo
+{
+private:
         pair<ColorCard, ColorCard> cardPair_;
-    public:
-        Pair(pair<ColorCard,ColorCard> cardPair);
+
+public:
+        Pair();
+        Pair(pair<ColorCard, ColorCard> cardPair);
         ~Pair();
-        float getValue();
+        float getValue() const;
         void print();
 };
 

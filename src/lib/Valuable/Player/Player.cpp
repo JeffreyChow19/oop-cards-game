@@ -85,7 +85,7 @@ void Player::setPlayerDeck(vector<ColorCard> playerDeck)
     this->deck = playerDeck;
 }
 
-float Player::getValue()
+float Player::getValue() const
 {
     return 0.0;
 }
@@ -295,8 +295,9 @@ Pair *Player::checkPlayerPair(TableDeck tableDeck)
     return nullptr;
 };
 
-Straight *Player::checkPlayerStraight(TableDeck tableDeck){
-    
+Straight *Player::checkPlayerStraight(TableDeck tableDeck)
+{
+
     return nullptr;
 };
 
@@ -339,6 +340,70 @@ ThreeOfAKind *Player::checkPlayerThreeOfAKind(TableDeck tableDeck)
 
     return nullptr;
 };
+
+FullHouse *Player::checkPlayerFullHouse(TableDeck tableDeck)
+{
+    map<int, vector<ColorCard>> allFreq;
+    map<int, vector<ColorCard>> playerFreq;
+    for (auto &card : this->deck)
+    {
+        playerFreq[card.getValue()].push_back(card);
+        allFreq[card.getValue()].push_back(card);
+    }
+    for (auto &card : tableDeck.getDeck())
+    {
+        allFreq[card.getValue()].push_back(card);
+    }
+    int threeOfAKind;
+    bool found = false;
+    for (auto i = allFreq.rbegin(); i != allFreq.rend(); i++)
+    {
+        if (i->second.size() == 3)
+        { // cari three of a kind terbesar
+            if (playerFreq.find(i->first) != playerFreq.end())
+            { // ada playerCard di three of a kind
+                found = true;
+            }
+            // simpan three of a kind terbesar
+            threeOfAKind = i->first;
+            for (auto j = allFreq.rbegin(); j != allFreq.rend(); j++)
+            {
+                if (j->first != threeOfAKind && j->second.size() >= 2)
+                {
+                    sort(j->second.begin(), j->second.end(), ColorCard::compareByColor);
+                    if (j->second.size() > 2)
+                    {
+                        if (found) // sudah ada playerCard di three of a kind, hapus card paling rendah
+                        {
+                            j->second.erase(j->second.begin());
+                        }
+                        else
+                        {
+                            for (auto it = j->second.begin(); it != j->second.end(); it++)
+                            {
+                                if (!(playerFreq[j->first][0] == *it))
+                                {
+                                    j->second.erase(it);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    // cek apakah ada minimal 1 player card di kombinasi yang sudah terbentuk
+                    if (found || playerFreq.find(j->first) != playerFreq.end()) // di poin ini ukuran pair sudah pasti 2 dan salah satu dari found
+                    {
+                        vector<ColorCard> fullHouseCards;
+                        fullHouseCards.insert(fullHouseCards.begin(), i->second.begin(), i->second.end());
+                        fullHouseCards.insert(fullHouseCards.end(), j->second.begin(), j->second.end());
+                        return new FullHouse(fullHouseCards);
+                    }
+                }
+            }
+            break;
+        }
+    }
+    return nullptr;
+}
 
 TwoPair *Player::checkPlayerTwoPair(TableDeck tableDeck)
 {
@@ -390,24 +455,33 @@ TwoPair *Player::checkPlayerTwoPair(TableDeck tableDeck)
     int countPair = 0;
     bool usedFirstCardPair = false;
 
-    for (auto it = temp.rbegin(); it != temp.rend(); ++it) {
+    for (auto it = temp.rbegin(); it != temp.rend(); ++it)
+    {
         int key = it->first;
         vector<ColorCard> value = it->second;
-        if (value.size() == 2){
+        if (value.size() == 2)
+        {
             bool insert = false;
-            if (key != tableNum){
+            if (key != tableNum)
+            {
                 insert = true;
-            } else if (!usedTablePair){
+            }
+            else if (!usedTablePair)
+            {
                 insert = true;
                 usedTablePair = true;
             }
 
-            if (insert){
-                if (!usedFirstCardPair){
+            if (insert)
+            {
+                if (!usedFirstCardPair)
+                {
                     firstCardPair.first = value[0];
                     firstCardPair.second = value[1];
                     usedFirstCardPair = true;
-                } else {
+                }
+                else
+                {
                     secondCardPair.first = value[0];
                     secondCardPair.second = value[1];
                     return new TwoPair(firstCardPair, secondCardPair);
