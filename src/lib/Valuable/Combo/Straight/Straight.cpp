@@ -15,9 +15,19 @@ Straight::~Straight()
 
 float Straight::getValue() const
 {
-    float res = 11.03;   /* maximum three of a kind value */
+    float res = 11;   /* maximum three of a kind value */
 
-    res += 0.05 * this->deck_[4].getBaseValue() + 0.2 *this->deck_[4].getValue();       /* highest card in the combination */
+    /* encode maxValue and color sequence (descending) */
+    /* V,VCCCCC*/
+    float encoding = 0.1 * this->deck_[4].getValue();
+    float multiplier = 0.000001;
+    for (int i = 0; i < this->deck_.size(); i++)
+    {
+        encoding += multiplier * this->deck_[i].getBaseValue();
+        multiplier *= 10;
+    }
+    
+    res += encoding;
     
     return res;
 }
