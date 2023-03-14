@@ -79,6 +79,8 @@ public:
     bool operator==(const ColorCard &) const;
 
     static bool compareByColor(const ColorCard &, const ColorCard &);
+
+    static void printGroup(vector<ColorCard>);
 };
 
 #endif

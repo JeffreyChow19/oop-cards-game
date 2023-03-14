@@ -126,10 +126,12 @@ void Player::printCards()
     {
         c.printInfo();
     }
+    ColorCard::printGroup(this->deck);
 }
 
 Combo *Player::checkPlayerCombo(TableDeck tableDeck)
 {
+    return nullptr;
 }
 
 Flush *Player::checkPlayerFlush(TableDeck tableDeck)
