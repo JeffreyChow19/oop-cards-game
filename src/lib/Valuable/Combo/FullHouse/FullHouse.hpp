@@ -2,22 +2,20 @@
 #define _FULLHOUSE_HPP_
 
 #include "../Combo.hpp"
-
+#include "../Pair/Pair.hpp"
+#include "../ThreeOfAKind/ThreeOfAKind.hpp"
 
 class FullHouse:public Combo {
     private:
-        vector<ColorCard> deck_; 
+        Pair pair_;
+        ThreeOfAKind tris_;
     public:
         /**
          * @brief Construct a new FullHouse object
          * 
-         * @param firstCard 
-         * @param secondCard 
-         * @param thirdCard 
-         * @param fourthCard 
-         * @param fifthCard 
+         * @param deck
          */
-        FullHouse(ColorCard firstCard, ColorCard secondCard, ColorCard thirdCard, ColorCard fourthCard, ColorCard fifthCard);
+        FullHouse(vector<ColorCard> deck);
 
         /**
          * @brief Destroy FullHouse object
