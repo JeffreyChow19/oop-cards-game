@@ -9,6 +9,7 @@ class Pair:public Combo {
     private:
         pair<ColorCard, ColorCard> cardPair_;
     public:
+        Pair();
         Pair(pair<ColorCard,ColorCard> cardPair);
         ~Pair();
         float getValue() const;

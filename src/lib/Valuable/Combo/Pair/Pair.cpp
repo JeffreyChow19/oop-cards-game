@@ -2,6 +2,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+Pair::Pair(){
+    
+}
 Pair::Pair(pair<ColorCard,ColorCard> cardPair):cardPair_(cardPair){
 
 }
