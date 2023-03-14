@@ -296,7 +296,85 @@ Pair *Player::checkPlayerPair(TableDeck tableDeck)
 };
 
 Straight *Player::checkPlayerStraight(TableDeck tableDeck){
-    
+    sort(this->deck.begin(), this->deck.end(), ColorCard::compareByValueThenColor);
+    // insert decks to map
+    map<int, vector<ColorCard>> decks;
+
+    for (auto &c : tableDeck.getDeck()){
+        decks[c.getValue()].push_back(c);
+    }
+
+    for (auto &c : this->deck){
+        decks[c.getValue()].push_back(c);
+    }
+
+    int prev = -1;
+    bool usedPlayer = false;
+    vector<ColorCard> answer;
+    // sort decks ascending
+    while (decks.size() >= 5 && !usedPlayer){
+
+        int high = decks.rbegin()->first;
+        int prev = decks.rbegin()->first;
+        for (auto it = decks.rbegin(); it != decks.rend(); ++it){   
+            if (prev - it->first > 1){
+                high = it->first;
+                prev = it->first;
+                answer.clear();
+            }
+
+            if (it->second.size() > 1) {
+                sort(it->second.begin(), it->second.end(), ColorCard::compareByColor);
+                answer.push_back(it->second[it->second.size()-1]);
+            } else {
+                answer.push_back(it->second[0]);
+            }
+
+            prev = answer.back().getValue();
+
+            if (!usedPlayer){
+                usedPlayer = (answer.back() == this->deck[0]) || (answer.back() == this->deck[1]);
+            }
+
+            if (high - it->first == 4){
+                break;
+            }
+        }   
+
+        if (answer.size() == 5){
+            sort(answer.begin(), answer.end(), ColorCard::compareByValueThenColor);
+
+            if (!usedPlayer){
+                // try to change
+
+                for (int i = 0; i <= 1; i++){
+                    if (this->deck[i].getValue() <= high && this->deck[i].getValue() >= high-4){
+                        int currentVal = this->deck[i].getValue();
+                        auto it = std::find_if(answer.begin(), answer.end(), [currentVal](const ColorCard& card) {
+                            return card.getValue() == currentVal;
+                        });
+
+                        if (it != answer.end()){
+                            // then change
+                            int idx = distance(answer.begin(), it);
+                            answer[idx] = this->deck[i];
+                            usedPlayer = true;
+                            break;
+                        }
+                    }
+                }
+            } 
+
+            if (usedPlayer){
+                sort(answer.begin(), answer.end(), ColorCard::compareByValueThenColor);
+                return new Straight(answer[0],answer[1],answer[2],answer[3],answer[4]);
+            } else {
+                decks.erase(decks.rbegin()->first);
+                answer.clear();
+            }
+        }
+    }
+
     return nullptr;
 };
 

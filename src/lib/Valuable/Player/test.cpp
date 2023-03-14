@@ -10,6 +10,7 @@ int main()
 
     ColorCard red13(Color::Red, 13);
     ColorCard red12(Color::Red, 12);
+    ColorCard red11(Color::Red, 11);
     ColorCard red10(Color::Red, 10);
     ColorCard blue10(Color::Blue, 10);
     ColorCard red9(Color::Red, 9);
@@ -20,18 +21,23 @@ int main()
     ColorCard green7(Color::Green, 7);
     ColorCard green1(Color::Green, 1);
     ColorCard green2(Color::Green, 2);
+    ColorCard green10(Color::Green, 10);
+    ColorCard green11(Color::Green, 11);
+    ColorCard green12(Color::Green, 12);
+    ColorCard green13(Color::Green, 13);
+    ColorCard green8(Color::Green, 8);
 
 
     TableDeck tableDeck;
 
-    p1.addPlayerCard(red9);  // simpan card 1 player
-    p1.addPlayerCard(green2); // simpan card 2 player
+    p1.addPlayerCard(red12);  // simpan card 1 player
+    p1.addPlayerCard(green11); // simpan card 2 player
 
-    tableDeck + red5;       // atur table deck
-    tableDeck + blue10;
-    tableDeck + red10;
-    tableDeck + green7;
-    tableDeck + red7;
+    tableDeck + green12;       // atur table deck
+    tableDeck + red11;
+    tableDeck + green10;
+    tableDeck + red13;
+    tableDeck + red9;
 
     // Flush* isFlush = p1.checkPlayerFlush(tableDeck);
     // if (p1.checkPlayerFlush(tableDeck) != nullptr)
@@ -47,8 +53,13 @@ int main()
     //     isPair->print();
     // }
 
-    TwoPair* isTwoPair = p1.checkPlayerTwoPair(tableDeck);
-    if (isTwoPair != nullptr){
-        isTwoPair->print();
+    // TwoPair* isTwoPair = p1.checkPlayerTwoPair(tableDeck);
+    // if (isTwoPair != nullptr){
+    //     isTwoPair->print();
+    // }
+    tableDeck.print();
+    Straight* isStraight = p1.checkPlayerStraight(tableDeck);
+    if (isStraight != nullptr){
+        isStraight->print();
     }
 }
