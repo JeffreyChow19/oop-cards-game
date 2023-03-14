@@ -210,7 +210,40 @@ HighCard *Player::checkPlayerHighCard()
 };
 
 Pair *Player::checkPlayerPair(TableDeck tableDeck){
+    // sort ascending
+    sort(this->deck.begin(), this->deck.end(), ColorCard::compareByValueThenColor);
+    sort(tableDeck.getDeck().begin(), tableDeck.getDeck().end(), ColorCard::compareByValueThenColor);
 
+    // check inner deck first
+    bool playerPair = false;
+
+    if (this->deck[0].getValue() == this->deck[1].getValue()){
+        playerPair = true;
+    }
+
+    // loop through each card in deck
+    for (auto c = this->deck.rbegin(); c != this->deck.rend(); ++c){
+        // check if c have pair in tableDeck
+        for (auto d = tableDeck.getDeck().rbegin(); d != tableDeck.getDeck().rend(); ++d){
+            // if there is pair, return pair
+            if (c->getValue() == d->getValue()){
+                pair<ColorCard,ColorCard> cardPair;      
+
+                // check if inner deck is pair and inner deck pair is greater than this pair         
+                if (playerPair && !ColorCard::compareByColor(this->deck[0], *d)){
+                    cardPair.first = this->deck[0];
+                    cardPair.second = this->deck[1];
+                } else {
+                    // return this pair           
+                    cardPair.first = *c;
+                    cardPair.second = *d;
+                }
+
+                return new Pair(cardPair);
+            }
+        }
+    }  
+    return nullptr; 
 };
 
 Straight *Player::checkPlayerStraight(TableDeck tableDeck){

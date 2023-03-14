@@ -57,7 +57,15 @@ bool ColorCard::compareByColor(const ColorCard &first, const ColorCard &second)
     return first.getBaseValue() <= second.getBaseValue();
 }
 
-bool ColorCard::compareByColor(const ColorCard &first, const ColorCard &second)
+bool ColorCard::compareByValueThenColor(const ColorCard &first, const ColorCard &second)
+{
+   if (first.getValue() == second.getValue()){
+        return first.getBaseValue() < second.getBaseValue();
+   }
+   return first.getValue() < second.getValue();
+}
+
+void ColorCard::printInfo()
 {
     Coloring clr;
     switch (this->color_)
