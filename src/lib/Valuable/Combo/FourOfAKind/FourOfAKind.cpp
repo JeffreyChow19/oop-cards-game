@@ -1,13 +1,10 @@
 #include "FourOfAKind.hpp"
 
-FourOfAKind::FourOfAKind(ColorCard firstCard, ColorCard secondCard, ColorCard thirdCard, ColorCard fourthCard) 
+FourOfAKind::FourOfAKind(vector<ColorCard> cards) 
 {
-    this->quad_.push_back(firstCard);
-    this->quad_.push_back(secondCard);
-    this->quad_.push_back(thirdCard);
-    this->quad_.push_back(fourthCard);
+    this->quad_ = cards;
 
-    /* sort ascending by card value */
+    /* sort ascending by card color */
     sort(this->quad_.begin(), this->quad_.end(), ColorCard::compareByColor);
 }
 

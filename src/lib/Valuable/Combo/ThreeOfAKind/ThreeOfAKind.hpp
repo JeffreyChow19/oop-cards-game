@@ -10,11 +10,9 @@ class ThreeOfAKind : public Combo {
         /**
          * @brief Construct a new Three Of A Kind object
          * 
-         * @param firstCard 
-         * @param secondCard 
-         * @param thirdCard 
+         * @param cards 
          */
-        ThreeOfAKind(ColorCard firstCard, ColorCard secondCard, ColorCard thirdCard);
+        ThreeOfAKind(vector<ColorCard> cards);
 
         /**
          * @brief Destroy the Three Of A Kind object

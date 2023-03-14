@@ -1,11 +1,9 @@
 #include <ThreeOfAKind.hpp>
 
 
-ThreeOfAKind::ThreeOfAKind(ColorCard firstCard, ColorCard secondCard, ColorCard thirdCard) 
+ThreeOfAKind::ThreeOfAKind(vector<ColorCard> cards) 
 {
-    this->triple_.push_back(firstCard);
-    this->triple_.push_back(secondCard);
-    this->triple_.push_back(thirdCard);
+    this->triple_ = cards;
 }
 
 ThreeOfAKind::~ThreeOfAKind() 
