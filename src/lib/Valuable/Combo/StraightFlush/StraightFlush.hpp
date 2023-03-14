@@ -6,18 +6,14 @@
 
 class StraightFlush : public Combo {
     private:
-        vector<ColorCard> sfHand_; 
+        vector<ColorCard> cards_; 
     public:
         /**
          * @brief Construct a new Straight Flush object
          * 
-         * @param firstCard 
-         * @param secondCard 
-         * @param thirdCard 
-         * @param fourthCard 
-         * @param fifthCard 
+         * @param cards 
          */
-        StraightFlush(ColorCard firstCard, ColorCard secondCard, ColorCard thirdCard, ColorCard fourthCard, ColorCard fifthCard);
+        StraightFlush(vector<ColorCard> cards);
 
         /**
          * @brief Destroy StraightFlush object
