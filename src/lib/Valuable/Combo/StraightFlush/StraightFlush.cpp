@@ -17,7 +17,7 @@ StraightFlush::~StraightFlush()
     this->sfHand_.clear();
 }
 
-float StraightFlush::getValue()
+float StraightFlush::getValue() const
 {
     float res = 11.03;   /* maximum four of a kind value */
 

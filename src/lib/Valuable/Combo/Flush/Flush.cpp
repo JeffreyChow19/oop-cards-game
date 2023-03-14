@@ -17,7 +17,7 @@ Flush::~Flush()
     this->flushHand_.clear();
 }
 
-float Flush::getValue() 
+float Flush::getValue() const
 {
     float result = 13.78;   /* maximum straight value */
 

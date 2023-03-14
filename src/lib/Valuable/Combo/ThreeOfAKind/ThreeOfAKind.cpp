@@ -13,7 +13,7 @@ ThreeOfAKind::~ThreeOfAKind()
     this->triple_.clear();
 }
 
-float ThreeOfAKind::getValue() 
+float ThreeOfAKind::getValue() const 
 {
     /* Rumus : 0.2 * angka + 0.05 * color + 8.28 (tertinggi dari two pair) */
     return (

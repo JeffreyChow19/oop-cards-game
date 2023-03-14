@@ -27,7 +27,7 @@ class ThreeOfAKind : public Combo {
          * 
          * @return float 
          */
-        float getValue();
+        float getValue() const;
 };
 
 #endif

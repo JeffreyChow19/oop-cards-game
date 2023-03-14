@@ -29,7 +29,7 @@ class Flush {
          * 
          * @return float 
          */
-        float getValue();
+        float getValue() const;
 };
 
 #endif

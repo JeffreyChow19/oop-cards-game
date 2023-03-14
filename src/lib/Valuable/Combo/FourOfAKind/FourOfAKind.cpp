@@ -16,7 +16,7 @@ FourOfAKind::~FourOfAKind()
     this->quad_.clear();
 }
 
-float FourOfAKind::getValue() {
+float FourOfAKind::getValue() const {
     /* (maximum of fullHouse) + quad combination value */
     return 21.27 + 0.2*this->quad_[0].getValue();
 }
