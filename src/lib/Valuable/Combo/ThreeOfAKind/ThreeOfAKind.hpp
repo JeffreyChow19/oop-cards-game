@@ -3,32 +3,34 @@
 
 #include "../Combo.hpp"
 
-class ThreeOfAKind : public Combo {
-    private:
-        vector<ColorCard> triple_;
-    public:
-        /**
-         * @brief Construct a new Three Of A Kind object
-         * 
-         * @param firstCard 
-         * @param secondCard 
-         * @param thirdCard 
-         */
-        ThreeOfAKind(ColorCard firstCard, ColorCard secondCard, ColorCard thirdCard);
+class ThreeOfAKind : public Combo
+{
+private:
+    vector<ColorCard> triple_;
 
-        /**
-         * @brief Destroy the Three Of A Kind object
-         * 
-         */
-        virtual ~ThreeOfAKind();
+public:
+    /**
+     * @brief Construct a new Three Of A Kind object
+     *
+     * @param firstCard
+     * @param secondCard
+     * @param thirdCard
+     */
+    ThreeOfAKind(vector<ColorCard> cards);
 
-        /**
-         * @brief Get the Value of object
-         * 
-         * @return float 
-         */
-        float getValue();
-        void print();
+    /**
+     * @brief Destroy the Three Of A Kind object
+     *
+     */
+    virtual ~ThreeOfAKind();
+
+    /**
+     * @brief Get the Value of object
+     *
+     * @return float
+     */
+    float getValue();
+    void print();
 };
 
 #endif

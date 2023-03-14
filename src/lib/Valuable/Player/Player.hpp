@@ -135,6 +135,9 @@ public:
 
     TwoPair *checkPlayerTwoPair(TableDeck tableDeck);
     void printCards();
+
+    void deleteMinValueFromCombo(vector<ColorCard> &combo, int limit);
+    void deleteMinColorFromCombo(vector<ColorCard> &combo, int limit);
 };
 
 #endif
