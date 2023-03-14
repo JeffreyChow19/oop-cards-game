@@ -19,6 +19,7 @@ Player::Player(const Player &other)
     this->hasPlayed_ = other.hasPlayed_;
     this->ability_ = other.ability_;
     this->abilityStatus_ = other.abilityStatus_;
+    this->deck = other.deck;
     playerCount_++;
     this->id_ = playerCount_;
     // To do: adding deck & ability
@@ -249,7 +250,8 @@ HighCard *Player::checkPlayerHighCard()
     return hc2;
 };
 
-Pair *Player::checkPlayerPair(TableDeck tableDeck){
+Pair *Player::checkPlayerPair(TableDeck tableDeck)
+{
     // sort ascending
     sort(this->deck.begin(), this->deck.end(), ColorCard::compareByValueThenColor);
     sort(tableDeck.getDeck().begin(), tableDeck.getDeck().end(), ColorCard::compareByValueThenColor);
@@ -257,24 +259,31 @@ Pair *Player::checkPlayerPair(TableDeck tableDeck){
     // check inner deck first
     bool playerPair = false;
 
-    if (this->deck[0].getValue() == this->deck[1].getValue()){
+    if (this->deck[0].getValue() == this->deck[1].getValue())
+    {
         playerPair = true;
     }
 
     // loop through each card in deck
-    for (auto c = this->deck.rbegin(); c != this->deck.rend(); ++c){
+    for (auto c = this->deck.rbegin(); c != this->deck.rend(); ++c)
+    {
         // check if c have pair in tableDeck
-        for (auto d = tableDeck.getDeck().rbegin(); d != tableDeck.getDeck().rend(); ++d){
+        for (auto d = tableDeck.getDeck().rbegin(); d != tableDeck.getDeck().rend(); ++d)
+        {
             // if there is pair, return pair
-            if (c->getValue() == d->getValue()){
-                pair<ColorCard,ColorCard> cardPair;      
+            if (c->getValue() == d->getValue())
+            {
+                pair<ColorCard, ColorCard> cardPair;
 
-                // check if inner deck is pair and inner deck pair is greater than this pair         
-                if (playerPair && !ColorCard::compareByColor(this->deck[0], *d)){
+                // check if inner deck is pair and inner deck pair is greater than this pair
+                if (playerPair && !ColorCard::compareByColor(this->deck[0], *d))
+                {
                     cardPair.first = this->deck[0];
                     cardPair.second = this->deck[1];
-                } else {
-                    // return this pair           
+                }
+                else
+                {
+                    // return this pair
                     cardPair.first = *c;
                     cardPair.second = *d;
                 }
@@ -282,8 +291,8 @@ Pair *Player::checkPlayerPair(TableDeck tableDeck){
                 return new Pair(cardPair);
             }
         }
-    }  
-    return nullptr; 
+    }
+    return nullptr;
 };
 
 Straight *Player::checkPlayerStraight(TableDeck tableDeck){
@@ -330,6 +339,61 @@ ThreeOfAKind *Player::checkPlayerThreeOfAKind(TableDeck tableDeck)
     return nullptr;
 };
 
-TwoPair *Player::checkPlayerTwoPair(TableDeck tableDeck){
+TwoPair *Player::checkPlayerTwoPair(TableDeck tableDeck)
+{
+    sort(this->deck.begin(), this->deck.end(), ColorCard::compareByValueThenColor);
+    sort(tableDeck.getDeck().begin(), tableDeck.getDeck().end(), ColorCard::compareByValueThenColor);
 
+    map<int, vector<ColorCard>> temp;
+    vector<ColorCard> tableDeckPair;
+    pair<ColorCard, ColorCard> firstCardPair, secondCardPair;
+
+    bool foundPair = false;
+    for (auto it = tableDeck.getDeck().rbegin(); it != tableDeck.getDeck().rend(); it++)
+    {
+        if (!foundPair && temp[it->getValue()].size() == 1)
+        {
+            temp[it->getValue()].push_back(*it);
+            tableDeckPair = temp[it->getValue()];
+            foundPair = true;
+        }
+        if (!foundPair || find(temp.begin(), temp.end(), it->getValue()) != temp.end())
+        {
+            temp[it->getValue()].push_back(*it);
+        }
+    }
+
+    // check player Pair
+    if (foundPair && deck[0].getValue() == deck[1].getValue())
+    {
+        firstCardPair.first = deck[0];
+        firstCardPair.second = deck[1];
+        secondCardPair.first = tableDeckPair[0];
+        secondCardPair.second = tableDeckPair[1];
+        return new TwoPair(firstCardPair, secondCardPair);
+    }
+
+    if (temp[deck[0].getValue()].size() == 1)
+    {
+        temp[deck[0].getValue()].push_back(deck[0]);
+    }
+
+    if (temp[deck[1].getValue()].size() == 1)
+    {
+        temp[deck[1].getValue()].push_back(deck[1]);
+    }
+
+    if (temp.size() >= 2)
+    {
+        int cnt = 0;
+        auto it = temp.rbegin();
+        firstCardPair.first = it->second[0];
+        firstCardPair.second = it->second[1];
+        it++;
+        secondCardPair.first = it->second[0];
+        secondCardPair.second = it->second[1];
+        return new TwoPair(firstCardPair, secondCardPair);
+    }
+
+    return nullptr;
 };
