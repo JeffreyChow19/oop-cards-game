@@ -3,14 +3,16 @@
 
 #include "../Combo.hpp"
 
-class FourOfAKind : public Combo {
-    private:
-        vector<ColorCard> quad_;
-    public:
-        FourOfAKind(ColorCard, ColorCard, ColorCard, ColorCard);
-        virtual ~FourOfAKind();
-        float getValue();
-        void print();
+class FourOfAKind : public Combo
+{
+private:
+    vector<ColorCard> quad_;
+
+public:
+    FourOfAKind(vector<ColorCard> cards);
+    virtual ~FourOfAKind();
+    float getValue();
+    void print();
 };
 
 #endif

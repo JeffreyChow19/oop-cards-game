@@ -56,6 +56,8 @@ public:
      *
      */
     virtual void print() = 0;
+
+    vector<T>& getDeck();
 };
 
 #endif
