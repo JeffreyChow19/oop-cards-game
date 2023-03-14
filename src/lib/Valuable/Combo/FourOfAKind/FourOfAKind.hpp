@@ -10,8 +10,9 @@ class FourOfAKind : public Combo {
         /**
          * @brief Construct a new Four Of A Kind object
          * 
+         * @param cards 
          */
-        FourOfAKind(vector<ColorCard>);
+        FourOfAKind(vector<ColorCard> cards);
         
         /**
          * @brief Destroy the Four Of A Kind object

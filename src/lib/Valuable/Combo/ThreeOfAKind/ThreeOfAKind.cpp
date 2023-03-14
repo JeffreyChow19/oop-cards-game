@@ -1,5 +1,4 @@
-#include <ThreeOfAKind.hpp>
-
+#include "ThreeOfAKind.hpp"
 
 ThreeOfAKind::ThreeOfAKind(vector<ColorCard> cards) 
 {
