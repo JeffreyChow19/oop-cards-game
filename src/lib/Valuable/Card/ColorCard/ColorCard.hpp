@@ -3,6 +3,7 @@
 
 #include <bits/stdc++.h>
 #include "../Card.hpp"
+#include "../../../Util/Coloring.hpp"
 
 using namespace std;
 
@@ -20,7 +21,6 @@ class ColorCard : public Card
 {
 private:
     Color color_;
-
 public:
     /**
      * @brief Construct a new Color Card object

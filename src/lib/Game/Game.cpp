@@ -1,7 +1,5 @@
 #include "Game.hpp"
 #include "../Set/SetProcess.hpp"
-#include "../Exception/Exception.hpp"
-#include "../Util/Coloring.hpp"
 
 Game::Game()
 {
