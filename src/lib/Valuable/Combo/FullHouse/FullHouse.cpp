@@ -29,10 +29,11 @@ FullHouse::~FullHouse(){
 
 }
 
-float FullHouse::getValue() const{
+float FullHouse::getValue() const {
+    /* rumus : concat(encode(three), encode(pair)) + maxflush */       
     float res = FLUSH_MAX;   /* maximum flush value */
 
-    res += tris_.getValue();       /* highest card in the combination */
+    res += tris_.getValue() + 0.00001 * pair_.getValue();
     
     return res;
 }
