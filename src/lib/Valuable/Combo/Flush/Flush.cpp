@@ -26,4 +26,10 @@ float Flush::getValue()
     return 0;
 }
 
+void Flush::print(){
+    for (auto &c : this->flushHand_){
+        c.printInfo();
+    }
+}
+
 

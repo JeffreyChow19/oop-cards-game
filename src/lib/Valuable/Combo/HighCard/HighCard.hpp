@@ -12,6 +12,7 @@ class HighCard:public Combo {
         HighCard(ColorCard card);
         ~HighCard();
         float getValue();
+        void print();
 };
 
 #endif

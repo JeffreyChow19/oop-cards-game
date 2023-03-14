@@ -10,6 +10,7 @@ class FourOfAKind : public Combo {
         FourOfAKind(ColorCard, ColorCard, ColorCard, ColorCard);
         virtual ~FourOfAKind();
         float getValue();
+        void print();
 };
 
 #endif

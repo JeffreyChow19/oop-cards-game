@@ -10,3 +10,8 @@ float TwoPair::getValue(){
     
     return res;
 }
+
+void TwoPair::print() {
+    this->firstPair_.print();
+    this->secondPair_.print();
+}

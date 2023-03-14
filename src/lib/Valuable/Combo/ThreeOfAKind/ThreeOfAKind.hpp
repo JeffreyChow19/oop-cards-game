@@ -28,6 +28,7 @@ class ThreeOfAKind : public Combo {
          * @return float 
          */
         float getValue();
+        void print();
 };
 
 #endif

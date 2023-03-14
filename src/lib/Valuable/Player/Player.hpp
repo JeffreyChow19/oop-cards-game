@@ -134,6 +134,7 @@ public:
     ThreeOfAKind *checkPlayerThreeOfAKind(vector<ColorCard> cards);
 
     TwoPair *checkPlayerTwoPair(vector<ColorCard> cards);
+    void printCards();
 };
 
 #endif

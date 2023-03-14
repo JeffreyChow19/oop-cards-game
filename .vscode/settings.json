@@ -29,6 +29,12 @@
     "type_traits": "cpp",
     "typeindex": "cpp",
     "valarray": "cpp",
-    "regex": "cpp"
+    "regex": "cpp",
+    "*.tcc": "cpp",
+    "expected": "cpp",
+    "optional": "cpp",
+    "system_error": "cpp",
+    "utility": "cpp",
+    "variant": "cpp"
   }
 }

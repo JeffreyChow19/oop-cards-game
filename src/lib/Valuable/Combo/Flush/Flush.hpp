@@ -27,6 +27,8 @@ public:
      * @return float
      */
     float getValue();
+
+    void print();
 };
 
 #endif

@@ -17,3 +17,8 @@ float Pair::getValue(){
     
     return res;
 }
+
+void Pair::print(){
+    this->cardPair_.first.printInfo();
+    this->cardPair_.second.printInfo();
+}

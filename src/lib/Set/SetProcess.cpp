@@ -47,6 +47,9 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
                     printSetInfo();
                     cout << endl
                          << "It's " << currPlayer.getNickname() << "'s turn" << endl;
+                    cout << "Player's cards : " << endl;
+                    currPlayer.printCards();
+                    
                     if (this->round_ != 1)
                     {
                         allowedCommands.push_back(currPlayer.getAbility());

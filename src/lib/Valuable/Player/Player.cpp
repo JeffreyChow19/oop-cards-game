@@ -120,6 +120,12 @@ void Player::print()
     cout << "  Points: " << point_ << endl;
 }
 
+void Player::printCards(){
+    for (auto &c : this->deck){
+        c.printInfo();
+    }
+}
+
 Combo *Player::checkPlayerCombo(TableDeck tableDeck)
 {
 }

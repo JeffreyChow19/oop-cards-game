@@ -22,3 +22,9 @@ float ThreeOfAKind::getValue()
         + 8.28 
     );       
 }
+
+void ThreeOfAKind::print(){
+    for (auto &c : this->triple_){
+        c.printInfo();
+    }
+}

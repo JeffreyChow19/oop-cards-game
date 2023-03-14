@@ -27,3 +27,9 @@ float Straight::getValue()
     
     return res;
 }
+
+void Straight::print(){
+    for (auto &c : this->deck_){
+        c.printInfo();
+    }
+}

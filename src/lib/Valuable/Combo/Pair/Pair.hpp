@@ -12,6 +12,7 @@ class Pair:public Combo {
         Pair(pair<ColorCard,ColorCard> cardPair);
         ~Pair();
         float getValue();
+        void print();
 };
 
 #endif

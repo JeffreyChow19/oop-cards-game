@@ -10,3 +10,7 @@ HighCard::~HighCard(){
 float HighCard::getValue(){
     return 0.03 * card_.getBaseValue() + 0.1 * card_.getValue();
 }
+
+void HighCard::print() {
+    this->card_.printInfo();
+}
