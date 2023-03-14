@@ -18,11 +18,12 @@ Set::Set(vector<Player> &listOfPlayer, int firstPlayerIdx)
     MainDeck mainDeck;
     mainDeck.fillDeck();
     this->mainDeck_ = mainDeck;
-    
+
     TableDeck tableDeck;
     this->tableDeck_ = tableDeck;
 
-    for (int i=0; i < listOfPlayer_.size();i++) {
+    for (int i = 0; i < listOfPlayer_.size(); i++)
+    {
         ColorCard add1 = mainDeck_.getFromMainDeck();
         ColorCard add2 = mainDeck_.getFromMainDeck();
         listOfPlayer_[i].addPlayerCard(add1);
@@ -44,7 +45,7 @@ void Set::setPoints(float multiplier)
         throw PointException();
     }
     this->points_ = this->points_ * multiplier;
-    cout << this->points_;
+    // cout << this->points_;
 }
 void Set::printSetInfo()
 {
@@ -84,10 +85,12 @@ void Set::setMainDeck(MainDeck mainDeck)
     this->mainDeck_ = mainDeck;
 }
 
-void Set::setFirstPlayerIdx(int idx){
+void Set::setFirstPlayerIdx(int idx)
+{
     this->firstPlayerIdx_ = idx;
 };
 
-void Set::setCurrPlayerIdx(int idx){
+void Set::setCurrPlayerIdx(int idx)
+{
     this->currPlayerIdx = idx;
 };
