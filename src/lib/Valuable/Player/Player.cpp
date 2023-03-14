@@ -84,7 +84,7 @@ void Player::setPlayerDeck(vector<ColorCard> playerDeck)
     this->deck = playerDeck;
 }
 
-float Player::getValue()
+float Player::getValue() const
 {
     return 0.0;
 }

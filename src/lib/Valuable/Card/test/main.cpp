@@ -1,4 +1,5 @@
 #include "../ColorCard/ColorCard.hpp"
+#include "../../Combo/Pair/Pair.hpp"
 
 int main()
 {
@@ -6,6 +7,8 @@ int main()
     ColorCard blue2(Color::Blue, 2);
     ColorCard green3(Color::Green, 3);
     ColorCard yellow4(Color::Yellow, 4);
+    pair<ColorCard, ColorCard> tes(red1, blue2);
+    Pair val(make_pair(red1,blue2));
     cout << "Value of ";
     red1.printInfo();
     cout << " equals " << red1.getValue() << endl;
@@ -35,5 +38,24 @@ int main()
     else
     {
         cout << "Red 1 >= Yellow 4" << endl;
+    }
+
+
+    /* comparator vector test */
+    vector<ColorCard> cards;
+    cards.push_back(red1);
+    cards.push_back(blue2);
+    cards.push_back(yellow4);
+    cards.push_back(green3);
+
+    auto maxVal = max_element(cards.begin(), cards.end(), Card::compareByValue);
+    auto maxColor = max_element(cards.begin(), cards.end(), ColorCard::compareByColor);
+    cout << "Value=" << maxVal->getValue() << " Color=" << maxVal->getBaseValue() << endl;
+    cout << "Value=" << maxColor->getValue() << " Color=" << maxColor->getBaseValue() << endl;
+
+    sort(cards.begin(), cards.end(), ColorCard::compareByValue);
+    for (int i = 0; i < cards.size(); i++) {
+        cards[i].printInfo();
+        cout << endl;
     }
 }

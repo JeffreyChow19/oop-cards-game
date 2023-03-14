@@ -9,8 +9,9 @@ protected:
 public:
     Card();
     Card(int value);
-    virtual double getValue() const = 0;
+    virtual float getValue() const = 0;
     ~Card();
+    static bool compareByValue(const Card &, const Card &);
 };
 
 #endif
