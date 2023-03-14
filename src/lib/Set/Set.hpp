@@ -62,7 +62,7 @@ public:
      */
     int getFirstPlayerIdx();
 
-    int getCurrPlayerIdx() const;
+    int getCurrPlayerIdx();
 
     MainDeck &getMainDeck();
 

@@ -17,6 +17,7 @@ Player::Player(const Player &other)
     this->nickname_ = other.nickname_;
     this->point_ = other.point_;
     this->hasPlayed_ = other.hasPlayed_;
+    this->ability_ = other.ability_;
     this->abilityStatus_ = other.abilityStatus_;
     playerCount_++;
     this->id_ = playerCount_;
@@ -73,7 +74,7 @@ void Player::addPlayerCard(ColorCard toAdd)
     (*this) + toAdd;
 }
 
-vector<ColorCard> Player::getPlayerDeck() const
+vector<ColorCard> Player::getPlayerDeck()
 {
     return this->deck;
 }

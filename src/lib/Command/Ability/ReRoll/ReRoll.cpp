@@ -2,7 +2,9 @@
 
 void ReRoll::activate(Set &set)
 {
-    cout << "Melakukan pembuangan kartu yang sedang dimiliki\n";
+    vector<Player> &listOfPlayer = set.getListOfPlayers();
+    int currPlayerIdx = set.getCurrPlayerIdx();
+    cout << "Your cards are thrown away ...\n";
 
     // Ambil dua kartu baru
     vector<ColorCard> newPlayerDeck;
@@ -10,13 +12,15 @@ void ReRoll::activate(Set &set)
     ColorCard add2 = set.getMainDeck().getFromMainDeck();
 
     // Set kartu player dengan dua kartu baru
-    set.getListOfPlayers()[set.getCurrPlayerIdx()].setPlayerDeck(newPlayerDeck);
+    listOfPlayer[currPlayerIdx].setPlayerDeck(newPlayerDeck);
+    listOfPlayer[currPlayerIdx].addPlayerCard(add1);
+    listOfPlayer[currPlayerIdx].addPlayerCard(add2);
 
-    cout << "Kamu mendapatkan 2 kartu baru yaitu:\n";
+    cout << "You got two new cards:\n";
     cout << "1. "; 
-    set.getListOfPlayers()[set.getCurrPlayerIdx()].getPlayerDeck()[0].printInfo();
+    listOfPlayer[currPlayerIdx].getPlayerDeck()[0].printInfo();
     cout << "\n2. "; 
-    set.getListOfPlayers()[set.getCurrPlayerIdx()].getPlayerDeck()[1].printInfo();
+    listOfPlayer[currPlayerIdx].getPlayerDeck()[1].printInfo();
     cout << endl;
 }
 
