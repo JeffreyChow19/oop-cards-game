@@ -54,6 +54,8 @@ public:
      * @return vector<Player>& 
      */
     vector<Player> &getListOfPlayers();
+
+    void setListOfPlayers(vector<Player>);
     
     /**
      * @brief Get the index of the first player for the set

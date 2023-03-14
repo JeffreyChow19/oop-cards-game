@@ -59,14 +59,17 @@ void MainDeck::fillDeck(){
 
 void MainDeck::randomizeCard()
 {
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<> dis(0, deck.size() - 1);
+    // random_device rd;
+    // mt19937 gen(rd());
+    // uniform_int_distribution<> dis(0, deck.size() - 1);
 
-    // Shuffle the card
-    for (int i = 0; i < deck.size(); ++i) {
-        swap(deck[i], deck[dis(gen)]);
-    }
+    // // Shuffle the card
+    // for (int i = 0; i < deck.size(); ++i) {
+    //     swap(deck[i], deck[dis(gen)]);
+    // }
+
+    srand(time(NULL));
+    random_shuffle(deck.begin(), deck.end());
 }
 
 void MainDeck::readCard(){

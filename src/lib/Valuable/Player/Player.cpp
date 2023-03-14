@@ -12,7 +12,7 @@ Player::Player(string nickname) : nickname_(nickname), hasPlayed_(false), abilit
     // To do: adding deck & ability
 }
 
-Player::Player(const Player &other)
+Player::Player(const Player &other) : InventoryHolder(other)
 {
     this->nickname_ = other.nickname_;
     this->point_ = other.point_;
@@ -122,10 +122,10 @@ void Player::print()
 
 void Player::printCards()
 {
-    for (auto &c : this->deck)
-    {
-        c.printInfo();
-    }
+    // for (auto &c : this->deck)
+    // {
+    //     c.printInfo();
+    // }
     ColorCard::printGroup(this->deck);
 }
 

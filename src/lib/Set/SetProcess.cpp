@@ -4,7 +4,7 @@
 SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(listOfPlayer, firstPlayerIdx)
 {
     vector<string> allowedCommands = {"NEXT", "HALF", "DOUBLE"};
-    vector<string> abilities = {"RE-ROLL", "REVERSE", "SWITCH", "SWAP", "QUARTER", "QUADRUPLE", "ABILITYLESS"};
+    vector<string> abilities = {"RE-ROLL", "SWITCH", "SWAP", "QUARTER", "REVERSE", "QUADRUPLE", "ABILITYLESS"};
     commands_ = {new Next(),
                  new Double(),
                  new Half(),
@@ -30,8 +30,6 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
             p.setHasPlayed(false);
         }
 
-        allowedCommands = {"NEXT", "HALF", "DOUBLE"};
-
         if (this->round_ != 6)
         {
             this->tableDeck_.addCard(this->mainDeck_);
@@ -40,6 +38,7 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
             int playerMoved = 0;
             while (playerMoved < listOfPlayer_.size())
             {
+                allowedCommands = {"NEXT", "HALF", "DOUBLE"};
                 Player &currPlayer = listOfPlayer_[currPlayerIdx];
                 if (!currPlayer.getHasPlayed())
                 {
@@ -50,15 +49,15 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
                     cout << "Player's cards : " << endl;
                     currPlayer.printCards();
                     
-                    if (this->round_ != 1)
+                    if (this->round_ != 1 && currPlayer.getAbilityStatus())
                     {
                         allowedCommands.push_back(currPlayer.getAbility());
                     }
                     askCommand(allowedCommands, currPlayer);
-                    if (this->round_ != 1)
-                    {
-                        allowedCommands.pop_back();
-                    }
+                    // if (this->round_ != 1)
+                    // {
+                    //     allowedCommands.pop_back();
+                    // }
                     listOfPlayer_[currPlayerIdx].setHasPlayed(true);
                     playerMoved++;
                 }
@@ -67,16 +66,12 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
 
             if (this->round_ == 1)
             {
-                random_device rd;
-                mt19937 gen(rd());
-                uniform_int_distribution<> dis(0, abilities.size() - 1);
                 // to do : make wait disinii jadi nunggu 
                 cout << "Shuffling abilities... " << endl;
                 // Shuffle the abilities
-                for (int i = 0; i < abilities.size(); ++i)
-                {
-                    swap(abilities[i], abilities[dis(gen)]);
-                }
+                            
+                srand(time(NULL));
+                random_shuffle(abilities.begin(), abilities.end());
                 for (int i = 0; i < this->listOfPlayer_.size(); i++)
                 {
                     cout << listOfPlayer_[i].getNickname() << " got " << abilities[i] << " ability" << endl;
@@ -94,14 +89,15 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
 void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
 {
     bool commandSet = false;
+    bool afterReverse = false;
     while (!commandSet)
     {
         try
         {
-            // if (afterReverse) {
-            //     allowedCommands.pop_back();
-            //     afterReverse = false;
-            // }
+            if (afterReverse) {
+                allowedCommands.pop_back();
+                afterReverse = false;
+            }
             cout << endl
                  << "The allowed commands are : " << endl;
             for (int i = 0; i < allowedCommands.size(); i++)
@@ -121,16 +117,17 @@ void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
                     break;
                 }
             }
-            // if (command != "NEXT" && command != "DOUBLE" && command != "HALF")
-            // {
-            //     this->listOfPlayer_[currPlayerIdx].setAbilityStatus(false);
-            // }
-            // if (command != "REVERSE") {
-            //     commandSet = true;
-            // }
-            // else {
-            //     afterReverse = true;
-            // }
+            if (command != "NEXT" && command != "DOUBLE" && command != "HALF")
+            {
+                this->listOfPlayer_[currPlayerIdx].setAbilityStatus(false);
+            }
+            if (command != "REVERSE") {
+                commandSet = true;
+            }
+            else {
+                commandSet = false;
+                afterReverse = true;
+            }
         }
         catch (CommandException &err)
         {
