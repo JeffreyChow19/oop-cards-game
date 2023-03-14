@@ -21,6 +21,15 @@ Set::Set(vector<Player> &listOfPlayer, int firstPlayerIdx)
     
     TableDeck tableDeck;
     this->tableDeck_ = tableDeck;
+
+    for (int i=0; i < listOfPlayer_.size();i++) {
+        ColorCard add1 = mainDeck_.getFromMainDeck();
+        ColorCard add2 = mainDeck_.getFromMainDeck();
+        listOfPlayer_[i].addPlayerCard(add1);
+        listOfPlayer_[i].addPlayerCard(add2);
+        // listOfPlayer_[i].getPlayerDeck()[0].printInfo();
+        // listOfPlayer_[i].getPlayerDeck()[1].printInfo();
+    }
 }
 
 Set::~Set()
@@ -60,7 +69,7 @@ int Set::getFirstPlayerIdx()
     return this->firstPlayerIdx_;
 }
 
-int Set::getCurrPlayerIdx() const
+int Set::getCurrPlayerIdx()
 {
     return this->currPlayerIdx;
 }

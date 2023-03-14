@@ -89,7 +89,7 @@ public:
 
     void addPlayerCard(ColorCard);
     
-    vector<ColorCard> getPlayerDeck() const;
+    vector<ColorCard> getPlayerDeck();
 
     void setPlayerDeck(vector<ColorCard>);
 

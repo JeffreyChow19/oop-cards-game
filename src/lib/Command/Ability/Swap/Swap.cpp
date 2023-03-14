@@ -3,12 +3,13 @@
 void Swap::activate(Set &set)
 {
     vector<Player>& listOfPlayer = set.getListOfPlayers();
-    cout << listOfPlayer[set.getCurrPlayerIdx()].getNickname() << " melakukan SWAPCARD\n";
-    cout << "Silahkan pilih pemain yang kartunya ingin Anda tukar: ";
+    int currPlayerIdx = set.getCurrPlayerIdx();
+    cout << listOfPlayer[currPlayerIdx].getNickname() << " is using SWAPCARD!\n";
+    cout << "Please choose a player to swap their card: \n";
     int no = 1;
     for (int i = 0; i < listOfPlayer.size(); i++)
     {
-        if (i == set.getCurrPlayerIdx())
+        if (i == currPlayerIdx)
         {
             continue;
         }
@@ -19,85 +20,74 @@ void Swap::activate(Set &set)
             no++;
         }
     }
-    try
-    {
-        cout << "> ";
-        int opt;
-        cin >> opt;
-        if (cin.fail())
+    bool success = false;
+    while (!success) {
+        try
         {
-            throw IntegerException();
-        }
-        else if (opt < 1 || opt > 6)
-        {
-            throw OptionException();
-        }
-        int idxFirstPlayer = opt <= set.getCurrPlayerIdx() ? opt - 1 : opt;
-        cout << "Silahkan pilih pemain yang kartunya ingin Anda tukar: ";
-        no = 1;
-        for (int i = 0; i < listOfPlayer.size(); i++)
-        {
-            if (i == set.getCurrPlayerIdx() || i == idxFirstPlayer)
+            int opt = inputOption(6);
+            int idxFirstPlayer = opt <= currPlayerIdx ? opt - 1 : opt;
+            cout << "Please choose a player to swap their card: \n";
+            no = 1;
+            for (int i = 0; i < listOfPlayer.size(); i++)
             {
-                continue;
+                if (i == currPlayerIdx || i == idxFirstPlayer)
+                {
+                    continue;
+                }
+                else
+                {
+                    cout << "[" << no << "]  ";
+                    listOfPlayer[i].print();
+                    no++;
+                }
             }
-            else
-            {
-                cout << "[" << no << "]  ";
-                listOfPlayer[i].print();
-                no++;
-            }
+            opt = inputOption(5);
+            int idxMax = max(idxFirstPlayer, currPlayerIdx);
+            int idxMin = min(idxFirstPlayer, currPlayerIdx);
+            int idxSecondPlayer = opt <= idxMin ? opt - 1 : opt >= idxMax ? opt + 1 : opt;
+            cout << "Please choose right/left for " << listOfPlayer[idxFirstPlayer].getNickname() << "\'s cards: \n";
+            cout << "[1] Right\n[2] Left\n";
+            opt = inputOption(2);
+            int idxCardFirstPlayer = 2 - opt;
+            cout << "Please choose right/left for " << listOfPlayer[idxSecondPlayer].getNickname() << "\'s cards: \n";
+            cout << "[1] Right\n[2] Left\n";
+            opt = inputOption(2);
+            int idxCardSecondPlayer = 2 - opt;
+            ColorCard tempFirst = listOfPlayer[idxFirstPlayer].getPlayerDeck()[idxCardFirstPlayer];
+            ColorCard tempSecond = listOfPlayer[idxSecondPlayer].getPlayerDeck()[idxCardSecondPlayer];
+            set.getListOfPlayers()[idxFirstPlayer].removePlayerCard(tempFirst);
+            set.getListOfPlayers()[idxFirstPlayer].addPlayerCard(tempSecond);
+            set.getListOfPlayers()[idxSecondPlayer].removePlayerCard(tempSecond);
+            set.getListOfPlayers()[idxSecondPlayer].addPlayerCard(tempFirst);
+            success = true;
         }
-        cout << "> ";
-        cin >> opt;
-        if (cin.fail())
+        catch (IntegerException &e)
         {
-            throw IntegerException();
+            cout << e.what();
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
         }
-        else if (opt < 1 || opt > 5)
+        catch (OptionException &e)
         {
-            throw OptionException();
+            cout << e.what();
         }
-        int idxSecondPlayer = opt <= set.getCurrPlayerIdx() ? opt - 1 : opt;
-        cout << "Silahkan pilih  kartu kanan/kiri " << listOfPlayer[idxFirstPlayer].getNickname() << ": \n";
-        cout << "1. Kanan\n 2. Kiri\n> ";
-        cin >> opt;
-        if (cin.fail())
-        {
-            throw IntegerException();
-        }
-        else if (opt < 1 || opt > 2)
-        {
-            throw OptionException();
-        }
-        int idxCardFirstPlayer = 2 - opt;
-        cout << "Silahkan pilih  kartu kanan/kiri " << listOfPlayer[idxSecondPlayer].getNickname() << ": \n";
-        cout << "1. Kanan\n 2. Kiri\n> ";
-        cin >> opt;
-        if (cin.fail())
-        {
-            throw IntegerException();
-        }
-        else if (opt < 1 || opt > 2)
-        {
-            throw OptionException();
-        }
-        int idxCardSecondPlayer = 2 - opt;
-        ColorCard tempFirst = listOfPlayer[idxFirstPlayer].getPlayerDeck()[idxCardFirstPlayer];
-        ColorCard tempSecond = listOfPlayer[idxSecondPlayer].getPlayerDeck()[idxCardSecondPlayer];
-        set.getListOfPlayers()[idxFirstPlayer].removePlayerCard(tempFirst);
-        set.getListOfPlayers()[idxFirstPlayer].addPlayerCard(tempSecond);
-        set.getListOfPlayers()[idxSecondPlayer].removePlayerCard(tempSecond);
-        set.getListOfPlayers()[idxSecondPlayer].addPlayerCard(tempFirst);
     }
-    catch (IntegerException &e)
+    
+}
+
+int Swap::inputOption(int sumOpt) {
+    int opt;
+    cout << "> ";
+    cin >> opt;
+    if (cin.fail())
     {
-        cout << e.what();
+        throw IntegerException();
     }
-    catch (OptionException &e)
+    else if (opt < 1 || opt > sumOpt)
     {
-        cout << e.what();
+        throw OptionException();
     }
+    return opt;
 }
 
 string Swap::getCommandName()
