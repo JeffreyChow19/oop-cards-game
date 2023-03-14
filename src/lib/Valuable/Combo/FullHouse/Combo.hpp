@@ -1,16 +1,36 @@
-#ifndef _COMBO_HPP_
-#define _COMBO_HPP_
+#ifndef _FULLHOUSE_HPP_
+#define _FULLHOUSE_HPP_
 
-#include <bits/stdc++.h>
-using namespace std;
+#include "../Combo.hpp"
 
-class Combo {
+
+class FullHouse:public Combo {
     private:
-        
+        vector<ColorCard> deck_; 
     public:
-        Combo();
-        virtual ~Combo();
-        virtual float getValue()=0;
+        /**
+         * @brief Construct a new FullHouse object
+         * 
+         * @param firstCard 
+         * @param secondCard 
+         * @param thirdCard 
+         * @param fourthCard 
+         * @param fifthCard 
+         */
+        FullHouse(ColorCard firstCard, ColorCard secondCard, ColorCard thirdCard, ColorCard fourthCard, ColorCard fifthCard);
+
+        /**
+         * @brief Destroy FullHouse object
+         * 
+         */
+        virtual ~FullHouse();
+
+        /**
+         * @brief Get the Value object
+         * 
+         * @return float 
+         */
+        float getValue() const;
 };
 
 #endif

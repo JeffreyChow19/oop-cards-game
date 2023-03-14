@@ -19,7 +19,7 @@ Straight::~Straight()
     this->deck_.clear();
 }
 
-float Straight::getValue() 
+float Straight::getValue() const
 {
     float res = 11.03;   /* maximum three of a kind value */
 

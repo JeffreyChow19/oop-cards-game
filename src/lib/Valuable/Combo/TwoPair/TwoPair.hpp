@@ -13,7 +13,7 @@ class TwoPair:public Combo {
     public:
         TwoPair(Pair firstPair, Pair secondPair);
         ~TwoPair();
-        float getValue();
+        float getValue() const;
 };
 
 #endif

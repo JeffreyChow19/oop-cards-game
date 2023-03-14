@@ -83,7 +83,7 @@ public:
      */
     static int getPlayerCount();
 
-    float getValue();
+    float getValue() const;
 
     ColorCard getFromPlayer();
 

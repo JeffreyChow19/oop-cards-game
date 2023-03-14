@@ -81,7 +81,7 @@ void Player::addPlayerCard(MainDeck &mainDeck_)
     // (*this) + toAdd;
 }
 
-float Player::getValue()
+float Player::getValue() const
 {
     return 0.0;
 }

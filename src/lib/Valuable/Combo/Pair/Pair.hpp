@@ -11,7 +11,7 @@ class Pair:public Combo {
     public:
         Pair(pair<ColorCard,ColorCard> cardPair);
         ~Pair();
-        float getValue();
+        float getValue() const;
 };
 
 #endif

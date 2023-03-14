@@ -12,7 +12,7 @@ class Combo:public Valuable {
     public:
         Combo();
         virtual ~Combo();
-        virtual float getValue()=0;
+        virtual float getValue() const=0;
 };
 
 #endif
