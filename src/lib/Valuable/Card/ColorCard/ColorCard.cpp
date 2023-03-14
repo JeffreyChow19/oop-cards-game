@@ -67,14 +67,14 @@ void ColorCard::printInfo(){
     }
 
     if (this->value_ >= 10){
-        cout << "\n ______ \n" 
+        cout << " ______ \n" 
                 "|" + to_string(this->value_) + "    |\n"
                 "|      |\n"
                 "|      |\n"
                 "|      |\n"
                 "|____" + to_string(this->value_) + "|\n";              
     } else {
-        cout << "\n _____ \n" 
+        cout << " _____ \n" 
                 "|" + to_string(this->value_) + "    |\n"
                 "|     |\n"
                 "|     |\n"

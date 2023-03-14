@@ -106,6 +106,8 @@ public:
     bool getHasPlayed();
 
     void print();
+
+    void printCards();
 };
 
 #endif

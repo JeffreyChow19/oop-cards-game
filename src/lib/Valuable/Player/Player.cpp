@@ -119,3 +119,9 @@ void Player::print()
     cout << nickname_ << endl;
     cout << "  Points: " << point_ << endl;
 }
+
+void Player::printCards(){
+    for (auto &c : this->deck){
+        c.printInfo();
+    }
+}
