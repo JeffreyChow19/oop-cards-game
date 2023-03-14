@@ -37,5 +37,15 @@ InventoryHolder<T> &InventoryHolder<T>::operator-(const T &toRemove)
     return *this;
 }
 
+template <class T>
+InventoryHolder<T> &InventoryHolder<T>::operator=(const InventoryHolder& other)
+{
+    if (this != &other)
+    {
+        this->deck.clear();
+        this->deck = other.deck;
+    }
+    return *this;
+}
 
 template class InventoryHolder<ColorCard>;

@@ -4,8 +4,18 @@
 #include <bits/stdc++.h>
 #include "../../InventoryHolder/InventoryHolder.hpp"
 #include "../../InventoryHolder/MainDeck/MainDeck.hpp"
+#include "../../InventoryHolder/TableDeck/TableDeck.hpp"
 #include "../Card/ColorCard/ColorCard.hpp"
 #include "../Valuable.hpp"
+#include "../Combo/Flush/Flush.hpp"
+#include "../Combo/FourOfAKind/FourOfAKind.hpp"
+#include "../Combo/Straight/Straight.hpp"
+// #include "../Combo/FullHouse/FullHouse.hpp"
+#include "../Combo/HighCard/HighCard.hpp"
+#include "../Combo/Pair/Pair.hpp"
+// #include "../Combo/StraightFlush/StraightFlush.hpp"
+#include "../Combo/ThreeOfAKind/ThreeOfAKind.hpp"
+#include "../Combo/TwoPair/TwoPair.hpp"
 
 using namespace std;
 
@@ -88,7 +98,7 @@ public:
     void removePlayerCard(ColorCard);
 
     void addPlayerCard(ColorCard);
-    
+
     vector<ColorCard> getPlayerDeck();
 
     void setPlayerDeck(vector<ColorCard>);
@@ -106,6 +116,24 @@ public:
     bool getHasPlayed();
 
     void print();
+
+    Combo *checkPlayerCombo(TableDeck tableDeck);
+
+    Flush *checkPlayerFlush(vector<ColorCard> cards);
+
+    FourOfAKind *checkPlayerFourOfAKind(vector<ColorCard> cards);
+
+    HighCard *checkPlayerHighCard(vector<ColorCard> cards);
+
+    Pair *checkPlayerPair(vector<ColorCard> cards);
+
+    Straight *checkPlayerStraight(vector<ColorCard> cards);
+
+    // StraightFlush* checkPlayerStraightFlush();
+
+    ThreeOfAKind *checkPlayerThreeOfAKind(vector<ColorCard> cards);
+
+    TwoPair *checkPlayerTwoPair(vector<ColorCard> cards);
 };
 
 #endif

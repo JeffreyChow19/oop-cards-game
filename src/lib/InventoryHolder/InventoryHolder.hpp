@@ -49,6 +49,8 @@ public:
      */
     InventoryHolder &operator-(const T &toRemove);
 
+    InventoryHolder &operator=(const InventoryHolder &other);
+
     /**
      * @brief print Inventory
      *

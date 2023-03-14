@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 enum class Color
 {
     Green = 0,
@@ -22,6 +21,12 @@ private:
     Color color_;
 
 public:
+    /**
+     * @brief Construct a new Color Card object, default color=Green, value=1
+     *
+     */
+    ColorCard();
+
     /**
      * @brief Construct a new Color Card object
      *
@@ -39,7 +44,7 @@ public:
 
     string getColor() const;
 
-    double getBaseValue() const;
+    float getBaseValue() const;
 
     /**
      * @brief Get the value of the card (adds base value with this->value)
@@ -47,7 +52,7 @@ public:
      *
      * @return double
      */
-    virtual double getValue() const;
+    virtual float getValue() const;
 
     /**
      * @brief compares this with other ColorCard
@@ -72,6 +77,8 @@ public:
     void printInfo();
 
     bool operator==(const ColorCard &) const;
+
+    static bool compareByColor(const ColorCard &, const ColorCard &);
 };
 
 #endif

@@ -3,6 +3,8 @@
 
 using namespace std;
 
+ColorCard::ColorCard() : color_(Color::Green), Card(1) {}
+
 ColorCard::ColorCard(Color color, int value) : color_(color), Card(value) {}
 
 ColorCard::ColorCard(const ColorCard &other) : color_(other.color_), Card(other.value_)
@@ -19,14 +21,14 @@ string ColorCard::getColor() const
     return colorMap[color_];
 }
 
-double ColorCard::getBaseValue() const
+float ColorCard::getBaseValue() const
 {
-    return static_cast<double>(this->color_);
+    return static_cast<float>(this->color_);
 }
 
-double ColorCard::getValue() const
+float ColorCard::getValue() const
 {
-    return value_;
+    return static_cast<float>(this->value_);
 }
 
 bool ColorCard::operator<(const ColorCard &other) const
@@ -51,4 +53,9 @@ bool ColorCard::operator==(const ColorCard &other) const
         return true;
     }
     return false;
+}
+
+bool ColorCard::compareByColor(const ColorCard &first, const ColorCard &second)
+{
+    return first.getBaseValue() <= second.getBaseValue();
 }

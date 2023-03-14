@@ -119,3 +119,20 @@ void Player::print()
     cout << nickname_ << endl;
     cout << "  Points: " << point_ << endl;
 }
+
+Combo *Player::checkPlayerCombo(TableDeck tableDeck)
+{
+}
+
+Flush *Player::checkPlayerFlush(vector<ColorCard> cards)
+{
+    map<string, vector<ColorCard>> temp;
+    for (auto &c : cards)
+    {
+        temp[c.getColor()].push_back(c);
+        if (temp[c.getColor()].size() == 5)
+        {
+            return new Flush(temp[c.getColor()]);
+        }
+    }
+}
