@@ -17,15 +17,11 @@ ThreeOfAKind::~ThreeOfAKind()
 
 float ThreeOfAKind::getValue() const 
 {
-    /* Rumus : 0.2 * angka + 0.05 * maxColor + 8.3 (tertinggi dari two pair) + colorbits */
     int angka = triple_[0].getValue();
     int maxColor = triple_[2].getBaseValue();
 
-    float result = (
-        0.2 * angka
-        + 0.05 * maxColor
-        + 8.3 
-    );
+    /* Rumus : 0.2 * angka + 0.05 * maxColor + 8.3 (tertinggi dari two pair) + colorbits */
+    float result = 0.2 * angka + 0.05 * maxColor + TWO_PAIR_MAX;
 
     float multiplier = 0.0001;
     for (int i = 0; i < this->triple_.size(); i++)

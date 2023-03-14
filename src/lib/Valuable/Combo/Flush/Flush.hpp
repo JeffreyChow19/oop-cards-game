@@ -4,7 +4,7 @@
 #include "../Combo.hpp"
 #include <math.h>
 
-class Flush {
+class Flush : public Combo {
     private:
         vector<ColorCard> flushHand_; 
     public:

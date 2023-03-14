@@ -15,9 +15,9 @@ StraightFlush::~StraightFlush()
 
 float StraightFlush::getValue() const
 {
-    float res = 11.03;   /* maximum four of a kind value */
+    float result = FOUR_KIND_MAX;   /* maximum four of a kind value */
 
-    res += 0.05 * this->cards_[4].getBaseValue() + 0.2 *this->cards_[4].getValue();       /* highest card in the combination */
+    result += 0.05 * this->cards_[4].getBaseValue() + 0.2 *this->cards_[4].getValue();       /* highest card in the combination */
     
-    return res;
+    return result;
 }

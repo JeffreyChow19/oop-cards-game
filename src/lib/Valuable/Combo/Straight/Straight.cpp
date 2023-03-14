@@ -15,7 +15,8 @@ Straight::~Straight()
 
 float Straight::getValue() const
 {
-    float res = 11;   /* maximum three of a kind value */
+    /* result = encoding + max three of a kind*/
+    float result = THREE_KIND_MAX;   /* maximum three of a kind value */
 
     /* encode maxValue and color sequence (descending) */
     /* V,VCCCCC*/
@@ -27,7 +28,7 @@ float Straight::getValue() const
         multiplier *= 10;
     }
     
-    res += encoding;
+    result += encoding;
     
-    return res;
+    return result;
 }

@@ -30,8 +30,7 @@ FullHouse::~FullHouse(){
 }
 
 float FullHouse::getValue() const{
-    float res = 100;   /* maximum flush value */
-    /*Todo: ganti max value*/
+    float res = FLUSH_MAX;   /* maximum flush value */
 
     res += tris_.getValue();       /* highest card in the combination */
     

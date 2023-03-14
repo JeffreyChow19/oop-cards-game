@@ -38,6 +38,6 @@ float Flush::getValue() const
     /* result = decimal(XXXXXC)/1e5 = x.xxxxc */
     float result = (base13Encoding + 0.1 * colorBit) / 1e5;
     
-    result += 13.78;   /* maximum straight value */
+    result += STRAIGHT_MAX;   /* maximum straight value */
     return result;
 }
