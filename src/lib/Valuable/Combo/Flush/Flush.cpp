@@ -1,12 +1,8 @@
 #include "Flush.hpp"
 
-Flush::Flush(ColorCard firstCard, ColorCard secondCard, ColorCard thirdCard, ColorCard fourthCard, ColorCard fifthCard) 
+Flush::Flush(vector<ColorCard> cards) 
 {
-    this->flushHand_.push_back(firstCard);
-    this->flushHand_.push_back(secondCard);
-    this->flushHand_.push_back(thirdCard);
-    this->flushHand_.push_back(fourthCard);
-    this->flushHand_.push_back(fifthCard);
+    this->flushHand_ = cards;
 
     /* sort ascending by card value */
     sort(this->flushHand_.begin(), this->flushHand_.end(), ColorCard::compareByValue);
@@ -19,14 +15,29 @@ Flush::~Flush()
 
 float Flush::getValue() const
 {
-    float result = 13.78;   /* maximum straight value */
+    /* base13Encoding for combination:
+        process: get base13 value -> convert to decimal
 
+        base-13:    X-X-X-X-X-C
+        exp_index:  5-4-3-2-1-0
+        
+        X : card values of index [X-1], ascending; values of X={0...13}
+        C : color bit {1..4}
+    */
+
+    /* color bit */
+    int colorBit = this->flushHand_[0].getBaseValue() + 1;
+
+    /* card value bits */ 
+    int base13Encoding = 0;
     for (int i = 0; i < this->flushHand_.size(); i++)
     {
-        /* 0.01 * card value + max of previous index */
-        result += 0.01 * this->flushHand_[i].getValue() + i * 0.13;
+        base13Encoding += pow(13, i) * (this->flushHand_[i].getValue()-1);
     }
-    result += 0.001 * this->flushHand_[0].getBaseValue();       /* color tie breaker */
+
+    /* result = decimal(XXXXXC)/1e5 = x.xxxxc */
+    float result = (base13Encoding + 0.1 * colorBit) / 1e5;
     
-    return 0;
+    result += 13.78;   /* maximum straight value */
+    return result;
 }

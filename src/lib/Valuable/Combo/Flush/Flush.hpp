@@ -2,6 +2,7 @@
 #define _FLUSH_HPP_
 
 #include "../Combo.hpp"
+#include <math.h>
 
 class Flush {
     private:
@@ -10,13 +11,9 @@ class Flush {
         /**
          * @brief Construct a new Flush object
          * 
-         * @param firstCard 
-         * @param secondCard 
-         * @param thirdCard 
-         * @param fourthCard 
-         * @param fifthCard 
+         * @param cards 
          */
-        Flush(ColorCard firstCard, ColorCard secondCard, ColorCard thirdCard, ColorCard fourthCard, ColorCard fifthCard);
+        Flush(vector<ColorCard> cards);
 
         /**
          * @brief Destroy the Flush object
