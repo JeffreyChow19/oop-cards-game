@@ -296,7 +296,8 @@ Pair *Player::checkPlayerPair(TableDeck tableDeck)
 };
 
 Straight *Player::checkPlayerStraight(TableDeck tableDeck){
-
+    
+    return nullptr;
 };
 
 // StraightFlush* checkPlayerStraightFlush();
@@ -346,23 +347,25 @@ TwoPair *Player::checkPlayerTwoPair(TableDeck tableDeck)
 
     map<int, vector<ColorCard>> temp;
     vector<ColorCard> tableDeckPair;
-    pair<ColorCard, ColorCard> firstCardPair, secondCardPair;
 
     bool foundPair = false;
+    int tableNum = -1;
     for (auto it = tableDeck.getDeck().rbegin(); it != tableDeck.getDeck().rend(); it++)
     {
         if (!foundPair && temp[it->getValue()].size() == 1)
         {
             temp[it->getValue()].push_back(*it);
             tableDeckPair = temp[it->getValue()];
+            tableNum = it->getValue();
             foundPair = true;
         }
-        if (!foundPair || find(temp.begin(), temp.end(), it->getValue()) != temp.end())
+        if (!foundPair || temp.find(it->getValue()) == temp.end())
         {
             temp[it->getValue()].push_back(*it);
         }
     }
 
+    pair<ColorCard, ColorCard> firstCardPair, secondCardPair;
     // check player Pair
     if (foundPair && deck[0].getValue() == deck[1].getValue())
     {
@@ -383,16 +386,34 @@ TwoPair *Player::checkPlayerTwoPair(TableDeck tableDeck)
         temp[deck[1].getValue()].push_back(deck[1]);
     }
 
-    if (temp.size() >= 2)
-    {
-        int cnt = 0;
-        auto it = temp.rbegin();
-        firstCardPair.first = it->second[0];
-        firstCardPair.second = it->second[1];
-        it++;
-        secondCardPair.first = it->second[0];
-        secondCardPair.second = it->second[1];
-        return new TwoPair(firstCardPair, secondCardPair);
+    bool usedTablePair = false;
+    int countPair = 0;
+    bool usedFirstCardPair = false;
+
+    for (auto it = temp.rbegin(); it != temp.rend(); ++it) {
+        int key = it->first;
+        vector<ColorCard> value = it->second;
+        if (value.size() == 2){
+            bool insert = false;
+            if (key != tableNum){
+                insert = true;
+            } else if (!usedTablePair){
+                insert = true;
+                usedTablePair = true;
+            }
+
+            if (insert){
+                if (!usedFirstCardPair){
+                    firstCardPair.first = value[0];
+                    firstCardPair.second = value[1];
+                    usedFirstCardPair = true;
+                } else {
+                    secondCardPair.first = value[0];
+                    secondCardPair.second = value[1];
+                    return new TwoPair(firstCardPair, secondCardPair);
+                }
+            }
+        }
     }
 
     return nullptr;
