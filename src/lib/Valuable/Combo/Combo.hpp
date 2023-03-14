@@ -17,8 +17,7 @@ class Combo:public Valuable {
 
         static const float FULL_HOUSE_MAX = 28.7;
         static const float FOUR_KIND_MAX = 31.3;
-        /* chore: straightflush */
-        static const float STRAIGHT_FLUSH_MAX = 0;
+        static const float STRAIGHT_FLUSH_MAX = 34.05;
     public:
         Combo();
         virtual ~Combo();
