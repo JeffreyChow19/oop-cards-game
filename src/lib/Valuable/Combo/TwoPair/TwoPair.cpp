@@ -7,6 +7,7 @@ float TwoPair::getValue() const{
     float res = 4.14;   /* maximum pair value */
 
     res += max(firstPair_.getValue(), secondPair_.getValue());       /* highest pair in the combination */
+    res += 0.001 * min(firstPair_.getValue(), secondPair_.getValue());       /* 0.001 * lowest pair in the combination */
     
     return res;
 }
