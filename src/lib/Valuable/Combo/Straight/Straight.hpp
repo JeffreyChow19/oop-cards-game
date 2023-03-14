@@ -17,7 +17,7 @@ class Straight:public Combo {
          * @param fourthCard 
          * @param fifthCard 
          */
-        Straight(ColorCard firstCard, ColorCard secondCard, ColorCard thirdCard, ColorCard fourthCard, ColorCard fifthCard);
+        Straight(vector<ColorCard> deck);
 
         /**
          * @brief Destroy Straight object

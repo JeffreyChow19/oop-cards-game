@@ -7,6 +7,7 @@ class ThreeOfAKind : public Combo {
     private:
         vector<ColorCard> triple_;
     public:
+        ThreeOfAKind();
         /**
          * @brief Construct a new Three Of A Kind object
          * 

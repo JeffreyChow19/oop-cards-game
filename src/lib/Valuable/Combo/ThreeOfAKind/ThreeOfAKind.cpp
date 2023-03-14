@@ -1,5 +1,7 @@
 #include "ThreeOfAKind.hpp"
 
+ThreeOfAKind::ThreeOfAKind(){}
+
 ThreeOfAKind::ThreeOfAKind(vector<ColorCard> cards) 
 {
     this->triple_ = cards;

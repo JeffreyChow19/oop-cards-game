@@ -2,14 +2,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-Straight::Straight(ColorCard firstCard, ColorCard secondCard, ColorCard thirdCard, ColorCard fourthCard, ColorCard fifthCard) 
-{
-    this->deck_.push_back(firstCard);
-    this->deck_.push_back(secondCard);
-    this->deck_.push_back(thirdCard);
-    this->deck_.push_back(fourthCard);
-    this->deck_.push_back(fifthCard);
-
+Straight::Straight(vector<ColorCard> deck) {
+    this->deck_ = deck;
     /* sort ascending by card value */
     sort(this->deck_.begin(), this->deck_.end(), ColorCard::compareByValue);
 }
