@@ -13,6 +13,9 @@
 
 class SetProcess : public Set
 {
+private:
+    vector<Command *> commands_;
+
 public:
     /**
      * @brief Construct SetProcess
@@ -27,7 +30,7 @@ public:
      *
      * @param allowedCommands
      */
-    void askCommand(vector<string> &allowedCommands);
+    void askCommand(vector<string> &allowedCommands, Player &currPlayer);
 
     /**
      * @brief asks for command input
@@ -35,10 +38,7 @@ public:
      * @param allowedCommands
      * @return string
      */
-    string inputCommand(vector<string> &allowedCommands);
-
-    
-
+    string inputCommand(vector<string> &allowedCommands, Player &currPlayer);
     ~SetProcess();
     // void (float multiplier);
 };

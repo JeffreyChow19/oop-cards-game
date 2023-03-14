@@ -28,11 +28,27 @@ struct CommandException : public exception
     }
 };
 
+struct CommandInactiveException : public exception
+{
+    const char *what() const throw()
+    {
+        return "Ability was deactivated by another player.\n";
+    }
+};
+
 struct StringException : public exception
 {
     const char *what() const throw()
     {
-        return "Input is invalid.\n Try input a valid string";
+        return "Input is invalid. Try input a valid string\n";
+    }
+};
+
+struct IntegerException : public exception
+{
+    const char *what() const throw()
+    {
+        return "Input is invalid. Try input a valid integer\n";
     }
 };
 
@@ -55,6 +71,12 @@ struct PointException : public exception
 struct FilenameException : public exception{
     const char *what() const throw(){
         return "File not found. Please input the correct file and follow this format [filename].txt\n";
+    }
+};
+
+struct OptionException : public exception{
+    const char *what() const throw(){
+        return "Option not valid. Please input valid option.\n";
     }
 };
 

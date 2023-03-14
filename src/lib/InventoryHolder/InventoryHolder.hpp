@@ -48,6 +48,12 @@ public:
      * @return InventoryHolder&
      */
     InventoryHolder &operator-(const T &toRemove);
+
+    /**
+     * @brief print Inventory
+     *
+     */
+    virtual void print() = 0;
 };
 
 #endif

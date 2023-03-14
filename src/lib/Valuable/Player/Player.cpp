@@ -17,6 +17,7 @@ Player::Player(const Player &other)
     this->nickname_ = other.nickname_;
     this->point_ = other.point_;
     this->hasPlayed_ = other.hasPlayed_;
+    this->ability_ = other.ability_;
     this->abilityStatus_ = other.abilityStatus_;
     playerCount_++;
     this->id_ = playerCount_;
@@ -58,27 +59,29 @@ int Player::getPlayerCount()
     return playerCount_;
 }
 
-ColorCard Player::getFromPlayer()
-{
-    ColorCard toRemove = this->deck.back();
-    // (*this) - toRemove;
-    return toRemove;
-}
-
 string Player::getAbility()
 {
     return ability_;
 }
 
-void Player::addPlayerCard(ColorCard toAdd)
+void Player::removePlayerCard(ColorCard toRemove)
 {
-    // (*this) + toAdd;
+    (*this) - toRemove;
 }
 
-void Player::addPlayerCard(MainDeck &mainDeck_)
+void Player::addPlayerCard(ColorCard toAdd)
 {
-    ColorCard toAdd = mainDeck_.getFromMainDeck();
-    // (*this) + toAdd;
+    (*this) + toAdd;
+}
+
+vector<ColorCard> Player::getPlayerDeck()
+{
+    return this->deck;
+}
+
+void Player::setPlayerDeck(vector<ColorCard> playerDeck)
+{
+    this->deck = playerDeck;
 }
 
 float Player::getValue() const
@@ -89,6 +92,11 @@ float Player::getValue() const
 void Player::setAbility(string ability)
 {
     this->ability_ = ability;
+}
+
+bool Player::getAbilityStatus()
+{
+    return this->abilityStatus_;
 }
 
 void Player::setAbilityStatus(bool status)
@@ -104,4 +112,10 @@ void Player::setHasPlayed(bool hasPlayed)
 bool Player::getHasPlayed()
 {
     return this->hasPlayed_;
+}
+
+void Player::print()
+{
+    cout << nickname_ << endl;
+    cout << "  Points: " << point_ << endl;
 }

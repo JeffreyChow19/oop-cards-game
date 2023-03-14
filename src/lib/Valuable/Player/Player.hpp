@@ -85,21 +85,27 @@ public:
 
     float getValue() const;
 
-    ColorCard getFromPlayer();
+    void removePlayerCard(ColorCard);
 
     void addPlayerCard(ColorCard);
+    
+    vector<ColorCard> getPlayerDeck();
 
-    void addPlayerCard(MainDeck &);
+    void setPlayerDeck(vector<ColorCard>);
 
     void setAbility(string);
 
     string getAbility();
+
+    bool getAbilityStatus();
 
     void setAbilityStatus(bool);
 
     void setHasPlayed(bool);
 
     bool getHasPlayed();
+
+    void print();
 };
 
 #endif

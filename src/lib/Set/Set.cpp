@@ -12,10 +12,25 @@ Set::Set(vector<Player> &listOfPlayer, int firstPlayerIdx)
     this->listOfPlayer_ = listOfPlayer;
     this->points_ = 64;
     this->round_ = 1;
-    this->mainDeck_ = MainDeck();
-    this->tableDeck_ = TableDeck();
     this->firstPlayerIdx_ = firstPlayerIdx;
     this->currPlayerIdx = firstPlayerIdx;
+
+    MainDeck mainDeck;
+    mainDeck.fillDeck();
+    this->mainDeck_ = mainDeck;
+
+    TableDeck tableDeck;
+    this->tableDeck_ = tableDeck;
+
+    for (int i = 0; i < listOfPlayer_.size(); i++)
+    {
+        ColorCard add1 = mainDeck_.getFromMainDeck();
+        ColorCard add2 = mainDeck_.getFromMainDeck();
+        listOfPlayer_[i].addPlayerCard(add1);
+        listOfPlayer_[i].addPlayerCard(add2);
+        // listOfPlayer_[i].getPlayerDeck()[0].printInfo();
+        // listOfPlayer_[i].getPlayerDeck()[1].printInfo();
+    }
 }
 
 Set::~Set()
@@ -30,7 +45,7 @@ void Set::setPoints(float multiplier)
         throw PointException();
     }
     this->points_ = this->points_ * multiplier;
-    cout << this->points_;
+    // cout << this->points_;
 }
 void Set::printSetInfo()
 {
@@ -39,7 +54,8 @@ void Set::printSetInfo()
     cout << "Current turn: " << endl;
     while (ctr < listOfPlayer_.size())
     {
-        cout << "[" << ctr + 1 << "] " << listOfPlayer_[((ctr + getFirstPlayerIdx()) % listOfPlayer_.size())].getNickname() << endl;
+        cout << "[" << ctr + 1 << "] ";
+        listOfPlayer_[((ctr + getCurrPlayerIdx()) % listOfPlayer_.size())].print();
         ctr++;
     }
 }
@@ -53,3 +69,28 @@ int Set::getFirstPlayerIdx()
 {
     return this->firstPlayerIdx_;
 }
+
+int Set::getCurrPlayerIdx()
+{
+    return this->currPlayerIdx;
+}
+
+MainDeck &Set::getMainDeck()
+{
+    return this->mainDeck_;
+}
+
+void Set::setMainDeck(MainDeck mainDeck)
+{
+    this->mainDeck_ = mainDeck;
+}
+
+void Set::setFirstPlayerIdx(int idx)
+{
+    this->firstPlayerIdx_ = idx;
+};
+
+void Set::setCurrPlayerIdx(int idx)
+{
+    this->currPlayerIdx = idx;
+};

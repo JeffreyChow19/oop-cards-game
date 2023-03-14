@@ -1,21 +1,25 @@
-#include "lib/InventoryHolder/MainDeck/MainDeck.hpp"
+#include <bits/stdc++.h>
+#include "lib/Game/Game.hpp"
+#include "lib/Util/Util.hpp"
 
-int main(){
-    // HEADER
-    cout << "WELCOME TO CANDY KINGDOM CARD COMPETITION\n";
-    cout << "===========================================================\n\n";
-
-    // INITIALIZE RANDOM MAINDECK
-    MainDeck random_;
-    cout << "Random deck constructed:\n";
-    random_.randomizeCard();
-    random_.printDeck();
-
-    cout << endl << endl;
-
-    // INITIALIZE CONFIG MAINDECK
-    MainDeck config_;
-    cout << "Config deck constructed:\n";
-    config_.readCard();
-    config_.printDeck();
+int main()
+{
+    string opt = "Y";
+    while (opt != "N" && opt != "n")
+    {
+        try
+        {
+            opt = askToStart();
+            if (opt == "Y" || opt == "y")
+            {
+                Game game;
+                game.startGame();
+            }
+        }
+        catch (StringException &e)
+        {
+            e.what();
+        }
+    }
+    cout << "Thank you for playing!!" << endl;
 }

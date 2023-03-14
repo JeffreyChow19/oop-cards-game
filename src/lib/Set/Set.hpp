@@ -61,6 +61,15 @@ public:
      * @return int 
      */
     int getFirstPlayerIdx();
+
+    int getCurrPlayerIdx();
+
+    MainDeck &getMainDeck();
+
+    void setMainDeck(MainDeck);
+
+    void setFirstPlayerIdx(int);
+    void setCurrPlayerIdx(int);
 };
 
 #endif

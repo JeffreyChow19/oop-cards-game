@@ -17,11 +17,12 @@ class MainDeck : public InventoryHolder<ColorCard>
          *
          */
         MainDeck();
+        void fillDeck();
         void randomizeCard();
         void readCard();
         ColorCard getFromMainDeck();
         MainDeck& operator=(const MainDeck& other);
-        void printDeck();
+        void print();
         Color stringToColor(const string& color);
 };
 
