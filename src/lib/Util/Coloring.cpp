@@ -1,5 +1,4 @@
 #include "Coloring.hpp"
-#include <bits/stdc++.h>
 using namespace std;
 
 void Coloring::red(bool bold)

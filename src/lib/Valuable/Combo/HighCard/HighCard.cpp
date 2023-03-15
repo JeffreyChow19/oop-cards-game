@@ -1,5 +1,4 @@
 #include "HighCard.hpp"
-#include <bits/stdc++.h>
 using namespace std;
 
 HighCard::HighCard(ColorCard card) : card_(card) {}

@@ -1,8 +1,7 @@
 #ifndef _SET_HPP_
 #define _SET_HPP_
 
-#include <bits/stdc++.h>
-
+#include <vector>
 #include "../InventoryHolder/MainDeck/MainDeck.hpp"
 #include "../InventoryHolder/TableDeck/TableDeck.hpp"
 #include "../Valuable/Player/Player.hpp"

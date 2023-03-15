@@ -1,7 +1,7 @@
 #ifndef _EXCEPTION_HPP_
 #define _EXCEPTION_HPP_
 
-#include <bits/stdc++.h>
+#include <exception>
 using namespace std;
 
 struct NumericException : public exception

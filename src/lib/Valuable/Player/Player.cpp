@@ -1,4 +1,3 @@
-#include <bits/stdc++.h>
 #include "Player.hpp"
 
 using namespace std;

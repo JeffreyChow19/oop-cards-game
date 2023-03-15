@@ -1,11 +1,6 @@
 #include "Set.hpp"
-#include <bits/stdc++.h>
 
 using namespace std;
-
-// Set::Set()
-// {
-// }
 
 Set::Set(vector<Player> &listOfPlayer, int firstPlayerIdx) : listOfPlayer_(listOfPlayer)
 {

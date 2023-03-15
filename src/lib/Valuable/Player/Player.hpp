@@ -1,7 +1,6 @@
 #ifndef _PLAYER_HPP_
 #define _PLAYER_HPP_
 
-#include <bits/stdc++.h>
 #include "../../InventoryHolder/InventoryHolder.hpp"
 #include "../../InventoryHolder/MainDeck/MainDeck.hpp"
 #include "../../InventoryHolder/TableDeck/TableDeck.hpp"
@@ -16,6 +15,12 @@
 #include "../Combo/ThreeOfAKind/ThreeOfAKind.hpp"
 #include "../Combo/TwoPair/TwoPair.hpp"
 #include "../Combo/StraightFlush/StraightFlush.hpp"
+
+#include <string>
+#include <vector>
+#include <map>
+#include <iostream>
+#include <algorithm>
 
 using namespace std;
 

@@ -1,10 +1,14 @@
 #ifndef _MAIN_DECK_HPP_
 #define _MAIN_DECK_HPP_
 
-#include <bits/stdc++.h>
 #include "../InventoryHolder.hpp"
 #include "../../Exception/Exception.hpp"
 #include "../../Valuable/Card/ColorCard/ColorCard.hpp"
+
+#include <limits>
+#include <random>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 

@@ -1,7 +1,7 @@
 #ifndef _COLORING_HPP_
 #define _COLORING_HPP_
-#include <bits/stdc++.h>
 
+#include <iostream>
 class Coloring{
     public:
         void red(bool bold = false);

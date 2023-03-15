@@ -11,6 +11,10 @@
 #include "../Command/Ability/Swap/Swap.hpp"
 #include "../Command/Ability/Switch/Switch.hpp"
 
+#include <vector>
+#include <random>
+#include <algorithm>
+
 class SetProcess : public Set
 {
 private:

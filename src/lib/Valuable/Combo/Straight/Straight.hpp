@@ -1,6 +1,8 @@
 #ifndef _STRAIGHT_HPP_
 #define _STRAIGHT_HPP_
 
+#include <vector>
+#include <algorithm>
 #include "../Combo.hpp"
 
 class Straight : public Combo

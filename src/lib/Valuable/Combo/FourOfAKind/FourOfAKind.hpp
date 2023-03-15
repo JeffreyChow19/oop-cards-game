@@ -2,6 +2,8 @@
 #define _FOUR_OF_A_KIND_HPP_
 
 #include "../Combo.hpp"
+#include <vector>
+#include <algorithm>
 
 class FourOfAKind : public Combo
 {

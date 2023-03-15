@@ -2,7 +2,8 @@
 #define _PAIR_HPP_
 
 #include "../Combo.hpp"
-#include <bits/stdc++.h>
+#include <utility>
+#include <algorithm>
 using namespace std;
 
 class Pair : public Combo

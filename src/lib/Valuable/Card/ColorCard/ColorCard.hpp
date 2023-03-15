@@ -1,9 +1,11 @@
 #ifndef _COLORCARD_HPP_
 #define _COLORCARD_HPP_
 
-#include <bits/stdc++.h>
 #include "../Card.hpp"
 #include "../../../Util/Coloring.hpp"
+#include <vector>
+#include <utility>
+#include <map>
 
 using namespace std;
 
