@@ -51,7 +51,6 @@ void MainDeck::fillDeck(){
             for (int j = 1; j < 14; j++)
             {
                 ColorCard cardObj(c, j);
-                // this->deck.push_back(make_shared<Card>(cardObj));
                 this->deck.push_back(cardObj);
             }
         }
@@ -71,15 +70,6 @@ void MainDeck::fillDeck(){
 
 void MainDeck::randomizeCard()
 {
-    // random_device rd;
-    // mt19937 gen(rd());
-    // uniform_int_distribution<> dis(0, deck.size() - 1);
-
-    // // Shuffle the card
-    // for (int i = 0; i < deck.size(); ++i) {
-    //     swap(deck[i], deck[dis(gen)]);
-    // }
-
     srand(time(NULL));
     random_shuffle(deck.begin(), deck.end());
 }

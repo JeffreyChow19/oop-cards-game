@@ -88,7 +88,6 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
                         allowedCommands.push_back(currPlayer.getAbility());
                     }
                     askCommand(allowedCommands, currPlayer);
-
                     listOfPlayer_[currPlayerIdx].setHasPlayed(true);
                     playerMoved++;
                 }
@@ -243,7 +242,6 @@ void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
                 if (c->getCommandName() == command)
                 {
                     c->activate(*this);
-                    // to do make wait disini supaya bisa dibaca dulu efek dari activate nya
                     commandSet = true;
                     break;
                 }

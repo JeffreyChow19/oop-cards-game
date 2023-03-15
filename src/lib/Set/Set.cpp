@@ -22,8 +22,6 @@ Set::Set(vector<Player> &listOfPlayer, int firstPlayerIdx) : listOfPlayer_(listO
         ColorCard add2 = mainDeck_.getFromMainDeck();
         listOfPlayer_[i].addPlayerCard(add1);
         listOfPlayer_[i].addPlayerCard(add2);
-        // listOfPlayer_[i].getPlayerDeck()[0].printInfo();
-        // listOfPlayer_[i].getPlayerDeck()[1].printInfo();
     }
 }
 
@@ -33,7 +31,6 @@ Set::~Set()
     {
         p.clearDeck();
     }
-    // this->listOfPlayer_.clear();
 }
 
 void Set::setPoints(float multiplier)
@@ -43,7 +40,6 @@ void Set::setPoints(float multiplier)
         throw PointException();
     }
     this->points_ = this->points_ * multiplier;
-    // cout << this->points_;
 }
 void Set::printSetInfo()
 {

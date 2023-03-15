@@ -48,7 +48,6 @@ public:
      */
     string inputCommand(vector<string> &allowedCommands, Player &currPlayer);
     ~SetProcess();
-    // void (float multiplier);
 
     void calculateCombo();
 };
