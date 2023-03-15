@@ -89,7 +89,7 @@ public:
      *
      * @return int
      */
-    int getPoint() const;
+    long long getPoint() const;
 
     /**
      * @brief Get the Player Count

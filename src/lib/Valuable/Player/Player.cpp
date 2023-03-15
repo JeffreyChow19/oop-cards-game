@@ -49,7 +49,7 @@ string Player::getNickname() const
     return this->nickname_;
 }
 
-int Player::getPoint() const
+long long Player::getPoint() const
 {
     return this->point_;
 }
