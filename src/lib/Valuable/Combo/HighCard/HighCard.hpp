@@ -11,7 +11,7 @@ class HighCard:public Combo {
     public:
         HighCard(ColorCard card);
         ~HighCard();
-        float getValue();
+        float getValue() const;
         void print();
 };
 

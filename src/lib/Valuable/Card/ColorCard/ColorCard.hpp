@@ -20,6 +20,7 @@ class ColorCard : public Card
 {
 private:
     Color color_;
+
 public:
     /**
      * @brief Construct a new Color Card object, default color=Green, value=1
@@ -50,7 +51,7 @@ public:
      * @brief Get the value of the card (adds base value with this->value)
      * formula refer to pg 10
      *
-     * @return double
+     * @return float
      */
     virtual float getValue() const;
 
@@ -79,10 +80,11 @@ public:
     bool operator==(const ColorCard &) const;
 
     static bool compareByColor(const ColorCard &, const ColorCard &);
-    
+
     static bool compareByValueThenColor(const ColorCard &first, const ColorCard &second);
 
     static void printGroup(vector<ColorCard>);
+    static void printGroup(pair<ColorCard, ColorCard> cc);
 };
 
 #endif

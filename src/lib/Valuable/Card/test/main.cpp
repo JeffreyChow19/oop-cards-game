@@ -1,4 +1,5 @@
 #include "../ColorCard/ColorCard.hpp"
+#include "../../Combo/Pair/Pair.hpp"
 
 int main()
 {
@@ -6,6 +7,8 @@ int main()
     ColorCard blue2(Color::Blue, 2);
     ColorCard green3(Color::Green, 3);
     ColorCard yellow4(Color::Yellow, 4);
+    pair<ColorCard, ColorCard> tes(red1, blue2);
+    Pair val(make_pair(red1,blue2));
     cout << "Value of ";
     red1.printInfo();
     cout << " equals " << red1.getValue() << endl;

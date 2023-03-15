@@ -16,6 +16,7 @@ public:
      *
      */
     TableDeck();
+    TableDeck(vector<ColorCard> cards);
     void addCard(MainDeck &_MainDeck);
     virtual TableDeck &operator=(const TableDeck &other);
     void print();

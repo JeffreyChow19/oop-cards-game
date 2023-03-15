@@ -10,12 +10,12 @@
 #include "../Combo/Flush/Flush.hpp"
 #include "../Combo/FourOfAKind/FourOfAKind.hpp"
 #include "../Combo/Straight/Straight.hpp"
-// #include "../Combo/FullHouse/FullHouse.hpp"
+#include "../Combo/FullHouse/FullHouse.hpp"
 #include "../Combo/HighCard/HighCard.hpp"
 #include "../Combo/Pair/Pair.hpp"
-// #include "../Combo/StraightFlush/StraightFlush.hpp"
 #include "../Combo/ThreeOfAKind/ThreeOfAKind.hpp"
 #include "../Combo/TwoPair/TwoPair.hpp"
+#include "../Combo/StraightFlush/StraightFlush.hpp"
 
 using namespace std;
 
@@ -25,7 +25,7 @@ private:
     static int playerCount_;
     int id_;
     string nickname_;
-    int point_;
+    long long point_;
     string ability_;
     bool hasPlayed_;
     bool abilityStatus_;
@@ -93,7 +93,9 @@ public:
      */
     static int getPlayerCount();
 
-    float getValue();
+    void clearDeck();
+    
+    float getValue() const;
 
     void removePlayerCard(ColorCard);
 
@@ -117,23 +119,26 @@ public:
 
     void print();
 
-    Combo *checkPlayerCombo(TableDeck tableDeck);
+    Combo *checkPlayerCombo(TableDeck &tableDeck);
 
-    Flush *checkPlayerFlush(TableDeck tableDeck);
+    Flush *checkPlayerFlush(TableDeck &tableDeck);
 
-    FourOfAKind *checkPlayerFourOfAKind(TableDeck tableDeck);
+    FourOfAKind *checkPlayerFourOfAKind(TableDeck &tableDeck);
 
     HighCard *checkPlayerHighCard();
 
-    Pair *checkPlayerPair(TableDeck tableDeck);
+    Pair *checkPlayerPair(TableDeck &tableDeck);
 
-    Straight *checkPlayerStraight(TableDeck tableDeck);
+    Straight *checkPlayerStraight(TableDeck &tableDeck);
 
-    // StraightFlush* checkPlayerStraightFlush();
+    ThreeOfAKind *checkPlayerThreeOfAKind(TableDeck &tableDeck);
 
-    ThreeOfAKind *checkPlayerThreeOfAKind(TableDeck tableDeck);
+    TwoPair *checkPlayerTwoPair(TableDeck &tableDeck);
 
-    TwoPair *checkPlayerTwoPair(TableDeck tableDeck);
+    FullHouse *checkPlayerFullHouse(TableDeck &tableDeck);
+
+    StraightFlush *checkPlayerStraightFlush(TableDeck &tableDeck);
+
     void printCards();
 
     void deleteMinValueFromCombo(vector<ColorCard> &combo, int limit);

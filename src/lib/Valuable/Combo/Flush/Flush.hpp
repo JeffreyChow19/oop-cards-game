@@ -2,6 +2,7 @@
 #define _FLUSH_HPP_
 
 #include "../Combo.hpp"
+#include <math.h>
 
 class Flush : public Combo
 {
@@ -15,18 +16,14 @@ public:
      */
     Flush(vector<ColorCard> cards);
 
-    /**
-     * @brief Destroy the Flush object
-     *
-     */
-    virtual ~Flush();
+    ~Flush();
 
     /**
      * @brief Get the Value object
      *
      * @return float
      */
-    float getValue();
+    float getValue() const;
 
     void print();
 };

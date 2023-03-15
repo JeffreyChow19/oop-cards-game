@@ -3,13 +3,12 @@
 
 using namespace std;
 
-Set::Set()
-{
-}
+// Set::Set()
+// {
+// }
 
-Set::Set(vector<Player> &listOfPlayer, int firstPlayerIdx)
+Set::Set(vector<Player> &listOfPlayer, int firstPlayerIdx) : listOfPlayer_(listOfPlayer)
 {
-    this->listOfPlayer_ = listOfPlayer;
     this->points_ = 64;
     this->round_ = 1;
     this->firstPlayerIdx_ = firstPlayerIdx;
@@ -35,7 +34,11 @@ Set::Set(vector<Player> &listOfPlayer, int firstPlayerIdx)
 
 Set::~Set()
 {
-    this->listOfPlayer_.clear();
+    for (auto &p : listOfPlayer_)
+    {
+        p.clearDeck();
+    }
+    // this->listOfPlayer_.clear();
 }
 
 void Set::setPoints(float multiplier)

@@ -12,6 +12,8 @@ int main()
     ColorCard red12(Color::Red, 12);
     ColorCard red11(Color::Red, 11);
     ColorCard red10(Color::Red, 10);
+    ColorCard red12(Color::Red, 12);
+    ColorCard red13(Color::Red, 13);
     ColorCard blue10(Color::Blue, 10);
     ColorCard red5(Color::Red, 5);
     ColorCard yellow5(Color::Yellow, 5);

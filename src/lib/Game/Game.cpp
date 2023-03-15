@@ -34,26 +34,35 @@ Game::Game()
             e.what();
         }
     }
-
 }
 
-void Game::startGame(){
+void Game::startGame()
+{
+    int firstPlayerIdx = 0;
     while (!checkEndGame())
     {
-        SetProcess gameSet(listOfPlayer, 0);
+        cout << "kesini lagii" << endl;
+        SetProcess gameSet(listOfPlayer, firstPlayerIdx);
+        gameSet.getCurrPlayerIdx();
+        firstPlayerIdx = (gameSet.getCurrPlayerIdx() + 1) % listOfPlayer.size();
+        cout << "masuk sini?" << endl;
     }
 }
 
 bool Game::checkEndGame()
 {
-    for (auto &p: listOfPlayer){
-        if (p.getPoint() == pow(2, 32)){
+    for (auto &p : listOfPlayer)
+    {
+        if (p.getPoint() == pow(2, 32))
+        {
+            cout << "masuk sini kaahh?" << endl;
             return true;
         }
     }
     return false;
 }
 
-Game::~Game(){
+Game::~Game()
+{
     this->listOfPlayer.clear();
 }
