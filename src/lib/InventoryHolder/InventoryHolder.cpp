@@ -6,7 +6,8 @@ InventoryHolder<T>::InventoryHolder() {}
 template <class T>
 InventoryHolder<T>::InventoryHolder(const InventoryHolder &other)
 {
-    for (auto elmt : other.deck) {
+    for (auto elmt : other.deck)
+    {
         this->deck.push_back(elmt);
     }
 }
@@ -37,5 +38,21 @@ InventoryHolder<T> &InventoryHolder<T>::operator-(const T &toRemove)
     return *this;
 }
 
+template <class T>
+InventoryHolder<T> &InventoryHolder<T>::operator=(const InventoryHolder &other)
+{
+    if (this != &other)
+    {
+        this->deck.clear();
+        this->deck = other.deck;
+    }
+    return *this;
+}
+
+template <class T>
+vector<T> &InventoryHolder<T>::getDeck()
+{
+    return this->deck;
+}
 
 template class InventoryHolder<ColorCard>;

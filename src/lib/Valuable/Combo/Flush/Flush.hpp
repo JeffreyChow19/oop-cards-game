@@ -15,18 +15,16 @@ class Flush : public Combo {
          */
         Flush(vector<ColorCard> cards);
 
-        /**
-         * @brief Destroy the Flush object
-         * 
-         */
-        virtual ~Flush();
+    ~Flush();
 
-        /**
-         * @brief Get the Value object
-         * 
-         * @return float 
-         */
-        float getValue() const;
+    /**
+     * @brief Get the Value object
+     *
+     * @return float
+     */
+    float getValue() const;
+
+    void print();
 };
 
 #endif

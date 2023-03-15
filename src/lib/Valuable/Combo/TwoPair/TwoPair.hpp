@@ -6,14 +6,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class TwoPair:public Combo {
-    private:
-        Pair firstPair_;
-        Pair secondPair_;
-    public:
-        TwoPair(Pair firstPair, Pair secondPair);
-        ~TwoPair();
-        float getValue() const;
+class TwoPair : public Combo
+{
+private:
+    Pair firstPair_;
+    Pair secondPair_;
+
+public:
+    TwoPair(Pair firstPair, Pair secondPair);
+    ~TwoPair();
+    float getValue() const;
+    void print();
 };
 
 #endif

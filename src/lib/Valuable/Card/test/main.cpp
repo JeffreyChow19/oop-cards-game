@@ -47,7 +47,6 @@ int main()
     cards.push_back(blue2);
     cards.push_back(yellow4);
     cards.push_back(green3);
-
     auto maxVal = max_element(cards.begin(), cards.end(), Card::compareByValue);
     auto maxColor = max_element(cards.begin(), cards.end(), ColorCard::compareByColor);
     cout << "Value=" << maxVal->getValue() << " Color=" << maxVal->getBaseValue() << endl;

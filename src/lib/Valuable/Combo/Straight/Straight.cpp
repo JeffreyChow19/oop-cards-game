@@ -8,7 +8,7 @@ Straight::Straight(vector<ColorCard> deck) {
     sort(this->deck_.begin(), this->deck_.end(), ColorCard::compareByValue);
 }
 
-Straight::~Straight() 
+Straight::~Straight()
 {
     this->deck_.clear();
 }
@@ -27,8 +27,18 @@ float Straight::getValue() const
         encoding += multiplier * this->deck_[i].getBaseValue();
         multiplier *= 10;
     }
-    
+
     result += encoding;
-    
+
     return result;
+}
+
+void Straight::print()
+{
+    ColorCard::printGroup(this->deck_);
+}
+
+vector<ColorCard> &Straight::getDeck()
+{
+    return this->deck_;
 }

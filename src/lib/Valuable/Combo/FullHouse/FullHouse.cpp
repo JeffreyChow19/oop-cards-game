@@ -37,3 +37,9 @@ float FullHouse::getValue() const {
     
     return res;
 }
+
+void FullHouse::print()
+{
+    pair_.print();
+    tris_.print();
+}

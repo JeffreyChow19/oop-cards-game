@@ -49,11 +49,15 @@ public:
      */
     InventoryHolder &operator-(const T &toRemove);
 
+    InventoryHolder &operator=(const InventoryHolder &other);
+
     /**
      * @brief print Inventory
      *
      */
     virtual void print() = 0;
+
+    vector<T>& getDeck();
 };
 
 #endif

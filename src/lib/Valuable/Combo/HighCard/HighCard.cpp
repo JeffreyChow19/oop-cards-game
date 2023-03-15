@@ -2,11 +2,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-HighCard::HighCard(ColorCard card) : card_(card){}
+HighCard::HighCard(ColorCard card) : card_(card) {}
 
-HighCard::~HighCard(){
+HighCard::~HighCard()
+{
 }
 
-float HighCard::getValue(){
+float HighCard::getValue() const
+{
     return 0.03 * card_.getBaseValue() + 0.1 * card_.getValue();
+}
+
+void HighCard::print()
+{
+    this->card_.printInfo();
 }

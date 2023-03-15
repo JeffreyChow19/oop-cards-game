@@ -29,6 +29,21 @@
     "type_traits": "cpp",
     "typeindex": "cpp",
     "valarray": "cpp",
-    "regex": "cpp"
+    "regex": "cpp",
+    "*.tcc": "cpp",
+    "expected": "cpp",
+    "optional": "cpp",
+    "system_error": "cpp",
+    "utility": "cpp",
+    "variant": "cpp",
+    "forward_list": "cpp",
+    "string": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp",
+    "vector": "cpp",
+    "string_view": "cpp",
+    "ranges": "cpp",
+    "span": "cpp",
+    "stacktrace": "cpp"
   }
 }

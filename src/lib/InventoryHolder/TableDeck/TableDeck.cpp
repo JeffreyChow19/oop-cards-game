@@ -1,6 +1,12 @@
 #include "TableDeck.hpp"
 
-TableDeck::TableDeck() {
+TableDeck::TableDeck()
+{
+}
+
+TableDeck::TableDeck(vector<ColorCard> cards)
+{
+    this->deck = cards;
 }
 
 void TableDeck::addCard(MainDeck &_mainDeck)

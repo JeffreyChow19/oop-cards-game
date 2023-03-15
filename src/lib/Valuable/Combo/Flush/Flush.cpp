@@ -8,7 +8,7 @@ Flush::Flush(vector<ColorCard> cards)
     sort(this->flushHand_.begin(), this->flushHand_.end(), ColorCard::compareByValue);
 }
 
-Flush::~Flush() 
+Flush::~Flush()
 {
     this->flushHand_.clear();
 }
@@ -20,7 +20,6 @@ float Flush::getValue() const
 
         base-13:    X-X-X-X-X-C
         exp_index:  5-4-3-2-1-0
-        
         X : card values of index [X-1], ascending; values of X={0...13}
         C : color bit {1..4}
     */
@@ -41,3 +40,11 @@ float Flush::getValue() const
     result += STRAIGHT_MAX;   /* maximum straight value */
     return result;
 }
+
+void Flush::print()
+{
+    ColorCard::printGroup(this->flushHand_);
+}
+
+
+
