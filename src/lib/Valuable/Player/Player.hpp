@@ -75,7 +75,7 @@ public:
      *
      * @param point
      */
-    void addPoint(int point);
+    void addPoint(long long point);
 
     /**
      * @brief Get the player nickname

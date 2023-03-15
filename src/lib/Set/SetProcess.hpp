@@ -16,7 +16,6 @@
 #include <algorithm>
 #include <ctime>
 
-
 class SetProcess : public Set
 {
 private:
