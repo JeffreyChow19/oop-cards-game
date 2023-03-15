@@ -68,11 +68,6 @@ vector<Player> &Set::getListOfPlayers()
     return this->listOfPlayer_;
 }
 
-void Set::setListOfPlayers(vector<Player> listPlayer) {
-    this->listOfPlayer_.clear();
-    this->listOfPlayer_ = listPlayer;
-}
-
 int Set::getFirstPlayerIdx()
 {
     return this->firstPlayerIdx_;
