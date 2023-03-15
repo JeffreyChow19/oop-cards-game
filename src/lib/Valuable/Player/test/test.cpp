@@ -68,7 +68,7 @@ int main()
     if (combo != nullptr)
     {
         combo->print();
-        combo->getValue();
+        cout << combo->getValue() << endl;
     }
     delete combo;
 }
