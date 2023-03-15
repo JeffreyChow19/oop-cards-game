@@ -39,7 +39,7 @@ void Player::setPoint(int point)
     this->point_ = point;
 }
 
-void Player::addPoint(int pointVal)
+void Player::addPoint(long long pointVal)
 {
     this->point_ += pointVal;
 }

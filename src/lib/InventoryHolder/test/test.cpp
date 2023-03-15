@@ -1,5 +1,5 @@
-#include "MainDeck/MainDeck.hpp"
-#include "TableDeck/TableDeck.hpp"
+#include "../MainDeck/MainDeck.hpp"
+#include "../TableDeck/TableDeck.hpp"
 
 int main() {
     MainDeck main_;
