@@ -2,6 +2,8 @@
 #define _STRAIGHTFLUSH_HPP_
 
 #include "../Combo.hpp"
+#include <algorithm>
+#include <vector>
 
 class StraightFlush : public Combo
 {

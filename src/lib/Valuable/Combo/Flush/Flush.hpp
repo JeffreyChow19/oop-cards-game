@@ -3,6 +3,7 @@
 
 #include "../Combo.hpp"
 #include <math.h>
+#include <algorithm>
 
 class Flush : public Combo {
     private:

@@ -1,5 +1,5 @@
 #include "TwoPair.hpp"
-#include <bits/stdc++.h>
+
 using namespace std;
 TwoPair::TwoPair(Pair firstPair, Pair secondPair) : firstPair_(firstPair), secondPair_(secondPair) {}
 TwoPair::~TwoPair() {}

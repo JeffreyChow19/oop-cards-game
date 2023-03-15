@@ -1,7 +1,6 @@
 #ifndef _GAME_HPP
 #define _GAME_HPP
 
-#include <bits/stdc++.h>
 #include "../Valuable/Player/Player.hpp"
 #include "../Exception/Exception.hpp"
 #include "../Util/Coloring.hpp"

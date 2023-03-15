@@ -3,7 +3,7 @@
 
 #include "../Combo.hpp"
 #include "../Pair/Pair.hpp"
-#include <bits/stdc++.h>
+#include <algorithm>
 using namespace std;
 
 class TwoPair : public Combo

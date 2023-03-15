@@ -1,5 +1,4 @@
 #include "Straight.hpp"
-#include <bits/stdc++.h>
 using namespace std;
 
 Straight::Straight(vector<ColorCard> deck) {

@@ -1,7 +1,6 @@
 #ifndef _TABLE_DECK_HPP_
 #define _TABLE_DECK_HPP_
 
-#include <bits/stdc++.h>
 #include "../InventoryHolder.hpp"
 #include "../MainDeck/MainDeck.hpp"
 #include "../../Valuable/Card/ColorCard/ColorCard.hpp"

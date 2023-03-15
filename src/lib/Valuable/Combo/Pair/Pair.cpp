@@ -1,5 +1,4 @@
 #include "Pair.hpp"
-#include <bits/stdc++.h>
 using namespace std;
 
 Pair::Pair(){

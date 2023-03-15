@@ -1,4 +1,3 @@
-#include <bits/stdc++.h>
 #include "lib/Game/Game.hpp"
 #include "lib/Util/Util.hpp"
 

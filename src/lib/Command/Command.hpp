@@ -2,7 +2,6 @@
 #define _COMMAND_HPP_
 
 #include "../Set/Set.hpp"
-#include <bits/stdc++.h>
 
 using namespace std;
 

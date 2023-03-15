@@ -1,7 +1,9 @@
 #ifndef _INVENTORY_HOLDER_HPP_
 #define _INVENTORY_HOLDER_HPP_
 
-#include <bits/stdc++.h>
+#include <vector>
+#include <iterator>
+#include <algorithm>
 #include "../Valuable/Card/Card.hpp"
 #include "../Valuable/Card/ColorCard/ColorCard.hpp"
 

@@ -3,7 +3,6 @@
 
 #include "../Valuable.hpp"
 #include "../Card/ColorCard/ColorCard.hpp"
-#include <bits/stdc++.h>
 using namespace std;
 
 class Combo : public Valuable

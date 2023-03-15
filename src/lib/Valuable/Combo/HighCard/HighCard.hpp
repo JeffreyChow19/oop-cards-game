@@ -2,7 +2,6 @@
 #define _HIGH_CARD_HPP_
 
 #include "../Combo.hpp"
-#include <bits/stdc++.h>
 using namespace std;
 
 class HighCard:public Combo {
