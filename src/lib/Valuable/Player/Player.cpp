@@ -459,7 +459,7 @@ Straight *Player::checkPlayerStraight(TableDeck &tableDeck)
             {
                 // try to change
 
-                for (int i = 0; i <= 1; i++)
+                for (int i = 0; i < this->deck.size(); i++)
                 {
                     if (this->deck[i].getValue() <= high && this->deck[i].getValue() >= high - 4)
                     {
@@ -739,10 +739,7 @@ StraightFlush *Player::checkPlayerStraightFlush(TableDeck &tableDeck)
                 break;
             }
         }
-        cout << "???" << endl;
-        temp.print();
         Straight *straight = checkPlayerStraight(temp);
-        cout << "???" << endl;
         if (found)
         {
             addPlayerCard(otherColor);
