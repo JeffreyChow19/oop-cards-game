@@ -15,6 +15,10 @@ void TableDeck::addCard(MainDeck &_mainDeck)
     (*this) + toAdd;
 }
 
+void TableDeck::addCard(ColorCard toAdd) {
+    (*this) + toAdd;
+}
+
 TableDeck &TableDeck::operator=(const TableDeck &other)
 {
     if (this != &other)

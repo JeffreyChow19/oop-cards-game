@@ -4,11 +4,12 @@
 int main() {
     MainDeck main_;
 
-    cout << "First main deck constructed:\n";
-    main_.print();
+    // cout << "First main deck constructed:\n";
+    // main_.print();
 
-    main_.randomizeCard();
+    // main_.randomizeCard();
     cout << "Main deck after shuffled:\n";
+    main_.fillDeck();
     main_.print();
 
     TableDeck table;

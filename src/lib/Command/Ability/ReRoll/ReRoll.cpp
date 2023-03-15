@@ -17,10 +17,7 @@ void ReRoll::activate(Set &set)
     listOfPlayer[currPlayerIdx].addPlayerCard(add2);
 
     cout << "You got two new cards:\n";
-    cout << "1. "; 
-    listOfPlayer[currPlayerIdx].getPlayerDeck()[0].printInfo();
-    cout << "\n2. "; 
-    listOfPlayer[currPlayerIdx].getPlayerDeck()[1].printInfo();
+    ColorCard::printGroup(listOfPlayer[currPlayerIdx].getPlayerDeck());
     cout << endl;
 }
 
