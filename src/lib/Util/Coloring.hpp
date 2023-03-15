@@ -8,6 +8,9 @@ class Coloring{
         void green(bool bold = false);
         void blue(bool bold = false);
         void yellow(bool bold = false);
+        void lgreen(bool bold = false);
+        void pink(bool bold = false); 
+        void white(bool bold = false);
         void reset();
 };
 

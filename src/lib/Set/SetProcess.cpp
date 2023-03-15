@@ -101,7 +101,6 @@ void SetProcess::calculateCombo()
     for (auto &p : listOfPlayer_)
     {
         Combo *combo = p.checkPlayerCombo(tableDeck_);
-        cout << combo->getValue() << endl;
         cout << "**************************************" << endl;
         cout << "           " << p.getNickname() << "'s cards: " << endl;
         cout << "**************************************" << endl;
@@ -110,6 +109,8 @@ void SetProcess::calculateCombo()
         cout << "           " << p.getNickname() << "'s combo: " << endl;
         cout << "**************************************" << endl;
         combo->print();
+        cout << combo->getValue() << endl;
+        
         if (combo->getValue() > highestValue)
         {
             highestValue = combo->getValue();
