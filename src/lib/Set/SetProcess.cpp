@@ -165,10 +165,10 @@ void SetProcess::calculateCombo()
         Combo *combo = p.checkPlayerCombo(tableDeck_);
 
         clr.lgreen(true);
-        cout << "\n===============================================" << endl;
+        cout << "\n================================================" << endl;
 
         clr.white(true);
-        cout << "               " << p.getNickname() << "'s" << endl;
+        cout << "                    " << p.getNickname() << "'s" << endl;
 
         clr.blue(true);
         cout << "Cards :" << endl;
@@ -177,14 +177,14 @@ void SetProcess::calculateCombo()
         p.printCards();
 
         clr.blue(true);
-        cout << "\nCombo :";
+        cout << "\nCombo : ";
         cout << combo->getComboName() << endl;
         clr.reset();
 
         combo->print();
 
         clr.lgreen(true);
-        cout << "\n===============================================" << endl;
+        cout << "\n================================================" << endl;
         clr.reset();
 
         if (combo->getValue() > highestValue)

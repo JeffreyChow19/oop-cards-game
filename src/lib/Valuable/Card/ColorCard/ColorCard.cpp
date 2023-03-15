@@ -71,16 +71,16 @@ void ColorCard::printInfo()
     switch (this->color_)
     {
     case Color::Red:
-        clr.red();
+        clr.red(1);
         break;
     case Color::Green:
-        clr.green();
+        clr.green(1);
         break;
     case Color::Blue:
-        clr.blue();
+        clr.blue(1);
         break;
     case Color::Yellow:
-        clr.yellow();
+        clr.yellow(1);
         break;
     }
 
@@ -97,13 +97,13 @@ void ColorCard::printInfo()
     }
     else
     {
-        cout << " _____ \n"
+        cout << " ______ \n"
                 "|" +
-                    to_string(this->value_) + "    |\n"
-                                              "|     |\n"
-                                              "|     |\n"
-                                              "|     |\n"
-                                              "|____" +
+                    to_string(this->value_) + "      |\n"
+                                              "|      |\n"
+                                              "|      |\n"
+                                              "|      |\n"
+                                              "|_____" +
                     to_string(this->value_) + "|\n";
     }
 
