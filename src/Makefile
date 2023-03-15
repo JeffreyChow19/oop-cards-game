@@ -1,2 +1,12 @@
-main: lib/Set/Set.cpp lib/Set/SetProcess.cpp lib/Valuable/Valuable.cpp lib/Command/Command.cpp lib/Command/Ability/Ability.cpp lib/Command/Ability/Abilityless/Abilityless.cpp lib/Command/Ability/Quadruple/Quadruple.cpp lib/Command/Ability/Quarter/Quarter.cpp lib/Command/Ability/ReRoll/ReRoll.cpp lib/Command/Ability/Reverse/Reverse.cpp lib/Command/Ability/Swap/Swap.cpp lib/Command/Ability/Switch/Switch.cpp lib/Exception/Exception.hpp lib/InventoryHolder/InventoryHolder.cpp lib/InventoryHolder/MainDeck/MainDeck.cpp lib/InventoryHolder/TableDeck/TableDeck.cpp lib/Valuable/Card/Card.cpp lib/Valuable/Card/ColorCard/ColorCard.cpp lib/Valuable/Player/Player.cpp lib/Command/Next.cpp lib/Command/Double.cpp lib/Command/Half.cpp lib/Game/Game.cpp lib/Util/Util.cpp lib/Util/Coloring.cpp lib/Valuable/Combo/Combo.cpp lib/Valuable/Combo/Flush/Flush.cpp lib/Valuable/Combo/FourOfAKind/FourOfAKind.cpp lib/Valuable/Combo/HighCard/HighCard.cpp lib/Valuable/Combo/Pair/Pair.cpp lib/Valuable/Combo/Straight/Straight.cpp lib/Valuable/Combo/ThreeOfAKind/ThreeOfAKind.cpp lib/Valuable/Combo/FullHouse/FullHouse.cpp lib/Valuable/Combo/StraightFlush/StraightFlush.cpp lib/Valuable/Combo/TwoPair/TwoPair.cpp main.cpp
-	g++ $^ -o $@
+EXT_IN = in
+EXT_OUT = out
+EXT_ANS = ans
+EXECUTABLE_FILENAME = main
+ALL_SRCS := $(filter-out lib/InventoryHolder/test.cpp lib/Set/test.cpp lib/Valuable/Card/test/main.cpp lib/Valuable/Player/test.cpp ,$(wildcard lib/*/*.cpp lib/*/*/*.cpp lib/*/*/*/*.cpp lib/Exception/Exception.hpp))
+ALL_INPUT := $(wildcard $(TC_FOLDER)/*.in)
+
+compile:
+	g++ -std=c++17 -o main main.cpp ${ALL_SRCS}
+
+run:
+	./$(EXECUTABLE_FILENAME)
