@@ -2,8 +2,15 @@
 
 void Switch::activate(Set &set)
 {
+    Coloring clr;
+
     vector<Player> &listOfPlayer = set.getListOfPlayers();
-    cout << listOfPlayer[set.getCurrPlayerIdx()].getNickname() << " is using SWITCH!\n";
+
+    clr.white();
+    cout << listOfPlayer[set.getCurrPlayerIdx()].getNickname();
+    clr.reset();
+    
+    cout << " is using SWITCH!\n";
     cout << "Here is your cards: \n";
     int currPlayerIdx = set.getCurrPlayerIdx();
     ColorCard::printGroup(listOfPlayer[currPlayerIdx].getPlayerDeck());
@@ -31,7 +38,21 @@ void Switch::activate(Set &set)
             vector<ColorCard> tempDeck = listOfPlayer[idxPlayerSwap].getPlayerDeck();
             set.getListOfPlayers()[idxPlayerSwap].setPlayerDeck(listOfPlayer[currPlayerIdx].getPlayerDeck());
             set.getListOfPlayers()[currPlayerIdx].setPlayerDeck(tempDeck);
-            cout << "Both of " << listOfPlayer[currPlayerIdx].getNickname() << "\'s cards are switched with " << listOfPlayer[idxPlayerSwap].getNickname() << "\'s cards!\n";
+
+            cout << "Both of "; 
+
+            clr.white(true);
+            cout << listOfPlayer[currPlayerIdx].getNickname(); 
+            clr.reset();
+
+            cout << "\'s cards are switched with "; 
+
+            clr.white(true);
+            cout << listOfPlayer[idxPlayerSwap].getNickname(); 
+            clr.reset();
+
+            cout << "\'s cards!\n";
+
             cout << "Here is your cards: \n";
             ColorCard::printGroup(listOfPlayer[currPlayerIdx].getPlayerDeck());
             cout << endl;
@@ -39,22 +60,34 @@ void Switch::activate(Set &set)
         }
         catch (IntegerException &e)
         {
+            clr.red();
             cout << e.what();
+            clr.reset();
+            
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
         }
         catch (OptionException &e)
         {
+            clr.red();
             cout << e.what();
+            clr.reset();
         }
     }
 }
 
 int Switch::inputOption(int sumOpt)
 {
+    Coloring clr;
+
     int opt;
-    cout << "> ";
+
+    cout << "Input option ";
+
+    clr.lgreen();
     cin >> opt;
+    clr.reset();
+
     if (cin.fail())
     {
         throw IntegerException();
