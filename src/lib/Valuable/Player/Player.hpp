@@ -34,6 +34,7 @@ private:
     string ability_;
     bool hasPlayed_;
     bool abilityStatus_;
+    bool abilityUse_;
 
 public:
     Player();
@@ -162,6 +163,10 @@ public:
      *
      */
     void setAbilityStatus(bool);
+
+    bool getAbilityUse();
+
+    void setAbilityUse(bool);
 
     /**
      * @brief Set the player's hasPlayed

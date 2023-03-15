@@ -18,6 +18,7 @@ Player::Player(const Player &other) : InventoryHolder(other)
     this->hasPlayed_ = other.hasPlayed_;
     this->ability_ = other.ability_;
     this->abilityStatus_ = other.abilityStatus_;
+    this->abilityUse_ = other.abilityUse_;
     this->deck = other.deck;
     playerCount_++;
     this->id_ = playerCount_;
@@ -107,6 +108,16 @@ bool Player::getAbilityStatus()
 void Player::setAbilityStatus(bool status)
 {
     this->abilityStatus_ = status;
+}
+
+bool Player::getAbilityUse()
+{
+    return this->abilityUse_;
+}
+
+void Player::setAbilityUse(bool used)
+{
+    this->abilityUse_ = used;
 }
 
 void Player::setHasPlayed(bool hasPlayed)
