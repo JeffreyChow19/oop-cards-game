@@ -1,0 +1,1 @@
+To compile, use compile scripts from root directory or use 'make'
