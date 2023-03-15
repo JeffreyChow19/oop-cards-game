@@ -5,7 +5,7 @@
 
 class Straight : public Combo
 {
-private:
+protected:
     vector<ColorCard> deck_;
 
 public:
@@ -29,6 +29,8 @@ public:
     float getValue() const;
 
     void print();
+
+    vector<ColorCard> &getDeck();
 };
 
 #endif

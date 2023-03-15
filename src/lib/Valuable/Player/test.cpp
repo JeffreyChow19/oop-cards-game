@@ -8,10 +8,9 @@ int main()
     cout << "Player Point " << p1.getPoint() << endl;
     cout << "Player Ability " << p1.getAbility() << endl;
 
-    ColorCard red1(Color::Red, 1);
-    ColorCard red2(Color::Red, 2);
-    ColorCard red3(Color::Red, 3);
-    ColorCard red4(Color::Red, 4);
+    ColorCard red13(Color::Red, 13);
+    ColorCard red12(Color::Red, 12);
+    ColorCard red11(Color::Red, 11);
     ColorCard red10(Color::Red, 10);
     ColorCard red12(Color::Red, 12);
     ColorCard red13(Color::Red, 13);
@@ -24,20 +23,23 @@ int main()
     ColorCard green7(Color::Green, 7);
     ColorCard green1(Color::Green, 1);
     ColorCard green2(Color::Green, 2);
-    ColorCard green3(Color::Green, 3);
-    ColorCard green4(Color::Green, 4);
-    ColorCard blue1(Color::Blue, 1);
-    ColorCard blue2(Color::Blue, 2);
-    ColorCard blue3(Color::Blue, 3);
-    ColorCard blue4(Color::Blue, 4);
+    ColorCard green10(Color::Green, 10);
+    ColorCard green11(Color::Green, 11);
+    ColorCard green12(Color::Green, 12);
+    ColorCard green13(Color::Green, 13);
+    ColorCard green8(Color::Green, 8);
+
+
     TableDeck tableDeck;
-    p1.addPlayerCard(green2); // simpan card 1 player
-    p1.addPlayerCard(red1);   // simpan card 2 player
-    tableDeck + blue3;        // atur table deck
-    tableDeck + green3;
-    tableDeck + blue4;
-    tableDeck + red4;
-    tableDeck + green4;
+
+    p1.addPlayerCard(red12);  // simpan card 1 player
+    p1.addPlayerCard(green11); // simpan card 2 player
+
+    tableDeck + green12;       // atur table deck
+    tableDeck + red11;
+    tableDeck + green10;
+    tableDeck + red13;
+    tableDeck + red9;
 
     // Flush* isFlush = p1.checkPlayerFlush(tableDeck);
     // if (p1.checkPlayerFlush(tableDeck) != nullptr)
@@ -53,13 +55,13 @@ int main()
     //     isPair->print();
     // }
 
-    FullHouse *isFullHouse = p1.checkPlayerFullHouse(tableDeck);
-    if (isFullHouse != nullptr)
-    {
-        isFullHouse->print();
-    }
-    else
-    {
-        cout << "AAA" << endl;
+    // TwoPair* isTwoPair = p1.checkPlayerTwoPair(tableDeck);
+    // if (isTwoPair != nullptr){
+    //     isTwoPair->print();
+    // }
+    tableDeck.print();
+    Straight* isStraight = p1.checkPlayerStraight(tableDeck);
+    if (isStraight != nullptr){
+        isStraight->print();
     }
 }

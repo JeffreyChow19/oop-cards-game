@@ -16,6 +16,7 @@ public:
         ~Pair();
         float getValue() const;
         void print();
+        pair<ColorCard, ColorCard> getPair();
 };
 
 #endif

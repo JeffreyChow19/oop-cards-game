@@ -17,6 +17,7 @@ class MainDeck : public InventoryHolder<ColorCard>
          *
          */
         MainDeck();
+        ~MainDeck();
         void fillDeck();
         void randomizeCard();
         void readCard();

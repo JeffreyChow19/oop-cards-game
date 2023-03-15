@@ -155,3 +155,6 @@ void MainDeck::print() {
         cout << endl;
     }
 }
+
+MainDeck::~MainDeck(){
+}

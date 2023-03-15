@@ -1,8 +1,8 @@
 #include "ThreeOfAKind.hpp"
 
-ThreeOfAKind::ThreeOfAKind(){}
+ThreeOfAKind::ThreeOfAKind() {}
 
-ThreeOfAKind::ThreeOfAKind(vector<ColorCard> cards) 
+ThreeOfAKind::ThreeOfAKind(vector<ColorCard> cards)
 {
     this->triple_ = cards;
 
@@ -15,16 +15,12 @@ ThreeOfAKind::~ThreeOfAKind()
     this->triple_.clear();
 }
 
-
 void ThreeOfAKind::print()
 {
-    for (auto &c : this->triple_)
-    {
-        c.printInfo();
-    }
+    ColorCard::printGroup(this->triple_);
 }
 
-float ThreeOfAKind::getValue() const 
+float ThreeOfAKind::getValue() const
 {
     int angka = triple_[0].getValue();
     int maxColor = triple_[2].getBaseValue();
@@ -38,6 +34,6 @@ float ThreeOfAKind::getValue() const
         result += this->triple_[i].getBaseValue() * multiplier;
         multiplier *= 10;
     }
-    
+
     return result;
 }

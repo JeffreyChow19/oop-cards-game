@@ -38,8 +38,5 @@ float Flush::getValue() const
 
 void Flush::print()
 {
-    for (auto &c : this->flushHand_)
-    {
-        c.printInfo();
-    }
+    ColorCard::printGroup(this->flushHand_);
 }

@@ -24,6 +24,10 @@ float Pair::getValue() const
 
 void Pair::print()
 {
-    this->cardPair_.first.printInfo();
-    this->cardPair_.second.printInfo();
+    ColorCard::printGroup(this->cardPair_);
+}
+
+pair<ColorCard, ColorCard> Pair::getPair()
+{
+    return this->cardPair_;
 }

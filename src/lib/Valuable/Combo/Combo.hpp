@@ -25,6 +25,7 @@ public:
     Combo();
     virtual ~Combo();
     virtual float getValue() const = 0;
+    virtual void print() = 0;
 };
 
 #endif

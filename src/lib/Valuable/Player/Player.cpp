@@ -85,6 +85,11 @@ void Player::setPlayerDeck(vector<ColorCard> playerDeck)
     this->deck = playerDeck;
 }
 
+void Player::clearDeck()
+{
+    this->deck.clear();
+}
+
 float Player::getValue() const
 {
     return 0.0;
@@ -123,22 +128,17 @@ void Player::print()
 
 void Player::printCards()
 {
-    for (auto &c : this->deck)
-    {
-        c.printInfo();
-    }
+    // for (auto &c : this->deck)
+    // {
+    //     c.printInfo();
+    // }
     ColorCard::printGroup(this->deck);
 }
 
 void Player::deleteMinValueFromCombo(vector<ColorCard> &combo, int limit)
 {
-    if (combo.size() == limit)
+    for (auto &card : combo)
     {
-        auto minVal = min_element(combo.begin(), combo.end(), Card::compareByValue);
-        if (minVal != combo.end())
-        {
-            combo.erase(minVal);
-        }
     }
 }
 
@@ -154,12 +154,62 @@ void Player::deleteMinColorFromCombo(vector<ColorCard> &combo, int limit)
     }
 }
 
-Combo *Player::checkPlayerCombo(TableDeck tableDeck)
+Combo *Player::checkPlayerCombo(TableDeck &tableDeck)
 {
-    return nullptr;
+    Combo *combo = checkPlayerStraightFlush(tableDeck);
+    if (combo != nullptr)
+    {
+        return combo;
+    }
+    combo = checkPlayerFourOfAKind(tableDeck);
+    if (combo != nullptr)
+    {
+        return combo;
+    }
+    combo = checkPlayerFullHouse(tableDeck);
+    if (combo != nullptr)
+    {
+        return combo;
+    }
+    combo = checkPlayerFullHouse(tableDeck);
+    if (combo != nullptr)
+    {
+        return combo;
+    }
+    combo = checkPlayerFlush(tableDeck);
+    if (combo != nullptr)
+    {
+        return combo;
+    }
+    combo = checkPlayerStraight(tableDeck);
+    if (combo != nullptr)
+    {
+        return combo;
+    }
+    combo = checkPlayerThreeOfAKind(tableDeck);
+    if (combo != nullptr)
+    {
+        return combo;
+    }
+    combo = checkPlayerThreeOfAKind(tableDeck);
+    if (combo != nullptr)
+    {
+        return combo;
+    }
+    combo = checkPlayerTwoPair(tableDeck);
+    if (combo != nullptr)
+    {
+        return combo;
+    }
+    combo = checkPlayerPair(tableDeck);
+    if (combo != nullptr)
+    {
+        return combo;
+    }
+    return checkPlayerHighCard();
 }
 
-Flush *Player::checkPlayerFlush(TableDeck tableDeck)
+Flush *Player::checkPlayerFlush(TableDeck &tableDeck)
 {
     map<string, vector<ColorCard>> temp;
     // count the freq of each color in the table deck
@@ -199,40 +249,60 @@ Flush *Player::checkPlayerFlush(TableDeck tableDeck)
     return nullptr;
 }
 
-FourOfAKind *Player::checkPlayerFourOfAKind(TableDeck tableDeck)
+FourOfAKind *Player::checkPlayerFourOfAKind(TableDeck &tableDeck)
 {
-    map<int, vector<ColorCard>> temp;
-    // count the freq of each color in the table deck
-    for (auto &c : tableDeck.getDeck())
+    map<int, vector<ColorCard>> allFreq;
+    map<int, vector<ColorCard>> playerFreq;
+
+    for (auto &card : this->deck)
     {
-        deleteMinColorFromCombo(temp[c.getValue()], 4);
-        temp[c.getValue()].push_back(c);
+        playerFreq[card.getValue()].push_back(card);
+        allFreq[card.getValue()].push_back(card);
+    }
+    for (auto &card : tableDeck.getDeck())
+    {
+        allFreq[card.getValue()].push_back(card);
     }
 
-    ColorCard firstCard = this->deck[0];
-    deleteMinColorFromCombo(temp[firstCard.getValue()], 4);
-    temp[firstCard.getValue()].push_back(firstCard);
-
-    ColorCard secondCard = this->deck[1];
-    if (temp[secondCard.getValue()].size() == 4)
+    for (auto it = allFreq.rbegin(); it != allFreq.rend(); it++)
     {
-        auto minVal = min_element(temp[secondCard.getValue()].begin(), temp[secondCard.getValue()].end(), ColorCard::compareByColor);
-        if (minVal != temp[secondCard.getValue()].end())
-        {
-            temp[secondCard.getValue()].erase(minVal);
+        if (it->second.size() == 4 && playerFreq[it->first].size() > 0)
+        { // jika ukurannya tepat 4 dan ada di deck player.
+            return new FourOfAKind(it->second);
         }
     }
-    temp[secondCard.getValue()].push_back(secondCard);
 
-    if (temp[firstCard.getValue()].size() == 4)
-    {
-        return new FourOfAKind(temp[firstCard.getValue()]);
-    }
+    // count the freq of each color in the table deck
+    // for (auto &c : tableDeck.getDeck())
+    // {
+    //     deleteMinColorFromCombo(temp[c.getValue()], 4);
+    //     temp[c.getValue()].push_back(c);
+    // }
 
-    if (temp[secondCard.getValue()].size() == 4)
-    {
-        return new FourOfAKind(temp[secondCard.getValue()]);
-    }
+    // ColorCard firstCard = this->deck[0];
+    // deleteMinColorFromCombo(temp[firstCard.getValue()], 4);
+    // temp[firstCard.getValue()].push_back(firstCard);
+
+    // ColorCard secondCard = this->deck[1];
+    // if (temp[secondCard.getValue()].size() == 4)
+    // {
+    //     auto minVal = min_element(temp[secondCard.getValue()].begin(), temp[secondCard.getValue()].end(), ColorCard::compareByColor);
+    //     if (minVal != temp[secondCard.getValue()].end())
+    //     {
+    //         temp[secondCard.getValue()].erase(minVal);
+    //     }
+    // }
+    // temp[secondCard.getValue()].push_back(secondCard);
+
+    // if (temp[firstCard.getValue()].size() == 4)
+    // {
+    //     return new FourOfAKind(temp[firstCard.getValue()]);
+    // }
+
+    // if (temp[secondCard.getValue()].size() == 4)
+    // {
+    //     return new FourOfAKind(temp[secondCard.getValue()]);
+    // }
 
     return nullptr;
 };
@@ -250,9 +320,10 @@ HighCard *Player::checkPlayerHighCard()
     return hc2;
 };
 
-Pair *Player::checkPlayerPair(TableDeck tableDeck)
+Pair *Player::checkPlayerPair(TableDeck &tableDeck)
 {
     // sort ascending
+    pair<ColorCard, ColorCard> cardPair;
     sort(this->deck.begin(), this->deck.end(), ColorCard::compareByValueThenColor);
     sort(tableDeck.getDeck().begin(), tableDeck.getDeck().end(), ColorCard::compareByValueThenColor);
 
@@ -262,6 +333,8 @@ Pair *Player::checkPlayerPair(TableDeck tableDeck)
     if (this->deck[0].getValue() == this->deck[1].getValue())
     {
         playerPair = true;
+        cardPair.first = this->deck[0];
+        cardPair.second = this->deck[1];
     }
 
     // loop through each card in deck
@@ -273,7 +346,6 @@ Pair *Player::checkPlayerPair(TableDeck tableDeck)
             // if there is pair, return pair
             if (c->getValue() == d->getValue())
             {
-                pair<ColorCard, ColorCard> cardPair;
 
                 // check if inner deck is pair and inner deck pair is greater than this pair
                 if (playerPair && !ColorCard::compareByColor(this->deck[0], *d))
@@ -292,56 +364,179 @@ Pair *Player::checkPlayerPair(TableDeck tableDeck)
             }
         }
     }
+    if (playerPair)
+    {
+        return new Pair(cardPair);
+    }
     return nullptr;
 };
 
-Straight *Player::checkPlayerStraight(TableDeck tableDeck)
+Straight *Player::checkPlayerStraight(TableDeck &tableDeck)
 {
+    sort(this->deck.begin(), this->deck.end(), ColorCard::compareByValueThenColor);
+    // insert decks to map
+    map<int, vector<ColorCard>> decks;
+
+    for (auto &c : tableDeck.getDeck())
+    {
+        decks[c.getValue()].push_back(c);
+    }
+
+    for (auto &c : this->deck)
+    {
+        decks[c.getValue()].push_back(c);
+    }
+
+    int prev = -1;
+    bool usedPlayer = false;
+    vector<ColorCard> answer;
+    // sort decks ascending
+    while (decks.size() >= 5 && !usedPlayer)
+    {
+
+        int high = decks.rbegin()->first;
+        int prev = decks.rbegin()->first;
+        for (auto it = decks.rbegin(); it != decks.rend(); ++it)
+        {
+            if (prev - it->first > 1)
+            {
+                high = it->first;
+                prev = it->first;
+                answer.clear();
+            }
+
+            if (it->second.size() > 1)
+            {
+                sort(it->second.begin(), it->second.end(), ColorCard::compareByColor);
+                answer.push_back(it->second[it->second.size() - 1]);
+            }
+            else
+            {
+                answer.push_back(it->second[0]);
+            }
+
+            prev = answer.back().getValue();
+
+            if (!usedPlayer)
+            {
+                usedPlayer = (answer.back() == this->deck[0]) || (answer.back() == this->deck[1]);
+            }
+
+            if (high - it->first == 4)
+            {
+                break;
+            }
+        }
+
+        if (answer.size() == 5)
+        {
+            sort(answer.begin(), answer.end(), ColorCard::compareByValueThenColor);
+
+            if (!usedPlayer)
+            {
+                // try to change
+
+                for (int i = 0; i <= 1; i++)
+                {
+                    if (this->deck[i].getValue() <= high && this->deck[i].getValue() >= high - 4)
+                    {
+                        int currentVal = this->deck[i].getValue();
+                        auto it = std::find_if(answer.begin(), answer.end(), [currentVal](const ColorCard &card)
+                                               { return card.getValue() == currentVal; });
+
+                        if (it != answer.end())
+                        {
+                            // then change
+                            int idx = distance(answer.begin(), it);
+                            answer[idx] = this->deck[i];
+                            usedPlayer = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (usedPlayer)
+            {
+                sort(answer.begin(), answer.end(), ColorCard::compareByValueThenColor);
+                return new Straight(answer);
+            }
+            else
+            {
+                decks.erase(decks.rbegin()->first);
+                answer.clear();
+            }
+        }
+    }
 
     return nullptr;
 };
 
 // StraightFlush* checkPlayerStraightFlush();
 
-ThreeOfAKind *Player::checkPlayerThreeOfAKind(TableDeck tableDeck)
+ThreeOfAKind *Player::checkPlayerThreeOfAKind(TableDeck &tableDeck)
 {
-    map<int, vector<ColorCard>> temp;
-    // count the freq of each color in the table deck
-    for (auto &c : tableDeck.getDeck())
+    map<int, vector<ColorCard>> allFreq;
+    map<int, vector<ColorCard>> playerFreq;
+
+    for (auto &card : this->deck)
     {
-        deleteMinColorFromCombo(temp[c.getValue()], 3);
-        temp[c.getValue()].push_back(c);
+        playerFreq[card.getValue()].push_back(card);
+        allFreq[card.getValue()].push_back(card);
+    }
+    for (auto &card : tableDeck.getDeck())
+    {
+        allFreq[card.getValue()].push_back(card);
     }
 
-    ColorCard firstCard = this->deck[0];
-    deleteMinColorFromCombo(temp[firstCard.getValue()], 3);
-    temp[firstCard.getValue()].push_back(firstCard);
-
-    ColorCard secondCard = this->deck[1];
-    if (temp[secondCard.getValue()].size() == 3)
+    for (auto it = allFreq.rbegin(); it != allFreq.rend(); it++)
     {
-        auto minVal = min_element(temp[secondCard.getValue()].begin(), temp[secondCard.getValue()].end(), ColorCard::compareByColor);
-        if (minVal != temp[secondCard.getValue()].end())
-        {
-            temp[secondCard.getValue()].erase(minVal);
+        // Edge case :
+        //  1. kalau size == 3 dan semua dari table card seri atau bisa sudah dihandle di fullhouse
+        //  2. kalau size > 3, tidak mungkin pasti sudah jadi four of a kind
+        // 3. ada 2 kemungkinan: Table Card 1 3 2 2 3 Player Card : 3 2. Pilih tris yang lebih besar
+        if (it->second.size() == 3 && playerFreq[it->first].size() > 0)
+        { // jika ukurannya tepat 3 dan ada di deck player.
+            return new ThreeOfAKind(it->second);
         }
     }
-    temp[secondCard.getValue()].push_back(secondCard);
+    // map<int, vector<ColorCard>> temp;
+    // // count the freq of each color in the table deck
+    // for (auto &c : tableDeck.getDeck())
+    // {
+    //     deleteMinColorFromCombo(temp[c.getValue()], 3);
+    //     temp[c.getValue()].push_back(c);
+    // }
 
-    if (temp[firstCard.getValue()].size() == 3)
-    {
-        return new ThreeOfAKind(temp[firstCard.getValue()]);
-    }
+    // ColorCard firstCard = this->deck[0];
+    // deleteMinColorFromCombo(temp[firstCard.getValue()], 3);
+    // temp[firstCard.getValue()].push_back(firstCard);
 
-    if (temp[secondCard.getValue()].size() == 3)
-    {
-        return new ThreeOfAKind(temp[secondCard.getValue()]);
-    }
+    // ColorCard secondCard = this->deck[1];
+    // if (temp[secondCard.getValue()].size() == 3)
+    // {
+    //     auto minVal = min_element(temp[secondCard.getValue()].begin(), temp[secondCard.getValue()].end(), ColorCard::compareByColor);
+    //     if (minVal != temp[secondCard.getValue()].end())
+    //     {
+    //         temp[secondCard.getValue()].erase(minVal);
+    //     }
+    // }
+    // temp[secondCard.getValue()].push_back(secondCard);
+
+    // if (temp[firstCard.getValue()].size() == 3)
+    // {
+    //     return new ThreeOfAKind(temp[firstCard.getValue()]);
+    // }
+
+    // if (temp[secondCard.getValue()].size() == 3)
+    // {
+    //     return new ThreeOfAKind(temp[secondCard.getValue()]);
+    // }
 
     return nullptr;
 };
 
-FullHouse *Player::checkPlayerFullHouse(TableDeck tableDeck)
+FullHouse *Player::checkPlayerFullHouse(TableDeck &tableDeck)
 {
     map<int, vector<ColorCard>> allFreq;
     map<int, vector<ColorCard>> playerFreq;
@@ -405,7 +600,7 @@ FullHouse *Player::checkPlayerFullHouse(TableDeck tableDeck)
     return nullptr;
 }
 
-TwoPair *Player::checkPlayerTwoPair(TableDeck tableDeck)
+TwoPair *Player::checkPlayerTwoPair(TableDeck &tableDeck)
 {
     sort(this->deck.begin(), this->deck.end(), ColorCard::compareByValueThenColor);
     sort(tableDeck.getDeck().begin(), tableDeck.getDeck().end(), ColorCard::compareByValueThenColor);
@@ -492,3 +687,26 @@ TwoPair *Player::checkPlayerTwoPair(TableDeck tableDeck)
 
     return nullptr;
 };
+
+StraightFlush *Player::checkPlayerStraightFlush(TableDeck &tableDeck)
+{
+    map<string, vector<ColorCard>> allFreq;
+    map<string, vector<ColorCard>> playerFreq;
+
+    for (auto &card : this->deck)
+    {
+        playerFreq[card.getColor()].push_back(card);
+        allFreq[card.getColor()].push_back(card);
+    }
+    for (auto &card : tableDeck.getDeck())
+    {
+        allFreq[card.getColor()].push_back(card);
+    }
+    if (allFreq.rbegin()->second.size() >= 5 && playerFreq[allFreq.rbegin()->first].size() != 0)
+    {
+        TableDeck temp(allFreq.rbegin()->second);
+        Straight *straight = checkPlayerStraight(temp);
+        return new StraightFlush(straight->getDeck());
+    }
+    return nullptr;
+}

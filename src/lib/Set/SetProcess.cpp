@@ -28,6 +28,10 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
         for (auto &p : listOfPlayer_)
         {
             p.setHasPlayed(false);
+            if (round_ != 1)
+            {
+                p.setAbilityStatus(true);
+            }
         }
 
         allowedCommands = {"NEXT", "HALF", "DOUBLE"};
@@ -35,7 +39,8 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
         if (this->round_ != 6)
         {
             this->tableDeck_.addCard(this->mainDeck_);
-            this->tableDeck_.print();
+            cout << "Table Deck :" << endl;
+            ColorCard::printGroup(this->tableDeck_.getDeck());
             currPlayerIdx = firstPlayerIdx_;
             int playerMoved = 0;
             while (playerMoved < listOfPlayer_.size())
@@ -49,7 +54,7 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
                          << "It's " << currPlayer.getNickname() << "'s turn" << endl;
                     cout << "Player's cards : " << endl;
                     currPlayer.printCards();
-                    
+
                     if (this->round_ != 1)
                     {
                         allowedCommands.push_back(currPlayer.getAbility());
@@ -70,7 +75,7 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
                 random_device rd;
                 mt19937 gen(rd());
                 uniform_int_distribution<> dis(0, abilities.size() - 1);
-                // to do : make wait disinii jadi nunggu 
+                // to do : make wait disinii jadi nunggu
                 cout << "Shuffling abilities... " << endl;
                 // Shuffle the abilities
                 for (int i = 0; i < abilities.size(); ++i)
@@ -89,6 +94,37 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
         }
         round_++;
     }
+    calculateCombo();
+}
+
+void SetProcess::calculateCombo()
+{
+    float highestValue = 0;
+    Player &win = listOfPlayer_[0];
+    cout << "Table Deck :" << endl;
+    ColorCard::printGroup(this->tableDeck_.getDeck());
+    for (auto &p : listOfPlayer_)
+    {
+        Combo *combo = p.checkPlayerCombo(tableDeck_);
+        cout << combo->getValue() << endl;
+        cout << "**************************************" << endl;
+        cout << "           " << p.getNickname() << "'s cards: " << endl;
+        cout << "**************************************" << endl;
+        p.printCards();
+        cout << "**************************************" << endl;
+        cout << "           " << p.getNickname() << "'s combo: " << endl;
+        cout << "**************************************" << endl;
+        combo->print();
+        if (combo->getValue() > highestValue)
+        {
+            cout << "?" << endl;
+            highestValue = combo->getValue();
+            win = p;
+        }
+    }
+    cout << "The winner for this round is " << win.getNickname() << endl;
+    cout << win.getNickname() << " wins " << points_ << " points!" << endl;
+    win.addPoint(points_);
 }
 
 void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)

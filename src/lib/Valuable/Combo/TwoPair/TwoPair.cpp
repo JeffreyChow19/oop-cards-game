@@ -15,6 +15,6 @@ float TwoPair::getValue() const
 
 void TwoPair::print()
 {
-    this->firstPair_.print();
-    this->secondPair_.print();
+    ColorCard::printGroup(firstPair_.getPair());
+    ColorCard::printGroup(secondPair_.getPair());
 }
