@@ -241,7 +241,15 @@ void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
             {
                 if (c->getCommandName() == command)
                 {
-                    c->activate(*this);
+                    try{
+                        c->activate(*this);
+                    }
+                    catch(PointException &e){
+                        cout << e.what();
+                    }
+                    catch(PointException2 &e){
+                        cout << e.what();
+                    }
                     commandSet = true;
                     break;
                 }
