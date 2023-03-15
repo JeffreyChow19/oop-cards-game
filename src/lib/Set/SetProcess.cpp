@@ -95,7 +95,7 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
 void SetProcess::calculateCombo()
 {
     float highestValue = 0;
-    Player &win = listOfPlayer_[0];
+    Player *win = &listOfPlayer_[0];
     cout << "Table Deck :" << endl;
     ColorCard::printGroup(this->tableDeck_.getDeck());
     for (auto &p : listOfPlayer_)
@@ -113,13 +113,13 @@ void SetProcess::calculateCombo()
         if (combo->getValue() > highestValue)
         {
             highestValue = combo->getValue();
-            win = p;
+            win = &p;
         }
         delete combo;
     }
-    cout << "The winner for this round is " << win.getNickname() << endl;
-    cout << win.getNickname() << " wins " << points_ << " points!" << endl;
-    win.addPoint(points_);
+    cout << "The winner for this round is " << win->getNickname() << endl;
+    cout << win->getNickname() << " wins " << points_ << " points!" << endl;
+    win->addPoint(points_);
 }
 
 void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
