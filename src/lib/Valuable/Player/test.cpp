@@ -13,14 +13,16 @@ int main()
     ColorCard red11(Color::Red, 11);
     ColorCard red10(Color::Red, 10);
     ColorCard blue10(Color::Blue, 10);
-    ColorCard red9(Color::Red, 9);
     ColorCard red5(Color::Red, 5);
     ColorCard yellow5(Color::Yellow, 5);
     ColorCard red6(Color::Red, 6);
     ColorCard red7(Color::Red, 7);
+    ColorCard red8(Color::Red, 8);
+    ColorCard red9(Color::Red, 9);
     ColorCard green7(Color::Green, 7);
     ColorCard green1(Color::Green, 1);
     ColorCard green2(Color::Green, 2);
+    ColorCard green9(Color::Green, 9);
     ColorCard green10(Color::Green, 10);
     ColorCard green11(Color::Green, 11);
     ColorCard green12(Color::Green, 12);
@@ -30,13 +32,13 @@ int main()
 
     TableDeck tableDeck;
 
-    p1.addPlayerCard(red12);  // simpan card 1 player
-    p1.addPlayerCard(green11); // simpan card 2 player
+    p1.addPlayerCard(green9);  // simpan card 1 player
+    p1.addPlayerCard(green7); // simpan card 2 player
 
     tableDeck + green12;       // atur table deck
     tableDeck + red11;
     tableDeck + green10;
-    tableDeck + red13;
+    tableDeck + red8;
     tableDeck + red9;
 
     // Flush* isFlush = p1.checkPlayerFlush(tableDeck);

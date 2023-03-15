@@ -7,26 +7,29 @@ MainDeck::MainDeck()
 }
 
 void MainDeck::fillDeck(){
-    // HEADER  
-    cout << "How do you want to fill the Main Deck?" << endl;
-    cout << "[1] Auto Randomized" << endl;
-    cout << "[2] Input from file .txt" << endl;
 
     // SELECT OPTION
     int option = -1;
     do{
         try{
+            // HEADER  
+            cout << "\nHow do you want to fill the Main Deck?" << endl;
+            cout << "[1] Auto Randomized" << endl;
+            cout << "[2] Input from file .txt" << endl;
+
             int inputOption;
             cout << "Option : ";
             cin >> inputOption;
 
-            if (inputOption < 1 || inputOption > 2){
+            if (cin.fail() || inputOption < 1 || inputOption > 2){
                 throw OptionException();
             } else {
                 option = inputOption;
             }
         } catch(OptionException& err){
             cout << err.what();
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
     } while (option == -1);
 
