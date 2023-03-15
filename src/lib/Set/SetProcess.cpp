@@ -53,7 +53,7 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
                          << "It's " << currPlayer.getNickname() << "'s turn" << endl;
                     cout << "Player's cards : " << endl;
                     currPlayer.printCards();
-                    
+
                     if (this->round_ != 1 && currPlayer.getAbilityStatus())
                     {
                         allowedCommands.push_back(currPlayer.getAbility());
@@ -71,10 +71,10 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
 
             if (this->round_ == 1)
             {
-                // to do : make wait disinii jadi nunggu 
+                // to do : make wait disinii jadi nunggu
                 cout << "Shuffling abilities... " << endl;
                 // Shuffle the abilities
-                            
+
                 srand(time(NULL));
                 random_shuffle(abilities.begin(), abilities.end());
                 for (int i = 0; i < this->listOfPlayer_.size(); i++)
@@ -95,9 +95,9 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
 void SetProcess::calculateCombo()
 {
     float highestValue = 0;
-    Player &win = listOfPlayer_[0];
+    Player *win = &listOfPlayer_[0];
     cout << "Table Deck :" << endl;
-    ColorCard::printGroup(this->tableDeck_.getDeck());
+    tableDeck_.print();
     for (auto &p : listOfPlayer_)
     {
         Combo *combo = p.checkPlayerCombo(tableDeck_);
@@ -113,13 +113,13 @@ void SetProcess::calculateCombo()
         if (combo->getValue() > highestValue)
         {
             highestValue = combo->getValue();
-            win = p;
+            win = &p;
         }
         delete combo;
     }
-    cout << "The winner for this round is " << win.getNickname() << endl;
-    cout << win.getNickname() << " wins " << points_ << " points!" << endl;
-    win.addPoint(points_);
+    cout << "The winner for this round is " << win->getNickname() << endl;
+    cout << win->getNickname() << " wins " << points_ << " points!" << endl;
+    win->addPoint(points_);
 }
 
 void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
@@ -130,7 +130,8 @@ void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
     {
         try
         {
-            if (afterReverse) {
+            if (afterReverse)
+            {
                 allowedCommands.pop_back();
                 afterReverse = false;
             }
@@ -157,10 +158,12 @@ void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
             {
                 this->listOfPlayer_[currPlayerIdx].setAbilityStatus(false);
             }
-            if (command != "REVERSE") {
+            if (command != "REVERSE")
+            {
                 commandSet = true;
             }
-            else {
+            else
+            {
                 commandSet = false;
                 afterReverse = true;
             }

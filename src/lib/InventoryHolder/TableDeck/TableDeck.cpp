@@ -15,7 +15,8 @@ void TableDeck::addCard(MainDeck &_mainDeck)
     (*this) + toAdd;
 }
 
-void TableDeck::addCard(ColorCard toAdd) {
+void TableDeck::addCard(ColorCard toAdd)
+{
     (*this) + toAdd;
 }
 
@@ -31,9 +32,5 @@ TableDeck &TableDeck::operator=(const TableDeck &other)
 
 void TableDeck::print()
 {
-    for (int i = 0; i < this->deck.size(); i++)
-    {
-        this->deck[i].printInfo();
-        cout << endl;
-    }
+    ColorCard::printGroup(this->deck);
 }
