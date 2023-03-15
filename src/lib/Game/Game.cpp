@@ -41,11 +41,9 @@ void Game::startGame()
     int firstPlayerIdx = 0;
     while (!checkEndGame())
     {
-        cout << "kesini lagii" << endl;
         SetProcess gameSet(listOfPlayer, firstPlayerIdx);
         gameSet.getCurrPlayerIdx();
         firstPlayerIdx = (gameSet.getCurrPlayerIdx() + 1) % listOfPlayer.size();
-        cout << "masuk sini?" << endl;
     }
 }
 
@@ -53,9 +51,9 @@ bool Game::checkEndGame()
 {
     for (auto &p : listOfPlayer)
     {
-        if (p.getPoint() == pow(2, 32))
+        if (p.getPoint() >= pow(2, 32))
         {
-            cout << "masuk sini kaahh?" << endl;
+            cout << "CONGRATULATIONS" << endl;
             return true;
         }
     }

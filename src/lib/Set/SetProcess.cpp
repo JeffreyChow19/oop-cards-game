@@ -112,10 +112,10 @@ void SetProcess::calculateCombo()
         combo->print();
         if (combo->getValue() > highestValue)
         {
-            cout << "?" << endl;
             highestValue = combo->getValue();
             win = p;
         }
+        delete combo;
     }
     cout << "The winner for this round is " << win.getNickname() << endl;
     cout << win.getNickname() << " wins " << points_ << " points!" << endl;
