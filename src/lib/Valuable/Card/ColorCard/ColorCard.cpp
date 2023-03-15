@@ -99,7 +99,7 @@ void ColorCard::printInfo()
     {
         cout << " ______ \n"
                 "|" +
-                    to_string(this->value_) + "      |\n"
+                    to_string(this->value_) + "     |\n"
                                               "|      |\n"
                                               "|      |\n"
                                               "|      |\n"

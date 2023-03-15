@@ -44,6 +44,7 @@
     "string_view": "cpp",
     "ranges": "cpp",
     "span": "cpp",
-    "stacktrace": "cpp"
+    "stacktrace": "cpp",
+    "typeinfo": "cpp"
   }
 }

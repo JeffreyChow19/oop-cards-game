@@ -168,7 +168,7 @@ void SetProcess::calculateCombo()
         cout << "\n================================================" << endl;
 
         clr.white(true);
-        cout << "                    " << p.getNickname() << "'s" << endl;
+        cout << "                  " << p.getNickname() << "'s" << endl;
 
         clr.blue(true);
         cout << "Cards :" << endl;
