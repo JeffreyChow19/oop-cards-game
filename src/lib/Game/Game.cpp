@@ -3,7 +3,10 @@
 
 Game::Game()
 {
+    // Coloring
     Coloring clr;
+
+    // Splash Screen
     clr.pink(true);
     cout << "\n __   __  _______  _______  _______  ______    _______    _______  _______  ______    _______  __   __ \n"
             "|  |_|  ||   _   ||       ||  _    ||    _ |  |       |  |       ||   _   ||    _ |  |       ||  | |  |\n"
@@ -15,17 +18,23 @@ Game::Game()
          << endl;
     clr.reset();
 
+    // Input players' nickname
     for (int i = 0; i < 7; i++)
     {
         string nickname;
         try
         {
             cout << "Enter the nickname of Player " << i + 1 << ": ";
+
+            clr.lgreen();
             cin >> nickname;
+            clr.reset();
+
             if (cin.fail())
             {
                 throw StringException();
             }
+
             Player playerElmt(nickname);
             this->listOfPlayer.push_back(playerElmt);
         }
@@ -49,11 +58,20 @@ void Game::startGame()
 
 bool Game::checkEndGame()
 {
+    // Coloring
+    Coloring clr;
+
     for (auto &p : listOfPlayer)
     {
         if (p.getPoint() >= pow(2, 32))
         {
-            cout << "CONGRATULATIONS" << endl;
+            clr.blue(true);
+            cout << "CONGRATULATIONS "; 
+            
+            clr.pink(true);
+            cout << p.getNickname() << endl;
+            clr.reset();
+
             return true;
         }
     }

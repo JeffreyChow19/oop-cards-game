@@ -10,6 +10,7 @@ class Coloring{
         void yellow(bool bold = false);
         void lgreen(bool bold = false);
         void pink(bool bold = false); 
+        void cyan(bool bold = false); 
         void white(bool bold = false);
         void reset();
 };

@@ -4,6 +4,7 @@
 #include "../InventoryHolder.hpp"
 #include "../../Exception/Exception.hpp"
 #include "../../Valuable/Card/ColorCard/ColorCard.hpp"
+#include "../../Util/Coloring.hpp"
 
 #include <limits>
 #include <random>

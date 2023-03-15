@@ -87,9 +87,9 @@ public:
     /**
      * @brief Get the player object
      *
-     * @return int
+     * @return long long
      */
-    int getPoint() const;
+    long long getPoint() const;
 
     /**
      * @brief Get the Player Count

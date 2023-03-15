@@ -59,6 +59,15 @@ void Coloring::pink(bool bold){
   }
 }
 
+void Coloring::cyan(bool bold){
+   if (bold){
+    cout << "\033[1;96m";
+  }
+  else{
+    cout << "\033[0;96m";
+  }
+}
+
 void Coloring::white(bool bold){
    if (bold){
     cout << "\033[1;97m";

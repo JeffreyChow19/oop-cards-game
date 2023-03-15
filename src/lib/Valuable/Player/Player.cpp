@@ -49,7 +49,7 @@ string Player::getNickname() const
     return this->nickname_;
 }
 
-int Player::getPoint() const
+long long Player::getPoint() const
 {
     return this->point_;
 }
@@ -121,8 +121,17 @@ bool Player::getHasPlayed()
 
 void Player::print()
 {
+    Coloring clr;
+    
+    clr.white(true);
     cout << nickname_ << endl;
-    cout << "  Points: " << point_ << endl;
+    clr.reset();
+
+    cout << "  Points: "; 
+
+    clr.white(true);
+    cout << point_ << endl;
+    clr.reset();
 }
 
 void Player::printCards()

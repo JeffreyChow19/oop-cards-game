@@ -24,7 +24,7 @@ struct CommandException : public exception
 {
     const char *what() const throw()
     {
-        return "Command input not valid.\nPlease input the right command";
+        return "Command input not valid.\nPlease input the right command\n";
     }
 };
 
