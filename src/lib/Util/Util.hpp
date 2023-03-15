@@ -4,4 +4,6 @@
 #include <string>
 #include <iostream>
 
-string askToStart();
+string askToStart(bool firstGame);
+
+int askGame();

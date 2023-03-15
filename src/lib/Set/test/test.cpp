@@ -9,6 +9,6 @@ int main()
     Player p5("Tes5");
     Player p6("Tes6");
     Player p7("Tes7");
-    vector<Player> listOfPlayer = {p1, p2, p3, p4, p5, p6, p7};
+    vector<CandyPlayer> listOfPlayer = {p1, p2, p3, p4, p5, p6, p7};
     SetProcess setProcess(listOfPlayer, 0);
 }

@@ -35,7 +35,7 @@ Game::Game()
                 throw StringException();
             }
 
-            Player playerElmt(nickname);
+            CandyPlayer playerElmt(nickname);
             this->listOfPlayer.push_back(playerElmt);
         }
         catch (StringException &e)
@@ -66,8 +66,8 @@ bool Game::checkEndGame()
         if (p.getPoint() >= pow(2, 32))
         {
             clr.blue(true);
-            cout << "CONGRATULATIONS "; 
-            
+            cout << "CONGRATULATIONS ";
+
             clr.pink(true);
             cout << p.getNickname() << endl;
             clr.reset();

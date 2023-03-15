@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Set::Set(vector<Player> &listOfPlayer, int firstPlayerIdx) : listOfPlayer_(listOfPlayer)
+Set::Set(vector<CandyPlayer> &listOfPlayer, int firstPlayerIdx) : listOfPlayer_(listOfPlayer)
 {
     this->points_ = 64;
     this->round_ = 1;
@@ -64,7 +64,7 @@ void Set::printSetInfo()
     }
 }
 
-vector<Player> &Set::getListOfPlayers()
+vector<CandyPlayer> &Set::getListOfPlayers()
 {
     return this->listOfPlayer_;
 }

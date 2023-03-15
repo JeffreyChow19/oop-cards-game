@@ -28,7 +28,9 @@ public:
     void randomizeCard();
     void readCard();
     ColorCard getFromMainDeck();
-    MainDeck &operator=(const MainDeck &other);
+    void addCard(ColorCard card);
+    MainDeck &
+    operator=(const MainDeck &other);
     void print();
     Color stringToColor(const string &color);
 };

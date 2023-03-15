@@ -26,14 +26,10 @@ using namespace std;
 
 class Player : public Valuable, public InventoryHolder<ColorCard>
 {
-private:
+protected:
     static int playerCount_;
     int id_;
     string nickname_;
-    long long point_;
-    string ability_;
-    bool hasPlayed_;
-    bool abilityStatus_;
 
 public:
     Player();
@@ -56,7 +52,7 @@ public:
      * @brief Destroy the Player object
      *
      */
-    ~Player();
+    virtual ~Player();
 
     /**
      * @brief Set the Nickname object
@@ -65,31 +61,11 @@ public:
     void setNickname(string nickname);
 
     /**
-     * @brief Set the Point object
-     *
-     */
-    void setPoint(int point);
-
-    /**
-     * @brief add Player points_
-     *
-     * @param point
-     */
-    void addPoint(long long point);
-
-    /**
      * @brief Get the player nickname
      *
      * @return string
      */
     string getNickname() const;
-
-    /**
-     * @brief Get the player object
-     *
-     * @return long long
-     */
-    long long getPoint() const;
 
     /**
      * @brief Get the Player Count
@@ -137,145 +113,16 @@ public:
     void setPlayerDeck(vector<ColorCard>);
 
     /**
-     * @brief Set player's ability
-     *
-     */
-    void setAbility(string);
-
-    /**
-     * @brief Returns player's ability
-     *
-     * @return string
-     */
-    string getAbility();
-
-    /**
-     * @brief Get the status of player's ability
-     *
-     * @return true
-     * @return false
-     */
-    bool getAbilityStatus();
-
-    /**
-     * @brief Set the player's ability status
-     *
-     */
-    void setAbilityStatus(bool);
-
-    /**
-     * @brief Set the player's hasPlayed
-     *
-     */
-    void setHasPlayed(bool);
-
-    /**
-     * @brief Get the player's hasPlayed status
-     *
-     * @return true
-     * @return false
-     */
-    bool getHasPlayed();
-
-    /**
      * @brief Print player's info including their nickname and points
      *
      */
-    void print();
-
-    /**
-     * @brief checks player's best combo
-     *
-     * @param tableDeck
-     * @return Combo*
-     */
-    Combo *checkPlayerCombo(TableDeck &tableDeck);
-
-    /**
-     * @brief Checks if player can make Flush
-     *
-     * @param tableDeck
-     * @return Flush*
-     */
-    Flush *checkPlayerFlush(TableDeck &tableDeck);
-
-    /**
-     * @brief Checks if player can make FourOfAKind combo
-     *
-     * @param tableDeck
-     * @return FourOfAKind*
-     */
-    FourOfAKind *checkPlayerFourOfAKind(TableDeck &tableDeck);
-
-    /**
-     * @brief checks player's high card
-     *
-     * @return HighCard*
-     */
-    HighCard *checkPlayerHighCard();
-
-    /**
-     * @brief Checks if player can make a Pair combo
-     *
-     * @param tableDeck
-     * @return Pair*
-     */
-    Pair *checkPlayerPair(TableDeck &tableDeck);
-
-    /**
-     * @brief Checks if player can make a Straight combo
-     *
-     * @param tableDeck
-     * @return Straight*
-     */
-    Straight *checkPlayerStraight(TableDeck &tableDeck);
-
-    /**
-     * @brief Checks if player can make a Three Of A Kind combo
-     *
-     * @param tableDeck
-     * @return ThreeOfAKind*
-     */
-    ThreeOfAKind *checkPlayerThreeOfAKind(TableDeck &tableDeck);
-
-    /**
-     * @brief Checks if player can make a Two Pair combo
-     *
-     * @param tableDeck
-     * @return TwoPair*
-     */
-    TwoPair *checkPlayerTwoPair(TableDeck &tableDeck);
-
-    /**
-     * @brief Checks if player can make Full House
-     *
-     * @param tableDeck
-     * @return FullHouse*
-     */
-    FullHouse *checkPlayerFullHouse(TableDeck &tableDeck);
-
-    /**
-     * @brief Checks if player can make a Straight Flush combo
-     *
-     * @param tableDeck
-     * @return StraightFlush*
-     */
-    StraightFlush *checkPlayerStraightFlush(TableDeck &tableDeck);
+    virtual void print() = 0;
 
     /**
      * @brief Prints player's cards
      *
      */
     void printCards();
-
-    /**
-     * @brief Delete the minimum card value from the combo
-     *
-     * @param combo
-     * @param limit
-     */
-    void deleteMinValueFromCombo(vector<ColorCard> &combo, int limit);
-    void deleteMinColorFromCombo(vector<ColorCard> &combo, int limit);
 };
 
 #endif

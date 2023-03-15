@@ -2,7 +2,7 @@
 
 void ReRoll::activate(Set &set)
 {
-    vector<Player> &listOfPlayer = set.getListOfPlayers();
+    vector<CandyPlayer> &listOfPlayer = set.getListOfPlayers();
     int currPlayerIdx = set.getCurrPlayerIdx();
     cout << "Your cards are thrown away ...\n";
 

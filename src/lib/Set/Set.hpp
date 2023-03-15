@@ -4,7 +4,7 @@
 #include <vector>
 #include "../InventoryHolder/MainDeck/MainDeck.hpp"
 #include "../InventoryHolder/TableDeck/TableDeck.hpp"
-#include "../Valuable/Player/Player.hpp"
+#include "../Valuable/Player/CandyPlayer.hpp"
 #include "../Exception/Exception.hpp"
 
 class Set
@@ -14,7 +14,7 @@ protected:
     int round_;
     int firstPlayerIdx_;
     int currPlayerIdx;
-    vector<Player> &listOfPlayer_;
+    vector<CandyPlayer> &listOfPlayer_;
     MainDeck mainDeck_;
     TableDeck tableDeck_;
 
@@ -25,7 +25,7 @@ public:
      * @param listOfPlayer
      * @param currPlayerIdx
      */
-    Set(vector<Player> &listOfPlayer, int currPlayerIdx);
+    Set(vector<CandyPlayer> &listOfPlayer, int currPlayerIdx);
     /**
      * @brief Set the points of Set to this->points_ * multiplier
      *
@@ -45,9 +45,9 @@ public:
     /**
      * @brief Get the set's listOfPlayer_
      *
-     * @return vector<Player>&
+     * @return vector<CandyPlayer>&
      */
-    vector<Player> &getListOfPlayers();
+    vector<CandyPlayer> &getListOfPlayers();
 
     /**
      * @brief Get the index of the first player for the set
