@@ -8,7 +8,7 @@ int main()
     Coloring clr;
 
     // Welcoming message
-    clr.white(true);
+    clr.green(true);
 
     cout << "\n================================" << endl;
     cout << "Welcome to MasbroParty Card Game" << endl;
