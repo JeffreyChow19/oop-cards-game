@@ -136,8 +136,13 @@ void Player::printCards()
 
 void Player::deleteMinValueFromCombo(vector<ColorCard> &combo, int limit)
 {
-    for (auto &card : combo)
+    if (combo.size() == limit)
     {
+        auto minVal = min_element(combo.begin(), combo.end(), ColorCard::compareByValue);
+        if (minVal != combo.end())
+        {
+            combo.erase(minVal);
+        }
     }
 }
 

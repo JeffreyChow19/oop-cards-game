@@ -20,9 +20,26 @@ protected:
     static const float STRAIGHT_FLUSH_MAX;
 
 public:
+    /**
+     * @brief Construct a new Combo object
+     *
+     */
     Combo();
+    /**
+     * @brief Destroy the Combo object
+     *
+     */
     virtual ~Combo();
+    /**
+     * @brief virtual function get the value of a Combo
+     *
+     * @return float
+     */
     virtual float getValue() const = 0;
+    /**
+     * @brief virtual procedure prints the combo
+     *
+     */
     virtual void print() = 0;
 };
 
