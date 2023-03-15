@@ -9,26 +9,27 @@
 #include <random>
 #include <fstream>
 #include <sstream>
+#include <ctime>
 
 using namespace std;
 
 class MainDeck : public InventoryHolder<ColorCard>
 {
-    private:
-    public:
-        /**
-         * @brief Construct a new Main Deck object
-         *
-         */
-        MainDeck();
-        ~MainDeck();
-        void fillDeck();
-        void randomizeCard();
-        void readCard();
-        ColorCard getFromMainDeck();
-        MainDeck& operator=(const MainDeck& other);
-        void print();
-        Color stringToColor(const string& color);
+private:
+public:
+    /**
+     * @brief Construct a new Main Deck object
+     *
+     */
+    MainDeck();
+    ~MainDeck();
+    void fillDeck();
+    void randomizeCard();
+    void readCard();
+    ColorCard getFromMainDeck();
+    MainDeck &operator=(const MainDeck &other);
+    void print();
+    Color stringToColor(const string &color);
 };
 
 #endif

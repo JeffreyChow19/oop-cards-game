@@ -14,6 +14,7 @@
 #include <vector>
 #include <random>
 #include <algorithm>
+#include <ctime>
 
 class SetProcess : public Set
 {
