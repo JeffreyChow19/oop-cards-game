@@ -32,6 +32,8 @@ public:
     float getValue() const;
 
     void print();
+
+    string getComboName() const;
 };
 
 #endif

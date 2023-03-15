@@ -18,3 +18,7 @@ void TwoPair::print()
     ColorCard::printGroup(firstPair_.getPair());
     ColorCard::printGroup(secondPair_.getPair());
 }
+
+string TwoPair::getComboName() const {
+    return "TWO PAIR";
+}

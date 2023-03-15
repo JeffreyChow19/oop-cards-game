@@ -26,6 +26,8 @@ class Flush : public Combo {
     float getValue() const;
 
     void print();
+
+    string getComboName() const;
 };
 
 #endif

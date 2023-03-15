@@ -295,38 +295,6 @@ FourOfAKind *Player::checkPlayerFourOfAKind(TableDeck &tableDeck)
         }
     }
 
-    // count the freq of each color in the table deck
-    // for (auto &c : tableDeck.getDeck())
-    // {
-    //     deleteMinColorFromCombo(temp[c.getValue()], 4);
-    //     temp[c.getValue()].push_back(c);
-    // }
-
-    // ColorCard firstCard = this->deck[0];
-    // deleteMinColorFromCombo(temp[firstCard.getValue()], 4);
-    // temp[firstCard.getValue()].push_back(firstCard);
-
-    // ColorCard secondCard = this->deck[1];
-    // if (temp[secondCard.getValue()].size() == 4)
-    // {
-    //     auto minVal = min_element(temp[secondCard.getValue()].begin(), temp[secondCard.getValue()].end(), ColorCard::compareByColor);
-    //     if (minVal != temp[secondCard.getValue()].end())
-    //     {
-    //         temp[secondCard.getValue()].erase(minVal);
-    //     }
-    // }
-    // temp[secondCard.getValue()].push_back(secondCard);
-
-    // if (temp[firstCard.getValue()].size() == 4)
-    // {
-    //     return new FourOfAKind(temp[firstCard.getValue()]);
-    // }
-
-    // if (temp[secondCard.getValue()].size() == 4)
-    // {
-    //     return new FourOfAKind(temp[secondCard.getValue()]);
-    // }
-
     return nullptr;
 };
 
@@ -494,8 +462,6 @@ Straight *Player::checkPlayerStraight(TableDeck &tableDeck)
     return nullptr;
 };
 
-// StraightFlush* checkPlayerStraightFlush();
-
 ThreeOfAKind *Player::checkPlayerThreeOfAKind(TableDeck &tableDeck)
 {
     map<int, vector<ColorCard>> allFreq;
@@ -522,38 +488,6 @@ ThreeOfAKind *Player::checkPlayerThreeOfAKind(TableDeck &tableDeck)
             return new ThreeOfAKind(it->second);
         }
     }
-    // map<int, vector<ColorCard>> temp;
-    // // count the freq of each color in the table deck
-    // for (auto &c : tableDeck.getDeck())
-    // {
-    //     deleteMinColorFromCombo(temp[c.getValue()], 3);
-    //     temp[c.getValue()].push_back(c);
-    // }
-
-    // ColorCard firstCard = this->deck[0];
-    // deleteMinColorFromCombo(temp[firstCard.getValue()], 3);
-    // temp[firstCard.getValue()].push_back(firstCard);
-
-    // ColorCard secondCard = this->deck[1];
-    // if (temp[secondCard.getValue()].size() == 3)
-    // {
-    //     auto minVal = min_element(temp[secondCard.getValue()].begin(), temp[secondCard.getValue()].end(), ColorCard::compareByColor);
-    //     if (minVal != temp[secondCard.getValue()].end())
-    //     {
-    //         temp[secondCard.getValue()].erase(minVal);
-    //     }
-    // }
-    // temp[secondCard.getValue()].push_back(secondCard);
-
-    // if (temp[firstCard.getValue()].size() == 3)
-    // {
-    //     return new ThreeOfAKind(temp[firstCard.getValue()]);
-    // }
-
-    // if (temp[secondCard.getValue()].size() == 3)
-    // {
-    //     return new ThreeOfAKind(temp[secondCard.getValue()]);
-    // }
 
     return nullptr;
 };

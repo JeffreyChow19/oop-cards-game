@@ -25,3 +25,7 @@ void StraightFlush::print()
 {
     ColorCard::printGroup(this->cards_);
 }
+
+string StraightFlush::getComboName() const{
+    return "STRAIGHT FLUSH";
+}

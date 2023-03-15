@@ -43,3 +43,7 @@ void FullHouse::print()
     pair_.print();
     tris_.print();
 }
+
+string FullHouse::getComboName() const{
+    return "FULL HOUSE";
+}

@@ -17,6 +17,7 @@ public:
     ~TwoPair();
     float getValue() const;
     void print();
+    string getComboName() const;
 };
 
 #endif

@@ -18,6 +18,7 @@ public:
         float getValue() const;
         void print();
         pair<ColorCard, ColorCard> getPair();
+        string getComboName() const;
 };
 
 #endif

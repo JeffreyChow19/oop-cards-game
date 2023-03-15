@@ -78,7 +78,13 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
                          << endl;
 
                     clr.white(true);
-                    cout << "Player's cards : " << endl;
+                    cout << "Table cards : " << endl;
+                    clr.reset();
+
+                    ColorCard::printGroup(this->tableDeck_.getDeck());
+
+                    clr.white(true);
+                    cout << "\nPlayer's cards : " << endl;
                     clr.reset();
 
                     currPlayer.printCards();
@@ -171,7 +177,8 @@ void SetProcess::calculateCombo()
         p.printCards();
 
         clr.blue(true);
-        cout << "\nCombo :" << endl;
+        cout << "\nCombo :";
+        cout << combo->getComboName() << endl;
         clr.reset();
 
         combo->print();

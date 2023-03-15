@@ -30,3 +30,7 @@ pair<ColorCard, ColorCard> Pair::getPair()
 {
     return this->cardPair_;
 }
+
+string Pair::getComboName() const{
+    return "PAIR";
+}

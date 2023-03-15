@@ -24,3 +24,7 @@ void FourOfAKind::print()
 {
     ColorCard::printGroup(quad_);
 }
+
+string FourOfAKind::getComboName() const {
+    return "FOUR OF A KIND";    
+}
