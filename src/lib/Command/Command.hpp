@@ -2,6 +2,7 @@
 #define _COMMAND_HPP_
 
 #include "../Set/Set.hpp"
+#include "../Util/Coloring.hpp"
 
 using namespace std;
 

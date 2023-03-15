@@ -2,9 +2,15 @@
 
 void Swap::activate(Set &set)
 {
+    Coloring clr;
     vector<Player>& listOfPlayer = set.getListOfPlayers();
     int currPlayerIdx = set.getCurrPlayerIdx();
-    cout << listOfPlayer[currPlayerIdx].getNickname() << " is using SWAPCARD!\n";
+
+    clr.white(true);
+    cout << listOfPlayer[currPlayerIdx].getNickname();
+    clr.reset();
+    
+    cout << " is using SWAPCARD!\n";
     cout << "Please choose a player to swap their card: \n";
     int no = 1;
     for (int i = 0; i < listOfPlayer.size(); i++)
@@ -41,18 +47,25 @@ void Swap::activate(Set &set)
                     no++;
                 }
             }
+
             opt = inputOption(5);
             int idxMax = max(idxFirstPlayer, currPlayerIdx);
             int idxMin = min(idxFirstPlayer, currPlayerIdx);
             int idxSecondPlayer = opt <= idxMin ? opt - 1 : opt >= idxMax ? opt + 1 : opt;
+
             cout << "Please choose right/left for " << listOfPlayer[idxFirstPlayer].getNickname() << "\'s cards: \n";
             cout << "[1] Right\n[2] Left\n";
+
             opt = inputOption(2);
+
             int idxCardFirstPlayer = 2 - opt;
             cout << "Please choose right/left for " << listOfPlayer[idxSecondPlayer].getNickname() << "\'s cards: \n";
             cout << "[1] Right\n[2] Left\n";
+
             opt = inputOption(2);
+
             int idxCardSecondPlayer = 2 - opt;
+
             ColorCard tempFirst = listOfPlayer[idxFirstPlayer].getPlayerDeck()[idxCardFirstPlayer];
             ColorCard tempSecond = listOfPlayer[idxSecondPlayer].getPlayerDeck()[idxCardSecondPlayer];
             set.getListOfPlayers()[idxFirstPlayer].removePlayerCard(tempFirst);
@@ -63,22 +76,32 @@ void Swap::activate(Set &set)
         }
         catch (IntegerException &e)
         {
+            clr.red();
             cout << e.what();
+            clr.reset();
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
         }
         catch (OptionException &e)
         {
+            clr.red();
             cout << e.what();
+            clr.reset();
         }
+
     }
     
 }
 
 int Swap::inputOption(int sumOpt) {
+    Coloring clr;
     int opt;
-    cout << "> ";
+    cout << "Input option: ";
+
+    clr.lgreen();
     cin >> opt;
+    clr.reset();
+
     if (cin.fail())
     {
         throw IntegerException();
