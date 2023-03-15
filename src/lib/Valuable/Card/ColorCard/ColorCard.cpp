@@ -121,38 +121,35 @@ void ColorCard::printGroup(vector<ColorCard> cc)
             switch (c.color_)
             {
             case Color::Red:
-                clr.red();
+                clr.red(true);
                 break;
             case Color::Green:
-                clr.green();
+                clr.green(true);
                 break;
             case Color::Blue:
-                clr.blue();
+                clr.blue(true);
                 break;
             case Color::Yellow:
-                clr.yellow();
+                clr.yellow(true);
                 break;
             }
-
-            // initialize padding
-            string padding = c.value_ >= 10 ? " " : "";
 
             // which line
             if (i == 0)
             {
-                cout << " _____" << ((c.value_ >= 10) ? "_" : "") << " ";
+                cout << " ______"  << " ";
             }
             else if (i == 1)
             {
-                cout << "|" << to_string(c.value_) << "    |";
+                cout << "|" << to_string(c.value_) << (c.value_ < 10 ? " " : "") <<  "    |";
             }
             else if (i == 5)
             {
-                cout << "|____" << to_string(c.value_) << "|";
+                cout << "|____" << (c.value_ < 10 ? "_" : "") << to_string(c.value_) << "|";
             }
             else
             {
-                cout << "|     " << ((c.value_ >= 10) ? " " : "") << "|";
+                cout << "|      |";
             }
 
             // padding right

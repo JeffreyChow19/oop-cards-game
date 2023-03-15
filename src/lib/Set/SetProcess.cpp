@@ -1,8 +1,12 @@
 #include "SetProcess.hpp"
-#include "../Exception/Exception.hpp"
+
+using namespace std;
 
 SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(listOfPlayer, firstPlayerIdx)
 {
+    Coloring clr;
+
+    // Initialize commands and abilities
     vector<string> allowedCommands = {"NEXT", "HALF", "DOUBLE"};
     vector<string> abilities = {"RE-ROLL", "SWITCH", "SWAP", "QUARTER", "REVERSE", "QUADRUPLE", "ABILITYLESS"};
     commands_ = {new Next(),
@@ -15,15 +19,17 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
                  new Reverse(),
                  new Swap(),
                  new Switch()};
+
     // ROUND 1 - 5 take commands
     while (this->round_ <= 6)
     {
-        cout << "**************************************" << endl;
+        clr.cyan();
+        cout << "\n**************************************" << endl;
         cout << "          Welcome to round " << this->round_ << endl;
         cout << "**************************************" << endl
              << endl;
+        clr.reset();
 
-        cout << endl;
         // keep tracker of player
         for (auto &p : listOfPlayer_)
         {
@@ -37,21 +43,44 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
         if (this->round_ != 6)
         {
             this->tableDeck_.addCard(this->mainDeck_);
+
+            clr.white(true);
             cout << "Table Deck :" << endl;
+            clr.reset();
+
             ColorCard::printGroup(this->tableDeck_.getDeck());
+
+            sleep(1);
+
             currPlayerIdx = firstPlayerIdx_;
+
             int playerMoved = 0;
             while (playerMoved < listOfPlayer_.size())
             {
                 allowedCommands = {"NEXT", "HALF", "DOUBLE"};
+
                 Player &currPlayer = listOfPlayer_[currPlayerIdx];
                 if (!currPlayer.getHasPlayed())
                 {
                     cout << endl;
                     printSetInfo();
+
+                    sleep(1);
+
                     cout << endl
-                         << "It's " << currPlayer.getNickname() << "'s turn" << endl;
+                         << "It's ";
+
+                    clr.white(true);
+                    cout << currPlayer.getNickname();
+                    clr.reset();
+
+                    cout << "'s turn" << endl
+                         << endl;
+
+                    clr.white(true);
                     cout << "Player's cards : " << endl;
+                    clr.reset();
+
                     currPlayer.printCards();
 
                     if (this->round_ != 1 && currPlayer.getAbilityStatus())
@@ -59,7 +88,6 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
                         allowedCommands.push_back(currPlayer.getAbility());
                     }
                     askCommand(allowedCommands, currPlayer);
-                    
                     listOfPlayer_[currPlayerIdx].setHasPlayed(true);
                     playerMoved++;
                 }
@@ -68,14 +96,39 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
 
             if (this->round_ == 1)
             {
-                cout << "Shuffling abilities... " << endl;
-                // Shuffle the abilities
+                clr.red(true);
+                cout << "\n=== End of round ";
+                cout << this->round_;
+                cout << " ===" << endl
+                     << endl;
+                clr.reset();
 
+                sleep(0.5);
+
+                clr.lgreen(true);
+                cout << "Shuffling abilities... " << endl
+                     << endl;
+                clr.reset();
+
+                sleep(1);
+
+                // Shuffle the abilities
                 srand(time(NULL));
                 random_shuffle(abilities.begin(), abilities.end());
                 for (int i = 0; i < this->listOfPlayer_.size(); i++)
                 {
-                    cout << listOfPlayer_[i].getNickname() << " got " << abilities[i] << " ability" << endl;
+                    clr.blue(true);
+                    cout << listOfPlayer_[i].getNickname();
+                    clr.reset();
+
+                    cout << " got ";
+
+                    clr.yellow(true);
+                    cout << abilities[i];
+                    clr.reset();
+
+                    cout << " ability" << endl;
+
                     this->listOfPlayer_[i].setAbility(abilities[i]);
                     this->listOfPlayer_[i].setAbilityStatus(true);
                 }
@@ -90,22 +143,43 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
 
 void SetProcess::calculateCombo()
 {
+    Coloring clr;
+
     float highestValue = 0;
     Player *win = &listOfPlayer_[0];
+
+    clr.white(true);
     cout << "Table Deck :" << endl;
-    tableDeck_.print();
+    clr.reset();
+
+    ColorCard::printGroup(this->tableDeck_.getDeck());
+
     for (auto &p : listOfPlayer_)
     {
         Combo *combo = p.checkPlayerCombo(tableDeck_);
-        cout << combo->getValue() << endl;
-        cout << "**************************************" << endl;
-        cout << "           " << p.getNickname() << "'s cards: " << endl;
-        cout << "**************************************" << endl;
+
+        clr.lgreen(true);
+        cout << "\n===============================================" << endl;
+
+        clr.white(true);
+        cout << "               " << p.getNickname() << "'s" << endl;
+
+        clr.blue(true);
+        cout << "Cards :" << endl;
+        clr.reset();
+
         p.printCards();
-        cout << "**************************************" << endl;
-        cout << "           " << p.getNickname() << "'s combo: " << endl;
-        cout << "**************************************" << endl;
+
+        clr.blue(true);
+        cout << "\nCombo :" << endl;
+        clr.reset();
+
         combo->print();
+
+        clr.lgreen(true);
+        cout << "\n===============================================" << endl;
+        clr.reset();
+
         if (combo->getValue() > highestValue)
         {
             highestValue = combo->getValue();
@@ -113,13 +187,32 @@ void SetProcess::calculateCombo()
         }
         delete combo;
     }
-    cout << "The winner for this round is " << win->getNickname() << endl;
-    cout << win->getNickname() << " wins " << points_ << " points!" << endl;
+
+    clr.yellow(true);
+    cout << "\nThe winner for this round is ";
+
+    clr.blue(true);
+    cout << win->getNickname() << endl;
+
+    cout << win->getNickname();
+
+    clr.yellow(true);
+    cout << " wins ";
+
+    clr.blue(true);
+    cout << points_;
+
+    clr.yellow(true);
+    cout << " points!" << endl;
+    clr.reset();
+
     win->addPoint(points_);
 }
 
 void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
 {
+    Coloring clr;
+
     bool commandSet = false;
     bool afterReverse = false;
     while (!commandSet)
@@ -131,8 +224,12 @@ void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
                 allowedCommands.pop_back();
                 afterReverse = false;
             }
+
+            clr.white(true);
             cout << endl
                  << "The allowed commands are : " << endl;
+            clr.reset();
+
             for (int i = 0; i < allowedCommands.size(); i++)
             {
                 cout << "[-] " << allowedCommands[i] << endl;
@@ -165,23 +262,35 @@ void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
         }
         catch (CommandException &err)
         {
+            clr.red();
             cout << err.what();
+            clr.reset();
         }
         catch (CommandInactiveException &err)
         {
+            clr.red();
             cout << err.what();
+            clr.reset();
         }
         catch (StringException &err)
         {
+            clr.red();
             cout << err.what();
+            clr.reset();
         }
     }
 }
 
 string SetProcess::inputCommand(vector<string> &allowedCommands, Player &currPlayer)
 {
+    Coloring clr;
+
     string command;
+
+    clr.lgreen();
     cin >> command;
+    clr.reset();
+
     if (cin.fail())
     {
         throw StringException();

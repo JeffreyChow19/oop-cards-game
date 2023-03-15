@@ -49,7 +49,7 @@ string Player::getNickname() const
     return this->nickname_;
 }
 
-int Player::getPoint() const
+long long Player::getPoint() const
 {
     return this->point_;
 }
@@ -121,8 +121,17 @@ bool Player::getHasPlayed()
 
 void Player::print()
 {
+    Coloring clr;
+
+    clr.white(true);
     cout << nickname_ << endl;
-    cout << "  Points: " << point_ << endl;
+    clr.reset();
+
+    cout << "  Points: ";
+
+    clr.white(true);
+    cout << point_ << endl;
+    clr.reset();
 }
 
 void Player::printCards()
@@ -450,7 +459,7 @@ Straight *Player::checkPlayerStraight(TableDeck &tableDeck)
             {
                 // try to change
 
-                for (int i = 0; i <= 1; i++)
+                for (int i = 0; i < this->deck.size(); i++)
                 {
                     if (this->deck[i].getValue() <= high && this->deck[i].getValue() >= high - 4)
                     {
@@ -482,7 +491,6 @@ Straight *Player::checkPlayerStraight(TableDeck &tableDeck)
             }
         }
     }
-
     return nullptr;
 };
 
@@ -719,7 +727,23 @@ StraightFlush *Player::checkPlayerStraightFlush(TableDeck &tableDeck)
     if (allFreq.rbegin()->second.size() >= 5 && playerFreq[allFreq.rbegin()->first].size() != 0)
     {
         TableDeck temp(allFreq.rbegin()->second);
+        ColorCard otherColor;
+        bool found = false;
+        for (auto &c : this->deck)
+        {
+            if (c.getColor() != allFreq.rbegin()->first)
+            {
+                otherColor = c;
+                found = true;
+                removePlayerCard(c);
+                break;
+            }
+        }
         Straight *straight = checkPlayerStraight(temp);
+        if (found)
+        {
+            addPlayerCard(otherColor);
+        }
         return new StraightFlush(straight->getDeck());
     }
     return nullptr;

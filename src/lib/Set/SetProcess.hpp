@@ -10,11 +10,14 @@
 #include "../Command/Ability/Reverse/Reverse.hpp"
 #include "../Command/Ability/Swap/Swap.hpp"
 #include "../Command/Ability/Switch/Switch.hpp"
+#include "../Util/Coloring.hpp"
+#include "../Exception/Exception.hpp"
 
 #include <vector>
 #include <random>
 #include <algorithm>
 #include <ctime>
+#include <unistd.h>
 
 class SetProcess : public Set
 {

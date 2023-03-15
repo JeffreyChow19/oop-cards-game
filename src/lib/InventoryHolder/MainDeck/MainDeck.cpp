@@ -6,19 +6,26 @@ MainDeck::MainDeck()
 }
 
 void MainDeck::fillDeck(){
+    // Coloring
+    Coloring clr;
 
     // SELECT OPTION
     int option = -1;
     do{
         try{
-            // HEADER  
+            clr.white(true);
             cout << "\nHow do you want to fill the Main Deck?" << endl;
+            clr.reset();
+
             cout << "[1] Auto Randomized" << endl;
             cout << "[2] Input from file .txt" << endl;
 
             int inputOption;
             cout << "Option : ";
+
+            clr.lgreen();
             cin >> inputOption;
+            clr.reset();
 
             if (cin.fail() || inputOption < 1 || inputOption > 2){
                 throw OptionException();
@@ -26,7 +33,10 @@ void MainDeck::fillDeck(){
                 option = inputOption;
             }
         } catch(OptionException& err){
+            clr.red();
             cout << err.what();
+            clr.reset();
+            
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
