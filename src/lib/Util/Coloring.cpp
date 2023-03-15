@@ -41,6 +41,42 @@ void Coloring::yellow(bool bold)
   }
 }
 
+void Coloring::lgreen(bool bold){
+  if (bold){
+    cout << "\033[1;92m";
+  }
+  else{
+    cout << "\033[0;92m";
+  }
+}
+
+void Coloring::pink(bool bold){
+  if (bold){
+    cout << "\033[1;95m";
+  }
+  else{
+    cout << "\033[0;95m";
+  }
+}
+
+void Coloring::cyan(bool bold){
+   if (bold){
+    cout << "\033[1;96m";
+  }
+  else{
+    cout << "\033[0;96m";
+  }
+}
+
+void Coloring::white(bool bold){
+   if (bold){
+    cout << "\033[1;97m";
+  }
+  else{
+    cout << "\033[0;97m";
+  }
+}
+
 void Coloring::reset()
 {
     cout << "\033[0m";

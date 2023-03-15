@@ -47,9 +47,19 @@ void Set::setPoints(float multiplier)
 }
 void Set::printSetInfo()
 {
-    cout << "Current point for this set is " << points_ << endl;
+    Coloring clr;
+    cout << "Current point for this set is ";
+
+    clr.white(true);
+    cout << points_ << endl << endl;
+    clr.reset();
+
     int ctr = 0;
+
+    clr.white(true);
     cout << "Current turn: " << endl;
+    clr.reset();
+    
     while (ctr < listOfPlayer_.size())
     {
         cout << "[" << ctr + 1 << "] ";
