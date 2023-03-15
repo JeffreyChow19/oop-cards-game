@@ -68,6 +68,14 @@ struct PointException : public exception
     }
 };
 
+struct PointException2 : public exception
+{
+    const char *what() const throw()
+    {
+        return "The set point is already 2 so it cant be quartered.\n";
+    }
+};
+
 struct FilenameException : public exception{
     const char *what() const throw(){
         return "File not found. Please input the correct file and follow this format [filename].txt\n";

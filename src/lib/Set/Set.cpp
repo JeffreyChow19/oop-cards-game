@@ -33,12 +33,13 @@ Set::~Set()
     }
 }
 
+long long Set::getPoints()
+{
+    return this->points_;
+}
+
 void Set::setPoints(float multiplier)
 {
-    if (this->points_ == 1)
-    {
-        throw PointException();
-    }
     this->points_ = this->points_ * multiplier;
 }
 void Set::printSetInfo()
