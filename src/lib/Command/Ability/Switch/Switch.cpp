@@ -6,9 +6,7 @@ void Switch::activate(Set &set)
     cout << listOfPlayer[set.getCurrPlayerIdx()].getNickname() << " is using SWITCH!\n";
     cout << "Here is your cards: \n";
     int currPlayerIdx = set.getCurrPlayerIdx();
-    listOfPlayer[currPlayerIdx].getPlayerDeck()[0].printInfo();
-    cout << " && ";
-    listOfPlayer[currPlayerIdx].getPlayerDeck()[1].printInfo();
+    ColorCard::printGroup(listOfPlayer[currPlayerIdx].getPlayerDeck());
     cout << "\nPlease choose a player to switch your card: \n";
     int no = 1;
     for (int i = 0; i < listOfPlayer.size(); i++)
@@ -35,9 +33,7 @@ void Switch::activate(Set &set)
             set.getListOfPlayers()[currPlayerIdx].setPlayerDeck(tempDeck);
             cout << "Both of " << listOfPlayer[currPlayerIdx].getNickname() << "\'s cards are switched with " << listOfPlayer[idxPlayerSwap].getNickname() << "\'s cards!\n";
             cout << "Here is your cards: \n";
-            listOfPlayer[currPlayerIdx].getPlayerDeck()[0].printInfo();
-            cout << " && ";
-            listOfPlayer[currPlayerIdx].getPlayerDeck()[1].printInfo();
+            ColorCard::printGroup(listOfPlayer[currPlayerIdx].getPlayerDeck());
             cout << endl;
             success = true;
         }
