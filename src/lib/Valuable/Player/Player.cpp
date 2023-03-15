@@ -309,7 +309,7 @@ FourOfAKind *Player::checkPlayerFourOfAKind(TableDeck &tableDeck)
 HighCard *Player::checkPlayerHighCard()
 {
     HighCard *hc1 = new HighCard(this->deck[0]);
-    HighCard *hc2 = new HighCard(this->deck[0]);
+    HighCard *hc2 = new HighCard(this->deck[1]);
     if (hc1->getValue() > hc2->getValue())
     {
         delete hc2;
