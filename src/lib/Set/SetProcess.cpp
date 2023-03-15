@@ -34,10 +34,10 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
         for (auto &p : listOfPlayer_)
         {
             p.setHasPlayed(false);
-            if (round_ != 1)
-            {
-                p.setAbilityStatus(true);
-            }
+            // if (round_ != 1)
+            // {
+            //     p.setAbilityStatus(true);
+            // }
         }
 
         if (this->round_ != 6)
@@ -89,7 +89,7 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
 
                     currPlayer.printCards();
 
-                    if (this->round_ != 1 && currPlayer.getAbilityStatus())
+                    if (this->round_ != 1 && currPlayer.getAbilityUse())
                     {
                         allowedCommands.push_back(currPlayer.getAbility());
                     }
@@ -137,6 +137,7 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
 
                     this->listOfPlayer_[i].setAbility(abilities[i]);
                     this->listOfPlayer_[i].setAbilityStatus(true);
+                    this->listOfPlayer_[i].setAbilityUse(true);
                 }
             }
 
@@ -263,7 +264,7 @@ void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
             }
             if (command != "NEXT" && command != "DOUBLE" && command != "HALF")
             {
-                this->listOfPlayer_[currPlayerIdx].setAbilityStatus(false);
+                this->listOfPlayer_[currPlayerIdx].setAbilityUse(false);
             }
             if (command != "REVERSE")
             {
@@ -293,6 +294,12 @@ void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
             cout << err.what();
             clr.reset();
         }
+        catch (AbilityNotHaveException &err)
+        {
+            clr.red();
+            cout << err.what();
+            clr.reset();
+        }
     }
 }
 
@@ -302,6 +309,8 @@ string SetProcess::inputCommand(vector<string> &allowedCommands, Player &currPla
 
     string command;
 
+    vector<string> abilities = {"RE-ROLL", "SWITCH", "SWAP", "QUARTER", "REVERSE", "QUADRUPLE", "ABILITYLESS"};
+
     clr.lgreen();
     cin >> command;
     clr.reset();
@@ -310,6 +319,13 @@ string SetProcess::inputCommand(vector<string> &allowedCommands, Player &currPla
     {
         throw StringException();
     }
+
+    auto itr = find(abilities.begin(), abilities.end(), command);
+    if ((itr != abilities.end() && !currPlayer.getAbilityUse()) || (itr != abilities.end() && command != currPlayer.getAbility()))
+    {
+        throw AbilityNotHaveException();
+    }
+
     for (auto &c : allowedCommands)
     {
         if (c == command)
