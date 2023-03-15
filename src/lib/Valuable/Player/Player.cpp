@@ -160,51 +160,61 @@ Combo *Player::checkPlayerCombo(TableDeck &tableDeck)
     {
         return combo;
     }
+    delete combo;
     combo = checkPlayerFourOfAKind(tableDeck);
     if (combo != nullptr)
     {
         return combo;
     }
+    delete combo;
     combo = checkPlayerFullHouse(tableDeck);
     if (combo != nullptr)
     {
         return combo;
     }
+    delete combo;
     combo = checkPlayerFullHouse(tableDeck);
     if (combo != nullptr)
     {
         return combo;
     }
+    delete combo;
     combo = checkPlayerFlush(tableDeck);
     if (combo != nullptr)
     {
         return combo;
     }
+    delete combo;
     combo = checkPlayerStraight(tableDeck);
     if (combo != nullptr)
     {
         return combo;
     }
+    delete combo;
     combo = checkPlayerThreeOfAKind(tableDeck);
     if (combo != nullptr)
     {
         return combo;
     }
+    delete combo;
     combo = checkPlayerThreeOfAKind(tableDeck);
     if (combo != nullptr)
     {
         return combo;
     }
+    delete combo;
     combo = checkPlayerTwoPair(tableDeck);
     if (combo != nullptr)
     {
         return combo;
     }
+    delete combo;
     combo = checkPlayerPair(tableDeck);
     if (combo != nullptr)
     {
         return combo;
     }
+    delete combo;
     return checkPlayerHighCard();
 }
 
@@ -309,7 +319,7 @@ FourOfAKind *Player::checkPlayerFourOfAKind(TableDeck &tableDeck)
 HighCard *Player::checkPlayerHighCard()
 {
     HighCard *hc1 = new HighCard(this->deck[0]);
-    HighCard *hc2 = new HighCard(this->deck[0]);
+    HighCard *hc2 = new HighCard(this->deck[1]);
     if (hc1->getValue() > hc2->getValue())
     {
         delete hc2;
