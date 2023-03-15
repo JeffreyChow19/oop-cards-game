@@ -6,9 +6,6 @@
 
 class Ability : public Command
 {
-protected:
-    // bool status;
-
 public:
     /**
      * @brief Construct a new Ability object

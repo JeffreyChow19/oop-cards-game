@@ -59,10 +59,7 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
                         allowedCommands.push_back(currPlayer.getAbility());
                     }
                     askCommand(allowedCommands, currPlayer);
-                    // if (this->round_ != 1)
-                    // {
-                    //     allowedCommands.pop_back();
-                    // }
+                    
                     listOfPlayer_[currPlayerIdx].setHasPlayed(true);
                     playerMoved++;
                 }
@@ -71,7 +68,6 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
 
             if (this->round_ == 1)
             {
-                // to do : make wait disinii jadi nunggu
                 cout << "Shuffling abilities... " << endl;
                 // Shuffle the abilities
 
@@ -149,7 +145,6 @@ void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
                 if (c->getCommandName() == command)
                 {
                     c->activate(*this);
-                    // to do make wait disini supaya bisa dibaca dulu efek dari activate nya
                     commandSet = true;
                     break;
                 }

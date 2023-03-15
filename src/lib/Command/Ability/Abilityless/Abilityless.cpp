@@ -46,31 +46,6 @@ void Abilityless::activate(Set &set)
     }
 }
 
-// void Abilityless::getTarget(vector<Player> &listOfPlayer)
-// {
-//     cout << "You can deactivate the abilities of one of the players" << endl;
-//     for (int i = 0; i < listOfPlayer.size(); i++)
-//     {
-//         cout << "[" << i + 1 << "] " << listOfPlayer[i].getNickname() << " - " << listOfPlayer[i].getAbility() << endl;
-//     }
-//     cout << "Enter the nickname of the player to deactivate their ability: " << endl;
-//     string nickname;
-//     bool found = false;
-//     cin >> nickname;
-//     for (auto &p : listOfPlayer)
-//     {
-//         if (p.getNickname() == nickname)
-//         {
-//             cout << "Successfully deactivated " << p.getNickname() << "'s ability!" << endl;
-//             p.setAbilityStatus(false);
-//             found = true;
-//         }
-//     }
-//     if (!found) {
-//         throw NicknameException();
-//     }
-// }
-
 int Abilityless::inputOption(int sumOpt) {
     int opt;
     cout << "> ";
