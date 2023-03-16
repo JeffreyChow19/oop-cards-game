@@ -38,13 +38,18 @@ int main()
                     }
                     catch (IntegerException &e)
                     {
+                        clr.red();
                         cout << e.what();
+                        clr.reset();
+
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     }
                     catch (OptionException &e)
                     {
+                        clr.red();
                         cout << e.what();
+                        clr.reset();
                     }
                 }
                 if (gameChoice == 1)

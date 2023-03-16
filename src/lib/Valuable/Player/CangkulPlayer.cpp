@@ -26,9 +26,17 @@ void CangkulPlayer::print()
 
 ColorCard *CangkulPlayer::getLargestCard(ColorCard &tableCard)
 {
+    Coloring clr;
+    cout << endl;
+
     int cnt = 1;
     map<int, ColorCard *> temp;
     bool found = false;
+
+    clr.white(true);
+    cout << "Options : " << endl;
+    clr.reset();
+    
     for (auto &cards : deck)
     {
         if (cards.getColor() == tableCard.getColor())
@@ -64,9 +72,15 @@ ColorCard *CangkulPlayer::getLargestCard(ColorCard &tableCard)
 
 int CangkulPlayer::getCardChoice(int n)
 {
-    cout << "Choose card to open: " << endl;
+    Coloring clr;
+
+    cout << "\nChoose card to open : ";
     int opt;
+
+    clr.lgreen();
     cin >> opt;
+    clr.reset();
+
     if (cin.fail())
     {
         throw NumericException();

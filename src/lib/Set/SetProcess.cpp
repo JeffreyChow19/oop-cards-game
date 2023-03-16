@@ -171,13 +171,13 @@ void SetProcess::calculateCombo()
         clr.white(true);
         cout << "                  " << p.getNickname() << "'s" << endl;
 
-        clr.blue(true);
+        clr.cyan(true);
         cout << "Cards :" << endl;
         clr.reset();
 
         p.printCards();
 
-        clr.blue(true);
+        clr.cyan(true);
         cout << "\nCombo : ";
         cout << combo->getComboName() << endl;
         clr.reset();

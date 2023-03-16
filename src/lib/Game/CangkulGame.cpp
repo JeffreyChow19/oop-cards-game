@@ -4,8 +4,20 @@ using namespace std;
 
 CangkulGame::CangkulGame()
 {
-    mainDeck_.fillDeck();
+    // Coloring
     Coloring clr;
+
+    // Splash Screen
+    clr.pink(true);
+    cout << "\n  __  __           _____ ____  _____   ____       _____          _   _  _____ _  ___    _ _      \n"
+            " |  \\/  |   /\\    / ____|  _ \\|  __ \\ / __ \\     / ____|   /\\   | \\ | |/ ____| |/ / |  | | |     \n"
+            " | \\  / |  /  \\  | (___ | |_) | |__) | |  | |   | |       /  \\  |  \\| | |  __| ' /| |  | | |     \n"
+            " | |\\/| | / /\\ \\  \\___ \\|  _ <|  _  /| |  | |   | |      / /\\ \\ | . ` | | |_ |  < | |  | | |     \n"
+            " | |  | |/ ____ \\ ____) | |_) | | \\ \\| |__| |   | |____ / ____ \\| |\\  | |__| | . \\| |__| | |____ \n"
+            " |_|  |_/_/    \\_\\_____/|____/|_|  \\_\\\\____/     \\_____/_/    \\_\\_| \\_|\\_____|_|\\_\\\\____/|______|\n"
+         << endl;
+    clr.reset();
+
     for (int i = 0; i < 4; i++)
     {
         string nickname;
@@ -30,6 +42,9 @@ CangkulGame::CangkulGame()
             e.what();
         }
     }
+
+    mainDeck_.fillDeck();
+
     for (int i = 0; i < 7; i++)
     {
         for (auto &p : listOfPlayers_)
@@ -41,22 +56,34 @@ CangkulGame::CangkulGame()
 
 void CangkulGame::startGame()
 {
-    ColorCard tableCard;       // card opened for all player to see
-    ColorCard highestCard;     // the highest card amongst the opened cards
+    Coloring clr;
+    ColorCard tableCard;        // card opened for all player to see
+    ColorCard highestCard;      // the highest card amongst the opened cards
     CangkulPlayer* roundWinner; // the winner of the round
-    bool found = false;
+
     tableCard = mainDeck_.getFromMainDeck();
+
     vector<ColorCard> thrownCards;
+
+    bool found = false;
     bool checkEndGame = false;
+    
     while (!checkEndGame)
     {
-        cout << "Table card " << endl;
+        clr.white(true);
+        cout << "\nTable card : " << endl;
+        clr.reset();
+
         thrownCards.push_back(tableCard);
         tableCard.printInfo();
         for (auto &p : listOfPlayers_)
         {
-            cout << "Your cards : " << endl;
+            clr.white(true);
+            cout << "\nYour cards : " << endl;
+            clr.reset();
+
             p.printCards();
+            
             ColorCard *selectedCard = p.getLargestCard(tableCard);
             if (selectedCard == nullptr)
             {

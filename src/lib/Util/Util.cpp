@@ -32,11 +32,20 @@ string askToStart(bool firstGame)
 
 int askGame()
 {
-    cout << "Which game do you want to play? " << endl;
+    Coloring clr;
+
+    cout << "\nWhich game do you want to play? " << endl;
     cout << "[1] MasBro Candy" << endl;
     cout << "[2] MasBro Cangkul" << endl;
+
     int opt;
+
+    cout << "Input option : ";
+
+    clr.lgreen();
     cin >> opt;
+    clr.reset();
+
     if (cin.fail())
     {
         throw IntegerException();
