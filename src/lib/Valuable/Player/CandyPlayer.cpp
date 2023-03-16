@@ -422,6 +422,7 @@ Straight *CandyPlayer::checkPlayerStraight(TableDeck &tableDeck)
                             answer[idx] = this->deck[i];
                             usedPlayer = true;
                             break;
+                            
                         }
                     }
                 }

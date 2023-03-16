@@ -27,15 +27,15 @@ void CangkulPlayer::print()
 ColorCard *CangkulPlayer::getLargestCard(ColorCard &tableCard)
 {
     int cnt = 1;
-    map<int, ColorCard *> temp;
+    map<int, int> temp;
     bool found = false;
-    for (auto &cards : deck)
+    for (int i = 0; i < deck.size(); i++)
     {
-        if (cards.getColor() == tableCard.getColor())
+        if (deck[i].getColor() == tableCard.getColor())
         {
             cout << "[" << cnt << "]" << endl;
-            temp[cnt] = &cards;
-            cards.printInfo();
+            temp[cnt] = i;
+            deck[i].printInfo();
             cout << endl;
             cnt++;
             found = true;
@@ -43,21 +43,24 @@ ColorCard *CangkulPlayer::getLargestCard(ColorCard &tableCard)
     }
     if (found)
     {
-        temp[cnt] = nullptr;
+        temp[cnt] = -1;
         cout << "[" << cnt << "] Pass" << endl;
-    }
-    try
-    {
-        int n = getCardChoice(cnt);
-        return temp[n];
-    }
-    catch (NumericException &e)
-    {
-        cout << e.what() << endl;
-    }
-    catch (OptionException &e)
-    {
-        cout << e.what() << endl;
+        try
+        {
+            int n = getCardChoice(cnt);
+            if (n != cnt)
+            {
+                return &deck[temp[n]];
+            }
+        }
+        catch (NumericException &e)
+        {
+            cout << e.what() << endl;
+        }
+        catch (OptionException &e)
+        {
+            cout << e.what() << endl;
+        }
     }
     return nullptr;
 };
@@ -76,28 +79,4 @@ int CangkulPlayer::getCardChoice(int n)
         throw OptionException();
     }
     return opt;
-}
-
-void CangkulPlayer::takeCardFromDeck(MainDeck &mainDeck, ColorCard tableCard)
-{
-    bool found = false;
-    while (!found)
-    {
-        cout << "Press enter to take from deck" << endl;
-        char a;
-        cin >> a;
-        ColorCard newCard = mainDeck.getFromMainDeck();
-        if (newCard.getColor() == tableCard.getColor())
-        {
-            cout << "You found a suitable card!" << endl;
-            newCard.printInfo();
-            found = true;
-        }
-        else
-        {
-            cout << "You got a nonsuitable card :(" << endl;
-            newCard.printInfo();
-            addPlayerCard(newCard);
-        }
-    }
 }

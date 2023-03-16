@@ -1,9 +1,9 @@
-#include "../Player.hpp"
+#include "../CandyPlayer.hpp"
 
 int main()
 {
     TableDeck tableDeck;
-    Player p1("Rachel");
+    CandyPlayer p1("Rachel");
     p1.setPoint(1000);
     p1.setAbility("ReRoll");
     cout << "Player Point " << p1.getPoint() << endl;

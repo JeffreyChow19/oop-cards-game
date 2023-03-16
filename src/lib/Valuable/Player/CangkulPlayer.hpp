@@ -36,11 +36,9 @@ public:
      */
     void print();
 
-    ColorCard* getLargestCard(ColorCard &tableCard);
+    ColorCard *getLargestCard(ColorCard &tableCard);
 
     int getCardChoice(int n);
-
-    void takeCardFromDeck(MainDeck &mainDeck, ColorCard tableCard);
 };
 
 #endif
