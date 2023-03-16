@@ -1,5 +1,5 @@
-#ifndef _GAME_HPP
-#define _GAME_HPP
+#ifndef _CANDY_GAME_HPP
+#define _CANDY_GAME_HPP
 
 #include "../Valuable/Player/CandyPlayer.hpp"
 #include "../Exception/Exception.hpp"
@@ -9,14 +9,14 @@
 
 using namespace std;
 
-class Game
+class CandyGame
 {
 private:
         vector<CandyPlayer> listOfPlayer;
 
 public:
-        Game();
-        ~Game();
+        CandyGame();
+        ~CandyGame();
         void startGame();
         bool checkEndGame();
 };

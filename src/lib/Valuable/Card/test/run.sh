@@ -1,1 +1,0 @@
-g++ main.cpp ../Card.cpp ../ColorCard/ColorCard.cpp -o main.out

@@ -1,7 +1,7 @@
-#include "Game.hpp"
+#include "CandyGame.hpp"
 #include "../Set/SetProcess.hpp"
 
-Game::Game()
+CandyGame::CandyGame()
 {
     // Coloring
     Coloring clr;
@@ -44,7 +44,7 @@ Game::Game()
     }
 }
 
-void Game::startGame()
+void CandyGame::startGame()
 {
     int firstPlayerIdx = 0;
     while (!checkEndGame())
@@ -55,7 +55,7 @@ void Game::startGame()
     }
 }
 
-bool Game::checkEndGame()
+bool CandyGame::checkEndGame()
 {
     // Coloring
     Coloring clr;
@@ -113,7 +113,7 @@ bool Game::checkEndGame()
     return false;
 }
 
-Game::~Game()
+CandyGame::~CandyGame()
 {
     this->listOfPlayer.clear();
 }

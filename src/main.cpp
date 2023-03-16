@@ -1,4 +1,4 @@
-#include "lib/Game/Game.hpp"
+#include "lib/Game/CandyGame.hpp"
 #include "lib/Game/CangkulGame.hpp"
 #include "lib/Util/Util.hpp"
 #include "lib/Util/Coloring.hpp"
@@ -54,7 +54,7 @@ int main()
                 }
                 if (gameChoice == 1)
                 {
-                    Game game;
+                    CandyGame game;
                     game.startGame();
                 }
                 else

@@ -18,6 +18,7 @@ private:
 
 public:
     CangkulGame();
+    ~CangkulGame();
     void startGame();
     int getCardChoice(CangkulPlayer &roundWinner);
     ColorCard *takeCardFromDeck(CangkulPlayer &p, ColorCard tableCard);

@@ -300,3 +300,8 @@ ColorCard *CangkulGame::takeCardFromDeck(CangkulPlayer &p, ColorCard tableCard)
     }
     return selectedCard;
 }
+
+CangkulGame::~CangkulGame(){
+    this->listOfPlayers_.clear();
+    this->thrownCards_.clear();
+}
