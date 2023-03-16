@@ -33,3 +33,7 @@
 
 # Build Files
 bin
+
+# IDE Configurations
+.vscode
+.idea
