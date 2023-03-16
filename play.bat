@@ -1,1 +1,1 @@
-.\build\MasbroParty.exe
+.\bin\MasbroParty.exe
