@@ -88,16 +88,22 @@ This project is built to meet the following [guidelines](https://docs.google.com
 ## How To Compile
 1. Clone this repository.
 
-``` $ git clone git@github.com:chaerla/MasbroParty.git```
+```
+ $ git clone git@github.com:chaerla/MasbroParty.git
+ ```
 
 or
 
-``` $ git clone https://github.com/chaerla/MasbroParty.git```
+```
+ $ git clone https://github.com/chaerla/MasbroParty.git
+```
 
 2. Open terminal and navigate to the root directory of this repository.
 3. Run `make` in terminal. Alternatively, extract `CMakeCompile.zip` to root directory and run the compile script (`.sh` for Linux, `.bat` for Windows).
 
-``` $ make```
+```
+ $ make
+```
 
 4. The resulting executable file will be located at the `bin` directory.
 ## How To Run
@@ -105,7 +111,9 @@ or
 1. After [compiling the program](#how-to-compile), navigate to the root directory in terminal.
 2. Enter the following command to run the program.
 
-``` $ make run```
+```
+ $ make run
+```
 
 3. To load custom deck configurations, create `.txt` files in `/test/` and load after starting the program. Configuration file syntax can be referred from `/test/config1.txt`.
 
