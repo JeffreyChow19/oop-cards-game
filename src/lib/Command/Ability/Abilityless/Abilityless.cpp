@@ -3,7 +3,7 @@
 void Abilityless::activate(Set &set)
 {
     Coloring clr;
-    vector<Player> &listOfPlayer = set.getListOfPlayers();
+    vector<CandyPlayer> &listOfPlayer = set.getListOfPlayers();
 
     int currPlayerIdx = set.getCurrPlayerIdx();
 

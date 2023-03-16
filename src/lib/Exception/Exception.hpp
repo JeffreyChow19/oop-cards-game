@@ -8,7 +8,7 @@ struct NumericException : public exception
 {
     const char *what() const throw()
     {
-        return "Numeric input not valid.\nPlease input only integers.";
+        return "Numeric input not valid.\nPlease input only integers.\n";
     }
 };
 

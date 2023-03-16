@@ -2,8 +2,8 @@
 
 void Reverse::activate(Set &set)
 {
-    vector<Player> &listOfPlayers = set.getListOfPlayers();
-    vector<Player> temp;
+    vector<CandyPlayer> &listOfPlayers = set.getListOfPlayers();
+    vector<CandyPlayer> temp;
     int currPlayerIdx = set.getCurrPlayerIdx();
     for (int i = currPlayerIdx+1; i<listOfPlayers.size(); i++) {
         temp.push_back(listOfPlayers[i]);

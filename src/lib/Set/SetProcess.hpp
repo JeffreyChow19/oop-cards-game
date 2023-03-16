@@ -31,14 +31,14 @@ public:
      * @param listOfPlayer
      * @param currPlayerIdx
      */
-    SetProcess(vector<Player> &listOfPlayer, int currPlayerIdx);
+    SetProcess(vector<CandyPlayer> &listOfPlayer, int currPlayerIdx);
 
     /**
      * @brief try to call inputCommand if succeeds activate the command
      *
      * @param allowedCommands
      */
-    void askCommand(vector<string> &allowedCommands, Player &currPlayer);
+    void askCommand(vector<string> &allowedCommands, CandyPlayer &currCandy);
 
     /**
      * @brief asks for command input
@@ -46,7 +46,7 @@ public:
      * @param allowedCommands
      * @return string
      */
-    string inputCommand(vector<string> &allowedCommands, Player &currPlayer);
+    string inputCommand(vector<string> &allowedCommands, CandyPlayer &currPlayer);
     ~SetProcess();
 
     void calculateCombo();

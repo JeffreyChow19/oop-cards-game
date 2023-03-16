@@ -2,7 +2,7 @@
 
 using namespace std;
 
-SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(listOfPlayer, firstPlayerIdx)
+SetProcess::SetProcess(vector<CandyPlayer> &listOfPlayer, int firstPlayerIdx) : Set(listOfPlayer, firstPlayerIdx)
 {
     Coloring clr;
 
@@ -59,7 +59,7 @@ SetProcess::SetProcess(vector<Player> &listOfPlayer, int firstPlayerIdx) : Set(l
             {
                 allowedCommands = {"NEXT", "HALF", "DOUBLE"};
 
-                Player &currPlayer = listOfPlayer_[currPlayerIdx];
+                CandyPlayer &currPlayer = listOfPlayer_[currPlayerIdx];
                 if (!currPlayer.getHasPlayed())
                 {
                     cout << endl;
@@ -153,7 +153,7 @@ void SetProcess::calculateCombo()
     Coloring clr;
 
     float highestValue = 0;
-    Player *win = &listOfPlayer_[0];
+    CandyPlayer *win = &listOfPlayer_[0];
 
     clr.white(true);
     cout << "Table Deck :" << endl;
@@ -171,13 +171,13 @@ void SetProcess::calculateCombo()
         clr.white(true);
         cout << "                  " << p.getNickname() << "'s" << endl;
 
-        clr.blue(true);
+        clr.cyan(true);
         cout << "Cards :" << endl;
         clr.reset();
 
         p.printCards();
 
-        clr.blue(true);
+        clr.cyan(true);
         cout << "\nCombo : ";
         cout << combo->getComboName() << endl;
         clr.reset();
@@ -217,7 +217,7 @@ void SetProcess::calculateCombo()
     win->addPoint(points_);
 }
 
-void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
+void SetProcess::askCommand(vector<string> &allowedCommands, CandyPlayer &currPlayer)
 {
     Coloring clr;
 
@@ -303,7 +303,7 @@ void SetProcess::askCommand(vector<string> &allowedCommands, Player &currPlayer)
     }
 }
 
-string SetProcess::inputCommand(vector<string> &allowedCommands, Player &currPlayer)
+string SetProcess::inputCommand(vector<string> &allowedCommands, CandyPlayer &currPlayer)
 {
     Coloring clr;
 

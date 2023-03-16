@@ -4,7 +4,7 @@ void Switch::activate(Set &set)
 {
     Coloring clr;
 
-    vector<Player> &listOfPlayer = set.getListOfPlayers();
+    vector<CandyPlayer> &listOfPlayer = set.getListOfPlayers();
 
     clr.white();
     cout << listOfPlayer[set.getCurrPlayerIdx()].getNickname();
