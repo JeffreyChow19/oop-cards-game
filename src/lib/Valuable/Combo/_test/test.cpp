@@ -99,5 +99,111 @@ int main() {
     delete t3_min;
     delete t3;
     delete t3_max;
+
+    //straight
+    Combo *st_min = new Straight(
+        vector<ColorCard>{
+            ColorCard(Color::Blue, 1),
+            ColorCard(Color::Green, 2),
+            ColorCard(Color::Green, 3),
+            ColorCard(Color::Green, 4),
+            ColorCard(Color::Green, 5)
+        }
+    );
+    Combo *st1 = new Straight(
+        vector<ColorCard>{
+            ColorCard(Color::Yellow, 1),
+            ColorCard(Color::Green, 2),
+            ColorCard(Color::Green, 3),
+            ColorCard(Color::Green, 4),
+            ColorCard(Color::Green, 5)
+        }
+    );
+    Combo *st2 = new Straight(
+        vector<ColorCard>{
+            ColorCard(Color::Blue, 1),
+            ColorCard(Color::Blue, 2),
+            ColorCard(Color::Green, 3),
+            ColorCard(Color::Green, 4),
+            ColorCard(Color::Green, 5)
+        }
+    );
+    Combo *st_max = new Straight(
+        vector<ColorCard>{
+            ColorCard(Color::Yellow, 9),
+            ColorCard(Color::Red, 10),
+            ColorCard(Color::Red, 11),
+            ColorCard(Color::Red, 12),
+            ColorCard(Color::Red, 13)
+        }
+    );
+
+    printInfo(st_min);
+    printInfo(st1);
+    printInfo(st2);
+    printInfo(st_max);
+
+    delete st_min;
+    delete st1;
+    delete st2;
+    delete st_max;
+
+
+    //flush
+    Combo *fmin = new Flush(
+        vector<ColorCard>{
+            ColorCard(Color::Green, 1),
+            ColorCard(Color::Green, 2),
+            ColorCard(Color::Green, 3),
+            ColorCard(Color::Green, 4),
+            ColorCard(Color::Green, 6)
+        }
+    );
+    Combo *fmax = new Flush(
+        vector<ColorCard>{
+            ColorCard(Color::Red, 8),
+            ColorCard(Color::Red, 9),
+            ColorCard(Color::Red, 10),
+            ColorCard(Color::Red, 11),
+            ColorCard(Color::Red, 13)
+        }
+    );
+
+    printInfo(fmin);
+    printInfo(fmax);
+
+    delete fmin;
+    delete fmax;
+
+    // fh
+    Combo *fhmin = new FullHouse(
+        vector<ColorCard>{
+                ColorCard(Color::Green, 1),
+                ColorCard(Color::Blue, 1),
+                ColorCard(Color::Yellow, 1)
+                }
+        ,
+        vector<ColorCard>{
+                ColorCard(Color::Green, 2),
+                ColorCard(Color::Blue, 2)
+        }
+    );
+    Combo *fhmax = new FullHouse(
+        vector<ColorCard>{
+                ColorCard(Color::Red, 13),
+                ColorCard(Color::Blue, 13),
+                ColorCard(Color::Yellow, 13)
+                }
+        ,
+        vector<ColorCard>{
+                ColorCard(Color::Yellow, 12),
+                ColorCard(Color::Red, 12)
+        }
+    );
+    printInfo(fhmin);
+    printInfo(fhmax);
+
+    delete fhmin;
+    delete fhmax;
     return 0;
 }
