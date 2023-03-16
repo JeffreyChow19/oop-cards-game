@@ -43,23 +43,27 @@ ColorCard *CangkulPlayer::getLargestCard(ColorCard &tableCard)
     }
     if (found)
     {
+        int n = -1;
         temp[cnt] = -1;
         cout << "[" << cnt << "] Pass" << endl;
-        try
+        while (n == -1)
         {
-            int n = getCardChoice(cnt);
-            if (n != cnt)
+            try
             {
-                return &deck[temp[n]];
+                n = getCardChoice(cnt);
+                if (n != cnt)
+                {
+                    return &deck[temp[n]];
+                }
             }
-        }
-        catch (NumericException &e)
-        {
-            cout << e.what() << endl;
-        }
-        catch (OptionException &e)
-        {
-            cout << e.what() << endl;
+            catch (NumericException &e)
+            {
+                cout << e.what() << endl;
+            }
+            catch (OptionException &e)
+            {
+                cout << e.what() << endl;
+            }
         }
     }
     return nullptr;
