@@ -1,1 +1,1 @@
-cmake -B build .; cd build; make;
+cmake -B bin .; cd bin; make;
