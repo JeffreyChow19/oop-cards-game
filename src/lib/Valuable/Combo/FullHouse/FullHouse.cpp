@@ -4,7 +4,11 @@ using namespace std;
 FullHouse::FullHouse(vector<ColorCard> deck){
     vector<ColorCard> temp = deck;
     sort(temp.begin(), temp.end(), ColorCard::compareByValue);
-    if(temp[1]== temp[2]){
+    /*
+    1 1 2 2 2
+    1 1 1 2 2
+    */
+    if(temp[1].getValue() == temp[2].getValue()){
         Pair pair(make_pair(temp[3], temp[4]));
         this->pair_ = pair;
         vector<ColorCard> newTris;

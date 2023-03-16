@@ -1,1 +1,1 @@
-./build/MasbroParty
+./bin/MasbroParty

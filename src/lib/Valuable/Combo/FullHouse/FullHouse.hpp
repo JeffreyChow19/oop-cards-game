@@ -13,8 +13,8 @@ private:
 
 public:
     /**
-     * @brief Construct a new FullHouse object
-     *
+     * @brief Construct a new Full House object
+     * 
      * @param deck
      */
     FullHouse(vector<ColorCard> deck);
