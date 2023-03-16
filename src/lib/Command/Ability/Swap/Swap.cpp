@@ -93,26 +93,6 @@ void Swap::activate(Set &set)
     
 }
 
-int Swap::inputOption(int sumOpt) {
-    Coloring clr;
-    int opt;
-    cout << "Input option: ";
-
-    clr.lgreen();
-    cin >> opt;
-    clr.reset();
-
-    if (cin.fail())
-    {
-        throw IntegerException();
-    }
-    else if (opt < 1 || opt > sumOpt)
-    {
-        throw OptionException();
-    }
-    return opt;
-}
-
 string Swap::getCommandName()
 {
     return "SWAP";

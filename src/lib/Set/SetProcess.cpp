@@ -34,10 +34,10 @@ SetProcess::SetProcess(vector<CandyPlayer> &listOfPlayer, int firstPlayerIdx) : 
         for (auto &p : listOfPlayer_)
         {
             p.setHasPlayed(false);
-            if (round_ != 1)
-            {
-                p.setAbilityStatus(true);
-            }
+            // if (round_ != 1)
+            // {
+            //     p.setAbilityStatus(true);
+            // }
         }
 
         if (this->round_ != 6)
@@ -78,12 +78,18 @@ SetProcess::SetProcess(vector<CandyPlayer> &listOfPlayer, int firstPlayerIdx) : 
                          << endl;
 
                     clr.white(true);
-                    cout << "Player's cards : " << endl;
+                    cout << "Table cards : " << endl;
+                    clr.reset();
+
+                    ColorCard::printGroup(this->tableDeck_.getDeck());
+
+                    clr.white(true);
+                    cout << "\nPlayer's cards : " << endl;
                     clr.reset();
 
                     currPlayer.printCards();
 
-                    if (this->round_ != 1 && currPlayer.getAbilityStatus())
+                    if (this->round_ != 1 && currPlayer.getAbilityUse())
                     {
                         allowedCommands.push_back(currPlayer.getAbility());
                     }
@@ -131,6 +137,7 @@ SetProcess::SetProcess(vector<CandyPlayer> &listOfPlayer, int firstPlayerIdx) : 
 
                     this->listOfPlayer_[i].setAbility(abilities[i]);
                     this->listOfPlayer_[i].setAbilityStatus(true);
+                    this->listOfPlayer_[i].setAbilityUse(true);
                 }
             }
 
@@ -159,10 +166,10 @@ void SetProcess::calculateCombo()
         Combo *combo = p.checkPlayerCombo(tableDeck_);
 
         clr.lgreen(true);
-        cout << "\n===============================================" << endl;
+        cout << "\n================================================" << endl;
 
         clr.white(true);
-        cout << "               " << p.getNickname() << "'s" << endl;
+        cout << "                  " << p.getNickname() << "'s" << endl;
 
         clr.blue(true);
         cout << "Cards :" << endl;
@@ -171,13 +178,14 @@ void SetProcess::calculateCombo()
         p.printCards();
 
         clr.blue(true);
-        cout << "\nCombo :" << endl;
+        cout << "\nCombo : ";
+        cout << combo->getComboName() << endl;
         clr.reset();
 
         combo->print();
 
         clr.lgreen(true);
-        cout << "\n===============================================" << endl;
+        cout << "\n================================================" << endl;
         clr.reset();
 
         if (combo->getValue() > highestValue)
@@ -241,14 +249,22 @@ void SetProcess::askCommand(vector<string> &allowedCommands, CandyPlayer &currPl
             {
                 if (c->getCommandName() == command)
                 {
-                    c->activate(*this);
+                    try{
+                        c->activate(*this);
+                    }
+                    catch(PointException &e){
+                        cout << e.what();
+                    }
+                    catch(PointException2 &e){
+                        cout << e.what();
+                    }
                     commandSet = true;
                     break;
                 }
             }
             if (command != "NEXT" && command != "DOUBLE" && command != "HALF")
             {
-                this->listOfPlayer_[currPlayerIdx].setAbilityStatus(false);
+                this->listOfPlayer_[currPlayerIdx].setAbilityUse(false);
             }
             if (command != "REVERSE")
             {
@@ -278,6 +294,12 @@ void SetProcess::askCommand(vector<string> &allowedCommands, CandyPlayer &currPl
             cout << err.what();
             clr.reset();
         }
+        catch (AbilityNotHaveException &err)
+        {
+            clr.red();
+            cout << err.what();
+            clr.reset();
+        }
     }
 }
 
@@ -287,6 +309,8 @@ string SetProcess::inputCommand(vector<string> &allowedCommands, CandyPlayer &cu
 
     string command;
 
+    vector<string> abilities = {"RE-ROLL", "SWITCH", "SWAP", "QUARTER", "REVERSE", "QUADRUPLE", "ABILITYLESS"};
+
     clr.lgreen();
     cin >> command;
     clr.reset();
@@ -295,6 +319,13 @@ string SetProcess::inputCommand(vector<string> &allowedCommands, CandyPlayer &cu
     {
         throw StringException();
     }
+
+    auto itr = find(abilities.begin(), abilities.end(), command);
+    if ((itr != abilities.end() && !currPlayer.getAbilityUse()) || (itr != abilities.end() && command != currPlayer.getAbility()))
+    {
+        throw AbilityNotHaveException();
+    }
+
     for (auto &c : allowedCommands)
     {
         if (c == command)

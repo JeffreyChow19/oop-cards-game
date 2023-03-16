@@ -56,6 +56,16 @@ void CandyPlayer::setAbilityStatus(bool status)
     this->abilityStatus_ = status;
 }
 
+bool CandyPlayer::getAbilityUse()
+{
+    return this->abilityUse_;
+}
+
+void CandyPlayer::setAbilityUse(bool used)
+{
+    this->abilityUse_ = used;
+}
+
 void CandyPlayer::setHasPlayed(bool hasPlayed)
 {
     this->hasPlayed_ = hasPlayed;
@@ -80,7 +90,6 @@ void CandyPlayer::print()
     cout << point_ << endl;
     clr.reset();
 }
-
 
 void CandyPlayer::deleteMinValueFromCombo(vector<ColorCard> &combo, int limit)
 {

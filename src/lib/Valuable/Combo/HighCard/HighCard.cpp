@@ -16,3 +16,7 @@ void HighCard::print()
 {
     this->card_.printInfo();
 }
+
+string HighCard::getComboName() const {
+    return "HIGH CARD";
+}

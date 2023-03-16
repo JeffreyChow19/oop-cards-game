@@ -46,5 +46,9 @@ void Flush::print()
     ColorCard::printGroup(this->flushHand_);
 }
 
+string Flush::getComboName() const{
+    return "FLUSH";
+}
+
 
 

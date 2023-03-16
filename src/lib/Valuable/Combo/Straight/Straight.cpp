@@ -41,3 +41,7 @@ vector<ColorCard> &Straight::getDeck()
 {
     return this->deck_;
 }
+
+string Straight::getComboName() const{
+    return "STRAIGHT";
+}

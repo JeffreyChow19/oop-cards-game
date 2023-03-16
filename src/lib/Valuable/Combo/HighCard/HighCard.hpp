@@ -12,6 +12,7 @@ class HighCard:public Combo {
         ~HighCard();
         float getValue() const;
         void print();
+        string getComboName() const;
 };
 
 #endif
