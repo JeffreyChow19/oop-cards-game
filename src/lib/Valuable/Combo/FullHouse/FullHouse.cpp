@@ -1,9 +1,32 @@
 #include "FullHouse.hpp"
 using namespace std;
 
-FullHouse::FullHouse(vector<ColorCard> threes, vector<ColorCard> twos){
-    this->tris_ = ThreeOfAKind(threes);
-    this->pair_ = Pair(make_pair(twos[0], twos[1]));
+FullHouse::FullHouse(vector<ColorCard> deck){
+    vector<ColorCard> temp = deck;
+    sort(temp.begin(), temp.end(), ColorCard::compareByValue);
+    /*
+    1 1 2 2 2
+    1 1 1 2 2
+    */
+    if(temp[1].getValue() == temp[2].getValue()){
+        Pair pair(make_pair(temp[3], temp[4]));
+        this->pair_ = pair;
+        vector<ColorCard> newTris;
+        newTris.push_back(temp[0]);
+        newTris.push_back(temp[1]);
+        newTris.push_back(temp[2]);
+        ThreeOfAKind tris(newTris);
+        this->tris_ = tris;
+    }else{
+        Pair pair(make_pair(temp[0], temp[1]));
+        this->pair_ = pair;
+        vector<ColorCard> newTris;
+        newTris.push_back(temp[2]);
+        newTris.push_back(temp[3]);
+        newTris.push_back(temp[4]);
+        ThreeOfAKind tris(newTris);
+        this->tris_ = tris;
+    }
 }
 
 FullHouse::~FullHouse(){

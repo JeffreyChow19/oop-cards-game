@@ -181,9 +181,7 @@ int main() {
                 ColorCard(Color::Green, 1),
                 ColorCard(Color::Blue, 1),
                 ColorCard(Color::Yellow, 1)
-                }
-        ,
-        vector<ColorCard>{
+                ,
                 ColorCard(Color::Green, 2),
                 ColorCard(Color::Blue, 2)
         }
@@ -193,9 +191,7 @@ int main() {
                 ColorCard(Color::Red, 13),
                 ColorCard(Color::Blue, 13),
                 ColorCard(Color::Yellow, 13)
-                }
-        ,
-        vector<ColorCard>{
+                ,
                 ColorCard(Color::Yellow, 12),
                 ColorCard(Color::Red, 12)
         }

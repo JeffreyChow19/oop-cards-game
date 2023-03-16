@@ -15,10 +15,9 @@ public:
     /**
      * @brief Construct a new Full House object
      * 
-     * @param threes 
-     * @param twos 
+     * @param deck
      */
-    FullHouse(vector<ColorCard> threes, vector<ColorCard> twos);
+    FullHouse(vector<ColorCard> deck);
 
     /**
      * @brief Destroy FullHouse object
