@@ -14,6 +14,7 @@ CandyPlayer::CandyPlayer(const CandyPlayer &other) : Player(other)
     this->hasPlayed_ = other.hasPlayed_;
     this->ability_ = other.ability_;
     this->abilityStatus_ = other.abilityStatus_;
+    this->abilityUse_ = other.abilityUse_;
     // To do: adding deck & ability
 }
 
