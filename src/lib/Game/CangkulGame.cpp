@@ -74,7 +74,7 @@ void CangkulGame::startGame()
         int playerMoved = 0;
 
         clr.white(true);
-        cout << "Table card : " << endl;
+        cout << "\nTable card : " << endl;
         clr.reset();
 
         thrownCards_.push_back(tableCard);
@@ -93,7 +93,7 @@ void CangkulGame::startGame()
             sleep(1);
 
             clr.white(true);
-            cout << "Your cards : " << endl;
+            cout << "\nYour cards : " << endl;
             clr.reset();
 
             currPlayer.printCards();
@@ -106,33 +106,32 @@ void CangkulGame::startGame()
                 cout << "Oops! too bad.. you can't open any card" << endl;
                 selectedCard = takeCardFromDeck(currPlayer, tableCard);
             }
-            // else
-            // {
-                clr.white(true);
-                cout << currPlayer.getNickname();
-                clr.reset();
+     
+            cout << endl;
+            clr.white(true);
+            cout << currPlayer.getNickname();
+            clr.reset();
 
-                cout << "'s opened card " << endl;
+            cout << "'s opened card " << endl;
 
-                selectedCard->printInfo();
+            selectedCard->printInfo();
 
-                cout << endl;
+            cout << endl;
 
-                if (found && selectedCard->getValue() > highestCard.getValue())
-                {
-                    highestCard = *selectedCard;
-                    roundWinnerIdx = currPlayerIdx;
-                }
-                else if (!found)
-                {
-                    found = true;
-                    highestCard = *selectedCard;
-                    roundWinnerIdx = currPlayerIdx;
-                }
-                thrownCards_.push_back(*selectedCard);
-                currPlayer.removePlayerCard(*selectedCard);
-            
-
+            if (found && selectedCard->getValue() > highestCard.getValue())
+            {
+                highestCard = *selectedCard;
+                roundWinnerIdx = currPlayerIdx;
+            }
+            else if (!found)
+            {
+                found = true;
+                highestCard = *selectedCard;
+                roundWinnerIdx = currPlayerIdx;
+            }
+            thrownCards_.push_back(*selectedCard);
+            currPlayer.removePlayerCard(*selectedCard);
+        
             cout << "End of ";
             
             clr.white(true);
@@ -150,17 +149,44 @@ void CangkulGame::startGame()
         CangkulPlayer &roundWinner = listOfPlayers_[roundWinnerIdx];
         if (found)
         {
-            cout << roundWinner.getNickname() << " is the winner of the round." << endl;
-            // if ga empty
+            cout << endl;
+            clr.green(true);
+            cout << roundWinner.getNickname();
+            clr.reset();
+
+            clr.white(true);
+            cout << " is the winner of the round." << endl;
+            clr.reset();
+
+            // if not empty
             if (roundWinner.getDeck().empty())
             {
-                cout << roundWinner.getNickname() << " has managed to throw all cards away" << endl;
-                cout << "Congratulations for winning the game!" << endl;
+                clr.red(true);
+                cout << endl;
+
+                cout << "         )     )        (                        (                  (       )     ) (\n"     
+                        "   (  ( /(  ( /( (      )\\ )   (      *   )      )\\ )   (      *   ))\\ ) ( /(  ( /( )\\ )\n"  
+                        "   )\\ )\\()) )\\()))\\ )  (()/(   )\\   ` )  /(   ( (()/(   )\\   ` )  /(()/( )\\()) )\\()|()/(\n"  
+                        " (((_|(_)\\ ((_)\\(()/(   /(_)|(((_)(  ( )(_))  )\\ /(_)|(((_)(  ( )(_))(_)|(_)\\ ((_)\\ /(_))\n";
+                clr.pink(true);
+                cout << " )\\___ ((_) _((_)/(_))_(_))  )\\ _ )\\(_(_())_ ((_|_))  )\\ _ )\\(_(_()|_))   ((_) _((_|_))\n"   
+                        "((/ __/ _ \\| \\| (_)) __| _ \\ (_)_\\(_)_   _| | | | |   (_)_\\(_)_   _|_ _| / _ \\| \\| / __|\n"  
+                        " | (_| (_) | .` | | (_ |   /  / _ \\   | | | |_| | |__  / _ \\   | |  | | | (_) | .` \\__ \\ \n"  
+                        "  \\___\\___/|_|\\_|  \\___|_|_\\ /_/ \\_\\  |_|  \\___/|____|/_/ \\_\\  |_| |___| \\___/|_|\\_|___/  \n" << endl; 
+
+                clr.green(true);
+                cout << "            " << roundWinner.getNickname() << " has managed to throw all cards away " << endl << endl;
+                clr.reset();
+
                 checkEndGame = true;
             }
             else
             {
-                cout << roundWinner.getNickname() << " can choose the card to open" << endl;
+                clr.white(true);
+                cout << roundWinner.getNickname();
+                clr.reset();
+
+                cout << " can choose the card to open" << endl << endl;
                 int choice = -1;
                 while (choice == -1)
                 {
@@ -172,13 +198,21 @@ void CangkulGame::startGame()
                     }
                     catch (IntegerException &e)
                     {
+                        clr.red();
                         cout << e.what();
+                        clr.reset();
+
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     }
                     catch (OptionException &e)
                     {
+                        clr.red();
                         cout << e.what();
+                        clr.reset();
+
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     }
                 }
             }
@@ -189,14 +223,27 @@ void CangkulGame::startGame()
 
 int CangkulGame::getCardChoice(CangkulPlayer &roundWinner)
 {
+    Coloring clr;
+
+    clr.white(true);
+    cout << "Options : " << endl;
+    clr.reset();
+
     for (int i = 0; i < roundWinner.getDeck().size(); i++)
     {
         cout << "[" << i + 1 << "]" << endl;
         roundWinner.getDeck()[i].printInfo();
         cout << endl;
     }
+
     int choice;
+
+    cout << "Input option : ";
+
+    clr.lgreen();
     cin >> choice;
+    clr.reset();
+
     if (cin.fail())
     {
         throw IntegerException();
@@ -210,8 +257,10 @@ int CangkulGame::getCardChoice(CangkulPlayer &roundWinner)
 
 ColorCard *CangkulGame::takeCardFromDeck(CangkulPlayer &p, ColorCard tableCard)
 {
+    Coloring clr;
     ColorCard *selectedCard;
     bool found = false;
+
     while (!found)
     {
         if (mainDeck_.getDeck().empty())
@@ -222,13 +271,18 @@ ColorCard *CangkulGame::takeCardFromDeck(CangkulPlayer &p, ColorCard tableCard)
             }
             thrownCards_.clear();
         }
-        cout << "Press 'c' to take from deck" << endl;
-        char a;
-        cin >> a;
+
+        cout << "\nPress enter key to take a card from deck..." ;
+        cin.ignore();
+        cin.clear();
+
         ColorCard newCard = mainDeck_.getFromMainDeck();
         if (newCard.getColor() == tableCard.getColor())
         {
-            cout << "You found a suitable card!" << endl;
+            clr.green();
+            cout << "\nYou found a suitable card!" << endl;
+            clr.reset();
+
             newCard.printInfo();
             p.addPlayerCard(newCard);
             selectedCard = &p.getDeck().back();
@@ -236,7 +290,10 @@ ColorCard *CangkulGame::takeCardFromDeck(CangkulPlayer &p, ColorCard tableCard)
         }
         else
         {
-            cout << "You got a nonsuitable card :(" << endl;
+            clr.yellow();
+            cout << "\nYou got a nonsuitable card :(" << endl;
+            clr.reset();
+
             newCard.printInfo();
             p.addPlayerCard(newCard);
         }
