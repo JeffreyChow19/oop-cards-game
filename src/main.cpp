@@ -39,6 +39,8 @@ int main()
                     catch (IntegerException &e)
                     {
                         cout << e.what();
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     }
                     catch (OptionException &e)
                     {
