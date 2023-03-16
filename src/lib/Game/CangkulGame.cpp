@@ -43,7 +43,7 @@ void CangkulGame::startGame()
 {
     ColorCard tableCard;       // card opened for all player to see
     ColorCard highestCard;     // the highest card amongst the opened cards
-    CangkulPlayer roundWinner; // the winner of the round
+    CangkulPlayer* roundWinner; // the winner of the round
     bool found = false;
     tableCard = mainDeck_.getFromMainDeck();
     vector<ColorCard> thrownCards;
@@ -69,45 +69,50 @@ void CangkulGame::startGame()
                 if (found && selectedCard->getValue() > highestCard.getValue())
                 {
                     highestCard = *selectedCard;
-                    roundWinner = p;
+                    *roundWinner = p;
                 }
                 else if (!found)
                 {
                     found = true;
                     highestCard = *selectedCard;
-                    roundWinner = p;
+                    *roundWinner = p;
                 }
                 selectedCard->printInfo();
                 thrownCards.push_back(*selectedCard);
+                p.printCards();
                 p.removePlayerCard(*selectedCard);
+                p.printCards();
                 mainDeck_.randomizeCard(); // shuffle main deck every time
             }
         }
+        roundWinner->printCards();
         if (found)
         {
-            cout << roundWinner.getNickname() << " is the winner of the round." << endl;
+            cout << roundWinner->getNickname() << " is the winner of the round." << endl;
             // if ga empty
-            if (roundWinner.getDeck().empty())
+            if (roundWinner->getDeck().empty())
             {
-                cout << roundWinner.getNickname() << " has managed to throw all cards away" << endl;
+                cout << roundWinner->getNickname() << " has managed to throw all cards away" << endl;
                 cout << "Congratulations for winning the game!" << endl;
                 checkEndGame = true;
             }
             else
             {
-                cout << roundWinner.getNickname() << " can choose the card to open" << endl;
+                cout << roundWinner->getNickname() << " can choose the card to open" << endl;
                 int choice = -1;
                 while (choice == -1)
                 {
                     try
                     {
-                        choice = getCardChoice(roundWinner);
-                        tableCard = roundWinner.getDeck()[choice - 1];
-                        roundWinner.removePlayerCard(tableCard);
+                        choice = getCardChoice(*roundWinner);
+                        tableCard = roundWinner->getDeck()[choice - 1];
+                        roundWinner->removePlayerCard(tableCard);
                     }
                     catch (IntegerException &e)
                     {
                         cout << e.what();
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     }
                     catch (OptionException &e)
                     {
