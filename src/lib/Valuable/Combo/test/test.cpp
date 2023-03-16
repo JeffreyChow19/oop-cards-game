@@ -201,5 +201,57 @@ int main() {
 
     delete fhmin;
     delete fhmax;
+
+    // fours
+    Combo* fours_min = new FourOfAKind(
+        vector<ColorCard> {
+            ColorCard(Color::Green, 1),
+            ColorCard(Color::Blue, 1),
+            ColorCard(Color::Yellow, 1),
+            ColorCard(Color::Red, 1)
+        }
+    );
+
+    Combo* fours_max = new FourOfAKind(
+        vector<ColorCard> {
+            ColorCard(Color::Green, 13),
+            ColorCard(Color::Blue, 13),
+            ColorCard(Color::Yellow, 13),
+            ColorCard(Color::Red, 13)
+        }
+    );
+
+    printInfo(fours_min);
+    printInfo(fours_max);
+
+    delete fours_min;
+    delete fours_max;
+
+    // sf
+    Combo* sf_min = new StraightFlush(
+        vector<ColorCard> {
+            ColorCard(Color::Green, 1),
+            ColorCard(Color::Green, 2),
+            ColorCard(Color::Green, 3),
+            ColorCard(Color::Green, 4),
+            ColorCard(Color::Green, 5)
+        }
+    );
+
+    Combo* sf_max = new StraightFlush(
+        vector<ColorCard> {
+            ColorCard(Color::Red, 9),
+            ColorCard(Color::Red, 10),
+            ColorCard(Color::Red, 11),
+            ColorCard(Color::Red, 12),
+            ColorCard(Color::Red, 13)
+        }
+    );
+    printInfo(sf_min);
+    printInfo(sf_max);
+
+    delete sf_min;
+    delete sf_max;
+
     return 0;
 }

@@ -1,3 +1,3 @@
-cmake -B build . -G "MinGW Makefiles"
-cd build
+cmake -B bin . -G "MinGW Makefiles"
+cd bin
 mingw32-make
