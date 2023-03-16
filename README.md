@@ -119,10 +119,10 @@ or
 
 ## Authors
 
-| Name                  | GitHub                                            |
-| --------------------- | ------------------------------------------------- |
-| Alexander Jason       | [AJason36](https://github.com/AJason36)           |
-| Angela Livia Arumsari | [liviaarumsari](https://github.com/liviaarumsari) |
-| Eugene Yap Jin Quan   | [yuujin-Q](https://github.com/yuujin-Q)           |
-| Jeffrey Chow          | [JeffreyChow19](https://github.com/JeffreyChow19) |
-| Rachel Gabriela Chen  | [chaerla](https://github.com/chaerla)             |
+| Name                  | GitHub                                            | NIM                  |
+| --------------------- | ------------------------------------------------- | --------------------- |
+| Alexander Jason       | [AJason36](https://github.com/AJason36)           | 13521100 |
+| Angela Livia Arumsari | [liviaarumsari](https://github.com/liviaarumsari) | 13521094 |
+| Eugene Yap Jin Quan   | [yuujin-Q](https://github.com/yuujin-Q)           | 13521074 |
+| Jeffrey Chow          | [JeffreyChow19](https://github.com/JeffreyChow19) | 13521046 |
+| Rachel Gabriela Chen  | [chaerla](https://github.com/chaerla)             | 13521044 |
