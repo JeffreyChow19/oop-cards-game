@@ -13,42 +13,55 @@ This is a C++ implementation of Object Oriented Programming principles such as:
 
 ## Prerequisites
 
-- `g++` compiler
+- `g++` version 17 compiler
 - `make` installed
+
+## Run the Program
+
+1. Open terminal
+2. Go to root directory
+3. Run `make`
+4. Run `make run`
 
 ## Directory Structure
 
 ```
-├───lib
-│   ├───Command
-│   │   └───Ability
-│   │       ├───Abilityless
-│   │       ├───Quadruple
-│   │       ├───Quarter
-│   │       ├───ReRoll
-│   │       ├───Reverse
-│   │       ├───Swap
-│   │       └───Switch
-│   ├───Exception
-│   ├───Game
-│   ├───InventoryHolder
-│   │   ├───MainDeck
-│   │   └───TableDeck
-│   ├───Set
-│   └───Valuable
-│       ├───Card
-│       │   ├───ColorCard
-│       │   └───test
-│       ├───Combo
-│       └───Player
+C:.
+├───bin
+├───src
+│   └───lib
+│       ├───Command
+│       │   └───Ability
+│       │       ├───Abilityless
+│       │       ├───Quadruple
+│       │       ├───Quarter
+│       │       ├───ReRoll
+│       │       ├───Reverse
+│       │       ├───Swap
+│       │       └───Switch
+│       ├───Exception
+│       ├───Game
+│       ├───InventoryHolder
+│       │   ├───MainDeck
+│       │   └───TableDeck
+│       ├───Set
+│       ├───Util
+│       └───Valuable
+│           ├───Card
+│           │   └───ColorCard
+│           ├───Combo
+│           │   ├───Flush
+│           │   ├───FourOfAKind
+│           │   ├───FullHouse
+│           │   ├───HighCard
+│           │   ├───Pair
+│           │   ├───Straight
+│           │   ├───StraightFlush
+│           │   ├───ThreeOfAKind
+│           │   └───TwoPair
+│           └───Player
 └───test
 ```
-
-## How To Use
-
-1. Open terminal
-2. Go to `src` directory
-3. Run `make`
 
 ## Author
 
