@@ -11,7 +11,7 @@ using namespace std;
 
 template <class T>
 class InventoryHolder
-{ // ini tuh dibuatnya kekmana?
+{
 protected:
     vector<T> deck;
 

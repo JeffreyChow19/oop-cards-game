@@ -16,7 +16,7 @@ enum class Color
     Yellow = 2,
     Red = 3,
     Last
-}; // tanya boleh pake enum ga
+};
 
 class ColorCard : public Card
 {

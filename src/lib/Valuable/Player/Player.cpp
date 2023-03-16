@@ -10,7 +10,6 @@ Player::Player(string nickname) : nickname_(nickname)
 {
     playerCount_++;
     this->id_ = playerCount_;
-    // To do: adding deck & ability
 }
 
 Player::Player(const Player &other) : InventoryHolder(other)
@@ -19,7 +18,6 @@ Player::Player(const Player &other) : InventoryHolder(other)
     this->deck = other.deck;
     playerCount_++;
     this->id_ = playerCount_;
-    // To do: adding deck & ability
 }
 
 Player::~Player()
@@ -74,9 +72,5 @@ float Player::getValue() const
 
 void Player::printCards()
 {
-    // for (auto &c : this->deck)
-    // {
-    //     c.printInfo();
-    // }
     ColorCard::printGroup(this->deck);
 }

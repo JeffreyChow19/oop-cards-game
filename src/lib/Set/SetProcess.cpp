@@ -34,10 +34,6 @@ SetProcess::SetProcess(vector<CandyPlayer> &listOfPlayer, int firstPlayerIdx) : 
         for (auto &p : listOfPlayer_)
         {
             p.setHasPlayed(false);
-            // if (round_ != 1)
-            // {
-            //     p.setAbilityStatus(true);
-            // }
         }
 
         if (this->round_ != 6)
