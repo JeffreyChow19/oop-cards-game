@@ -56,6 +56,7 @@ CangkulGame::CangkulGame()
 
 void CangkulGame::startGame()
 {
+    Coloring clr;
     ColorCard tableCard;   // card opened for all player to see
     ColorCard highestCard; // the highest card amongst the opened cards
     int roundWinnerIdx;    // the winner of the round
@@ -71,29 +72,52 @@ void CangkulGame::startGame()
     while (!checkEndGame)
     {
         int playerMoved = 0;
-        cout << "Table card " << endl;
+
+        clr.white(true);
+        cout << "Table card : " << endl;
+        clr.reset();
+
         thrownCards_.push_back(tableCard);
         tableCard.printInfo();
         while (playerMoved < listOfPlayers_.size())
         {
             CangkulPlayer &currPlayer = listOfPlayers_[currPlayerIdx];
             cout << endl
-                 << "It's " << currPlayer.getNickname() << "'s turn!" << endl;
+                 << "It's ";
+
+            clr.white(true);
+            cout << currPlayer.getNickname();
+            clr.reset();
+
+            cout << "'s turn!" << endl;
             sleep(1);
+
+            clr.white(true);
             cout << "Your cards : " << endl;
+            clr.reset();
+
             currPlayer.printCards();
+
             sleep(1);
+
             ColorCard *selectedCard = currPlayer.getLargestCard(tableCard);
             if (selectedCard == nullptr)
             {
                 cout << "Oops! too bad.. you can't open any card" << endl;
                 selectedCard = takeCardFromDeck(currPlayer, tableCard);
             }
-            else
-            {
-                cout << currPlayer.getNickname() << "'s opened card " << endl;
+            // else
+            // {
+                clr.white(true);
+                cout << currPlayer.getNickname();
+                clr.reset();
+
+                cout << "'s opened card " << endl;
+
                 selectedCard->printInfo();
+
                 cout << endl;
+
                 if (found && selectedCard->getValue() > highestCard.getValue())
                 {
                     highestCard = *selectedCard;
@@ -107,8 +131,15 @@ void CangkulGame::startGame()
                 }
                 thrownCards_.push_back(*selectedCard);
                 currPlayer.removePlayerCard(*selectedCard);
-            }
-            cout << "End of " << currPlayer.getNickname() << "'s turn" << endl;
+            
+
+            cout << "End of ";
+            
+            clr.white(true);
+            cout << currPlayer.getNickname();
+            clr.reset();
+
+            cout << "'s turn" << endl;
 
             sleep(2);
 
