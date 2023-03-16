@@ -43,7 +43,7 @@ SetProcess::SetProcess(vector<CandyPlayer> &listOfPlayer, int firstPlayerIdx) : 
         if (this->round_ != 6)
         {
             this->tableDeck_.addCard(this->mainDeck_);
-
+        }
             clr.white(true);
             cout << "Table Deck :" << endl;
             clr.reset();
@@ -142,7 +142,7 @@ SetProcess::SetProcess(vector<CandyPlayer> &listOfPlayer, int firstPlayerIdx) : 
             }
 
             firstPlayerIdx_ = (firstPlayerIdx_ + 1) % this->listOfPlayer_.size();
-        }
+        
         round_++;
     }
     calculateCombo();
@@ -154,6 +154,13 @@ void SetProcess::calculateCombo()
 
     float highestValue = 0;
     CandyPlayer *win = &listOfPlayer_[0];
+    
+    clr.cyan();
+        cout << "\n**************************************" << endl;
+        cout <<   "              SET RESULT "<< endl;
+        cout <<   "**************************************" << endl
+             << endl;
+        clr.reset();
 
     clr.white(true);
     cout << "Table Deck :" << endl;
