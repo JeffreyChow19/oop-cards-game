@@ -36,3 +36,7 @@ float ThreeOfAKind::getValue() const
     }
     return result;
 }
+
+string ThreeOfAKind::getComboName() const{
+    return "THREE OF A KIND";
+}

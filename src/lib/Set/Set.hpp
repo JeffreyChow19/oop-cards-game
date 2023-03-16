@@ -60,6 +60,8 @@ public:
 
     MainDeck &getMainDeck();
 
+    long long getPoints();
+
     void setMainDeck(MainDeck);
 
     void setFirstPlayerIdx(int);

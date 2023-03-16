@@ -2,15 +2,14 @@
 
 void Quarter::activate(Set &set)
 {
-    try
+    if (set.getPoints() ==1)
     {
-        set.setPoints(0.25);
-        cout << "The point for this set is quartered!" << endl;
+        throw PointException();
+    }else if(set.getPoints()==2){
+        throw PointException2();
     }
-    catch (PointException &e)
-    {
-        cout << e.what();
-    }
+    set.setPoints(0.25);
+    cout << "The point for this set is quartered!" << endl;
 }
 
 string Quarter::getCommandName()

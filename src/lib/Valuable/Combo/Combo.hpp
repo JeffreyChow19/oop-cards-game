@@ -41,6 +41,13 @@ public:
      *
      */
     virtual void print() = 0;
+
+    /**
+     * @brief Get the Combo Name object
+     * 
+     * @return string 
+     */
+    virtual string getComboName() const = 0;
 };
 
 #endif

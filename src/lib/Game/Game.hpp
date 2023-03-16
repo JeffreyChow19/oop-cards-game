@@ -4,6 +4,8 @@
 #include "../Valuable/Player/CandyPlayer.hpp"
 #include "../Exception/Exception.hpp"
 #include "../Util/Coloring.hpp"
+#include <unistd.h>
+#include <iomanip>
 
 using namespace std;
 

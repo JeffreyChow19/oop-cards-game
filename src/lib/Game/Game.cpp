@@ -65,11 +65,47 @@ bool Game::checkEndGame()
     {
         if (p.getPoint() >= pow(2, 32))
         {
-            clr.blue(true);
-            cout << "CONGRATULATIONS ";
+            sleep(2);
+            clr.red(true);
+            cout << "\n3..." << endl;
+            sleep(1);
+            cout << "2..." << endl;
+            sleep(1);
+            cout << "1..." << endl;
+            sleep(1);
 
+            clr.red(true);
+            cout << endl;
+
+            cout << "         )     )        (                        (                  (       )     ) (\n"     
+                    "   (  ( /(  ( /( (      )\\ )   (      *   )      )\\ )   (      *   ))\\ ) ( /(  ( /( )\\ )\n"  
+                    "   )\\ )\\()) )\\()))\\ )  (()/(   )\\   ` )  /(   ( (()/(   )\\   ` )  /(()/( )\\()) )\\()|()/(\n"  
+                    " (((_|(_)\\ ((_)\\(()/(   /(_)|(((_)(  ( )(_))  )\\ /(_)|(((_)(  ( )(_))(_)|(_)\\ ((_)\\ /(_))\n";
             clr.pink(true);
-            cout << p.getNickname() << endl;
+            cout << " )\\___ ((_) _((_)/(_))_(_))  )\\ _ )\\(_(_())_ ((_|_))  )\\ _ )\\(_(_()|_))   ((_) _((_|_))\n"   
+                    "((/ __/ _ \\| \\| (_)) __| _ \\ (_)_\\(_)_   _| | | | |   (_)_\\(_)_   _|_ _| / _ \\| \\| / __|\n"  
+                    " | (_| (_) | .` | | (_ |   /  / _ \\   | | | |_| | |__  / _ \\   | |  | | | (_) | .` \\__ \\ \n"  
+                    "  \\___\\___/|_|\\_|  \\___|_|_\\ /_/ \\_\\  |_|  \\___/|____|/_/ \\_\\  |_| |___| \\___/|_|\\_|___/  \n" << endl; 
+
+            clr.green(true);
+            cout << "                                        " << p.getNickname() << endl << endl;
+
+            clr.yellow(true);
+            cout << "            LEADERBOARD" << endl;
+
+            sort(listOfPlayer.begin(), listOfPlayer.end(), [](const CandyPlayer& a, const CandyPlayer& b) {return a.getPoint() > b.getPoint();});
+            
+            clr.blue(true);
+            cout << left << setw(20) << "Nickname" << setw(10) << "Points" << endl;
+            cout << "----------------------------------------" << endl;
+            
+            clr.blue();
+            for (const CandyPlayer& player : listOfPlayer) {
+                cout << left << setw(20) << player.getNickname() << setw(10) << player.getPoint() << std::endl;
+            }
+
+            cout << endl;
+
             clr.reset();
 
             return true;

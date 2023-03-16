@@ -28,6 +28,20 @@ struct CommandException : public exception
     }
 };
 
+struct AbilityNotHaveException : public exception {
+    const char *what() const throw()
+    {
+        return "You don't have the ability card!\nPlease input other command\n";
+    }
+};
+
+struct AllAbilityUsedException : public exception {
+    const char *what() const throw()
+    {
+        return "Every player has used their abilities! Oopsie you got your own ability affected to yourself HAHAHAHA :o\n";
+    }
+};
+
 struct CommandInactiveException : public exception
 {
     const char *what() const throw()
@@ -65,6 +79,14 @@ struct PointException : public exception
     const char *what() const throw()
     {
         return "The set point is already 1 so it cant be changed.\n";
+    }
+};
+
+struct PointException2 : public exception
+{
+    const char *what() const throw()
+    {
+        return "The set point is already 2 so it cant be quartered.\n";
     }
 };
 

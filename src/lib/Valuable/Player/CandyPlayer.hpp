@@ -18,6 +18,7 @@ private:
     string ability_;
     bool hasPlayed_;
     bool abilityStatus_;
+    bool abilityUse_;
 
 public:
     CandyPlayer();
@@ -188,6 +189,9 @@ public:
      */
     void deleteMinValueFromCombo(vector<ColorCard> &combo, int limit);
     void deleteMinColorFromCombo(vector<ColorCard> &combo, int limit);
+    bool getAbilityUse();
+
+    void setAbilityUse(bool);
 };
 
 #endif

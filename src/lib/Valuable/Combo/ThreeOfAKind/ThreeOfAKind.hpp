@@ -37,6 +37,8 @@ public:
      * @return float
      */
     float getValue() const;
+
+    string getComboName() const;
 };
 
 #endif

@@ -33,6 +33,8 @@ public:
     void print();
 
     vector<ColorCard> &getDeck();
+
+    string getComboName() const;
 };
 
 #endif
