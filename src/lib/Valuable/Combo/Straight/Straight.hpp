@@ -12,13 +12,9 @@ protected:
 
 public:
     /**
-     * @brief Construct a new straight object
-     *
-     * @param firstCard
-     * @param secondCard
-     * @param thirdCard
-     * @param fourthCard
-     * @param fifthCard
+     * @brief Construct a new Straight object
+     * 
+     * @param deck 
      */
     Straight(vector<ColorCard> deck);
 
